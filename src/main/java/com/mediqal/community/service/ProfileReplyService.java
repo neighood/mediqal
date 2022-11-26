@@ -11,8 +11,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("mypage")
-public class MypageReplyService implements ReplyService{
+@Qualifier("profile")
+public class ProfileReplyService implements ReplyService{
 
     @Override
     public void register(ReplyDTO replyDTO) {

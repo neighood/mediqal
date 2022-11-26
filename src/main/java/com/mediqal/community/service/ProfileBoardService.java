@@ -1,8 +1,8 @@
 package com.mediqal.community.service;
 
+import com.mediqal.community.domain.dto.BoardDTO;
+import com.mediqal.community.domain.vo.BoardVO;
 import com.mediqal.community.domain.dto.Criteria;
-import com.mediqal.community.domain.dto.UserDTO;
-import com.mediqal.community.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,31 +11,31 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("mypage")
-public class MypageUserService implements UserService{
+@Qualifier("profile")
+public class ProfileBoardService implements BoardService{
 
     @Override
-    public void register(UserDTO userDTO) {
+    public void register(BoardDTO boardDTO) {
 
     }
 
     @Override
-    public void modify(UserDTO userDTO) {
+    public void modify(BoardDTO boardDTO) {
 
     }
 
     @Override
-    public void remove(Long userNumber) {
+    public void remove(Long boardNumber) {
 
     }
 
     @Override
-    public UserDTO show(Long userNumber) {
+    public BoardDTO show(Long boardNumber) {
         return null;
     }
 
     @Override
-    public List<UserVO> showAll(Criteria criteria) {
+    public List<BoardVO> showAll(Criteria criteria) {
         return null;
     }
 

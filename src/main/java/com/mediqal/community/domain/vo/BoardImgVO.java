@@ -8,5 +8,19 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class BoardImgVO {
+    private Long boardImgNumber;
 
+    private Long boardNumber;
+
+    private Long userNumber;
+
+    private String boardImgName;
+
+    private String boardImgUploadPath;
+
+    private String boardImgUuid;
+
+    private String boardImgImageCheck;
+
+    private Long boardImgSize;
 }

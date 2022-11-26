@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Qualifier("mypage")
-public class MypageConfirmService implements ConfirmService{
+@Qualifier("profile")
+public class ProfileConfirmService implements ConfirmService{
     @Override
     public void register(ConfirmDTO confirmDTO) {
 
