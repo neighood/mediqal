@@ -8,5 +8,9 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class InterestVO {
+    private Long interestNumber;
 
+    private Long userNumber;
+
+    private String interestName;
 }

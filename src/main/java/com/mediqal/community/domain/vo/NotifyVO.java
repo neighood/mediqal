@@ -8,5 +8,11 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class NotifyVO {
+    private Long notifyNumber;
 
+    private Long boardNumber;
+
+    private Long userNumber;
+
+    private Long notifyStatus;
 }

@@ -8,5 +8,9 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class LikeVO {
+    private Long likeNumber;
 
+    private Long boardNumber;
+
+    private Long userNumber;
 }

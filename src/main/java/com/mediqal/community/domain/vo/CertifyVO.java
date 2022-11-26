@@ -8,4 +8,19 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class CertifyVO {
+    private Long certifyNumber;
+
+    private Long confirmNumber;
+
+    private Long userNumber;
+
+    private String certifyName;
+
+    private String certifyUploadPath;
+
+    private String certifyUuid;
+
+    private String certifyImageCheck;
+
+    private Long certifySize;
 }
