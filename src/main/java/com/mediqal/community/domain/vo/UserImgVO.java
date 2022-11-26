@@ -8,4 +8,17 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class UserImgVO {
+    private Long userImgNumber;
+
+    private Long userNumber;
+
+    private String userImgName;
+
+    private String userImgUploadPath;
+
+    private String userImgUuid;
+
+    private String userImgImageCheck;
+
+    private Long userImgSize;
 }

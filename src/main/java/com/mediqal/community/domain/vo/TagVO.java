@@ -8,5 +8,9 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class TagVO {
+    private Long tagNumber;
 
+    private Long boardNumber;
+
+    private String tagName;
 }

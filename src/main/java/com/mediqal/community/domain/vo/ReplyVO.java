@@ -8,4 +8,15 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class ReplyVO {
+    private Long replyNumber;
+
+    private Long boardNumber;
+
+    private Long userNumber;
+
+    private String replyContent;
+
+    private String replyRegisterDate;
+
+    private String replyUpdateDate;
 }

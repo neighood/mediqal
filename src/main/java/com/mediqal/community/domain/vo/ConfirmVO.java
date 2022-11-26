@@ -8,5 +8,7 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class ConfirmVO {
+    private Long confirmNumber;
 
+    private Long userNumber;
 }

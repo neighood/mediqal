@@ -8,5 +8,19 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class BoardVO {
+    private Long boardNumber;
 
+    private Long userNumber;
+
+    private String boardTitle;
+
+    private String boardContent;
+
+    private String boardCategory;
+
+    private String boardRegisterDate;
+
+    private String boardUpdateDate;
+
+    private Long boardView;
 }
