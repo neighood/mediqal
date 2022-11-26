@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard-Regular';
+}
+
+body {
+    margin-top: 121px;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(252, 252, 252);
+}
+
+input, select {
+    border: 1px solid #e1e4e6;
+    border-radius: 4px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 160px;
+}
+
+.write-content {
+    background-color: white;
+    margin: 0 0 24px;
+    padding: 18px 24px;
+}
+
+.write-content-title {
+    font-size: 26px;
+    margin: 0 0 24px;
+}
+
+.write-content-title strong, p {
+    font-size: 16px;
+    color: #7E848A;
+}
+
+.write-content-title p{
+    font-weight: 400;
+}
+
+.category-wrap {
+    display: flex;
+    margin: 0 0 10px;
+}
+
+.category-wrap select {
+    padding: 6.5px 12px;
+    width: 140px;
+    height: 30px;
+}
+
+.board-title input[type='text'] {
+    padding: 1px 2px 1px 12px;
+    margin: 0 0 4px;
+    width: 510px;
+    height: 40px;
+}
+
+.board-content-wrap {
+    margin-top: 8px;
+}
+
+.board-content input[type='text'] {
+    padding: 16px 12px 50px;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.tag-wrap {
+    margin-bottom: 40px;
+}
+
+.tag-first-line {
+    margin-bottom: 10px;
+}
+
+.tag-title {
+    margin-bottom: 4px;
+}
+
+.tag-title span {
+    color: #ADB3B8;
+}
+
+.tag-sub-title {
+    font-size: 14px;
+}
+
+.tag-second-line {
+    display: flex;
+}
+
+.tag-input-text {
+    margin-right: 4px;
+}
+
+.tag-input-text input {
+    width: 180px;
+    height: 40px;
+    padding: 1px 2px 1px 12px;
+}
+
+.request input[type='button'] {
+    background-color: #D4E5F9;
+    color: white;
+    font-size: 18px;
+    width: 527px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/*.request input[type='button']:hover {*/
+/*    background-color: #2A7DE1;*/
+/*}*/
+
+
+
+
+
