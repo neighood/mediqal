@@ -1,0 +1,80 @@
+body{
+    font-family: "Pretendard";
+}
+* {
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+
+/* 헤더 */
+.header-container{
+    display: flex;
+    justify-content: center;
+    height: 68px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 0 0 1px;
+    border-color: #eaecee;
+    z-index: 10;
+}
+
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 1132px;
+    font-size: 14px;
+    color: #595F63;
+}
+
+/* 헤더 왼쪽 */
+.header-left{
+    display: flex;
+    align-items: center;
+}
+
+.header-logo{
+    cursor: pointer;
+    margin-right: 24px;
+    font-size: 25px;
+    font-weight: bolder;
+    color: blueviolet;
+}
+
+.header-category{
+    display: flex;
+}
+
+.header-category div{
+    cursor: pointer;
+}
+
+.header-category div:not(:last-of-type){
+    margin-right: 24px;
+}
+
+
+/* 헤더 오른쪽 */
+.header-right{
+    display: flex;
+    align-items: center;
+}
+
+ul li{
+    cursor: pointer;
+}
+
+.header-right ul li:not(:last-of-type){
+    margin-right: 24px;
+}
+
+.header-user-off{
+    display: flex;
+}
+.header-user-on{
+    display: none;
+}

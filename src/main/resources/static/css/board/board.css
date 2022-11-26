@@ -1,0 +1,124 @@
+body {
+    margin-top: 121px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Pretendard-Regular';
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+img {
+    width: 16px;
+    height: 16px;
+}
+
+.wrap {
+    margin-bottom: 100px;
+}
+
+.main {
+    position: relative;
+}
+
+.container {
+    padding: 20px;
+    border: 1px solid #eaecee;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 729.6px;
+    height: 141px;
+    cursor: pointer;
+}
+
+.tag-wrap {
+    display: flex;
+}
+
+.tag {
+    font-size: 10px;
+    color: #595F63;
+    background-color: #F3F4F5;
+    border: 1px solid #F3F4F5;
+    margin-bottom: 12px;
+    margin-right: 8px;
+    padding: 1.5px 4px;
+}
+
+.board-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-overflow: ellipsis;
+}
+
+.board-text {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #595F63;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+.content-second-box {
+    margin-top: 24px;
+}
+
+.content-status {
+    display: flex;
+}
+
+.icon {
+    margin-right: 12px;
+    color: rgb(148 155 160);
+}
+
+.img img {
+    fill: rgb(148, 155, 160);
+}
+
+.button-img {
+    position: fixed;
+    bottom: 125px;
+    right: 160px;
+    width: 58px;
+    height: 58px;
+    background: #2a7de1;
+    border-radius: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 30px;
+}
+
+
+
+.button-img img {
+    width: 27px;
+    height: 27px;
+    filter: opacity(0.5) drop-shadow(0 0 0 #FFFFFF);
+}
+
+
+
+
+
+
+
+

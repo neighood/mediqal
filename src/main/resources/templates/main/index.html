@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="/css/main/index.css"  />
+    <link rel="stylesheet" href="/css/components/header.css"  />
+    <link rel="stylesheet" href="/css/components/footer.css"  />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header th:replace="/components/header.html :: .header-container"></header>
+    <main>
+        <div class="main-container">
+            <div class="arrow prev">&lt;</div>
+            <div class="main-banner">
+                <div><img src="/img/001.png"></div>
+                <div><img src="/img/002.png"></div>
+                <div><img src="/img/003.png"></div>
+                <div><img src="/img/004.png"></div>
+                <div><img src="/img/005.png"></div>
+                <div><img src="/img/006.png"></div>
+            </div>
+            <div class="arrow next">&gt;</div>
+            <div class="btns">
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+                <button class="btn"></button>
+            </div>
+        </div>
+        <div class="board-container">
+            <div class="board-arrow board-prev com-prev">&lt;</div>
+            <div class="board-arrow board-next com-next">&gt;</div>
+            <div class="category">Q & A 에서 서로의 증상을 알아 보아요</div>
+            <div class="board">
+                <div class="board-banner">
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">기침</span>
+                            </div>
+                            <div class="title">증상이 코로나일까요?</div>
+                            <div class="content">계속 기침나오고 두통 있는데 코로나일까요?</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">코로롱</div>
+                                        <div class="reply-content">코로나 축하드려요 ㅎㅎ</div>
+                                    </div>
+                                </div>
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">코로롱</div>
+                                        <div class="reply-content">코로나 축하드려요 ㅎㅎ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">기침</span>
+                            </div>
+                            <div class="title">증상이 코로나일까요?</div>
+                            <div class="content">계속 기침나오고 두통 있는데 코로나일까요?</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">코로롱</div>
+                                        <div class="reply-content">코로나 축하드려요 ㅎㅎ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">기침</span>
+                            </div>
+                            <div class="title">증상이 코로나일까요?</div>
+                            <div class="content">계속 기침나오고 두통 있는데 코로나일까요?</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">코로롱</div>
+                                        <div class="reply-content">코로나 축하드려요 ㅎㅎ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">기침</span>
+                            </div>
+                            <div class="title">증상이 코로나일까요?</div>
+                            <div class="content">계속 기침나오고 두통 있는데 코로나일까요?</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">코로롱</div>
+                                        <div class="reply-content">코로나 축하드려요 ㅎㅎ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="board-container">
+            <div class="board-arrow board-prev rev-prev">&lt;</div>
+            <div class="board-arrow board-next rev-next">&gt;</div>
+            <div class="category">병원 후기를 남겨주세요</div>
+            <div class="board">
+                <div class="board-banner">
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">OO병원</span>
+                            </div>
+                            <div class="title">OO병원에서 두통 진료받았어요.</div>
+                            <div class="content">돌팔이에요 도망치세요</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">OO병원</span>
+                            </div>
+                            <div class="title">OO병원에서 두통 진료받았어요.</div>
+                            <div class="content">돌팔이에요 도망치세요</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">OO병원</span>
+                            </div>
+                            <div class="title">OO병원에서 두통 진료받았어요.</div>
+                            <div class="content">돌팔이에요 도망치세요</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                    <div class="board-box">
+                        <div class="board-group">
+                            <div class="tag-group">
+                                <span class="tag">조회수 TOP</span>
+                                <span class="tag">OO병원</span>
+                            </div>
+                            <div class="title">OO병원에서 두통 진료받았어요.</div>
+                            <div class="content">돌팔이에요 도망치세요</div>
+                            <div class="rating-group">
+                                <div class="rating-icon-group">
+                                    <p class="rating-reply reply-icon"><i class="fa-regular fa-comment-dots"></i></p>
+                                    <p class="rating-reply reply-count">5</p>
+                                </div>
+                                <div class="rating-icon-group">
+                                    <p class="rating-like like-icon"><i class="fa-regular fa-heart"></i></p>
+                                    <p class="rating-like like-count">0</p>
+                                </div>
+                            </div>
+                            <div class="reply-box">
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                                <div class="reply-group">
+                                    <div class="reply-img"></div>
+                                    <div class="reply-detail-group">
+                                        <div class="reply-userName">꿀팁</div>
+                                        <div class="reply-content">우와 고생하시네요.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="more">+ 더보기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="/components/footer.html :: .footer-container"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/main/index.js"></script>
+<script src="/js/components/header.js"></script>
+<script src="/js/components/footer.js"></script>
+</html>

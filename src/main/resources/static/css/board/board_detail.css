@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard-Regular';
+}
+
+body {
+    margin-top: 121px;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+img {
+    width: 12px;
+    height: 12px;
+}
+
+.wrap {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.main-content {
+    width: 730px;
+    margin: 0 auto;
+}
+
+.background-color {
+    background: rgb(252, 252, 252);
+}
+
+.board-box {
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: rgb(234, 236, 238);
+}
+
+.board-padding {
+    padding: 35px 20px;
+    position: relative;
+}
+
+.board-user-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-left {
+    display: flex;
+    align-items: center;
+}
+
+.board-user-name {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.user-img {
+    width: 48px;
+    height: 48px;
+    background-color: rgb(240, 219, 128);
+    border-radius: 100%;
+    text-align: center;
+}
+
+.user-img img {
+    width: 20px;
+    height: 20px;
+}
+
+.board-menu-nav, .comment-menu-nav {
+    position: absolute;
+    top: 74px;
+    right: -40px;
+    box-shadow: 0 3px 7px rgb(0 0 0 / 6%);
+    border-radius: 10px;
+    background-color: #fff;
+
+}
+
+.nav {
+    padding: 8px 12px;
+    color: rgb(60, 65, 68);
+    font-size: 14px;
+}
+
+.update {
+    padding: 6px 4px;
+    cursor: pointer;
+}
+
+.delete {
+    padding: 6px 4px;
+    border-top: 1px solid;
+    border-color: rgb(243 244 245);
+    cursor: pointer;
+}
+
+.board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.category {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #ADB3B8;
+}
+
+.board-title {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.board-title span {
+    color: #2A7DE1;
+}
+
+.board-text {
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+
+.board-register-date {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #CFD4D7;
+}
+
+.board-status {
+    display: flex;
+}
+
+.board-status img {
+    width: 16px;
+    height: 16px;
+}
+
+.button-like {
+    margin-right: 8px;
+    color: rgb(233 37 37);
+    cursor: pointer;
+}
+
+.button-like i {
+    display: inline-block;
+}
+
+.comment-count {
+    margin-right: 8px;
+    color: rgb(148 155 160);
+    cursor: pointer;
+}
+
+.comment-wrap {
+    padding: 16px 20px;
+    border-top: 2px dotted;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: rgb(234, 236, 238);
+}
+
+.display-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+.menu-icon img {
+    cursor: pointer;
+}
+
+.comment-user-profile {
+    width: 40px;
+    height: 40px;
+    background-color: #B0ABA4;
+    color: white;
+    font-size: 14px;
+    margin-right: 5px;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.comment-last-name {
+    line-height: 41px;
+    font-weight: 600;
+}
+
+.comment-user-name {
+    font-weight: 600;
+}
+
+.comment-user-info .comment-menu-nav {
+    position: absolute;
+    top: 417px;
+    right: 356px;
+}
+
+.comment-text-wrap {
+    padding: 12px 16px;
+    margin-top: 4px;
+    background-color: #F3F4F5;
+    border-radius: 4px;
+}
+
+.comment-text-wrap .text {
+    font-size: 14px;
+}
+
+.comment-register-date-padding {
+    padding: 5.5px 8px;
+}
+
+.comment-register-date {
+    font-size: 12px;
+    color: #ADB3B8;
+}
+
+.comment-input-text-wrap {
+    padding: 16px 20px;
+    display: flex;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: rgb(234, 236, 238);
+}
+
+.comment-input-text input {
+    background: #f3f4f5;
+    padding: 8px 16px;
+    border: 1px solid #e1e4e6;
+    border-radius: 4px;
+    color: rgb(60, 65, 68);;
+    width: 610px;
+    height: 22px;
+}
+
+.comment-submit {
+    margin: 8px 4px 0 8px;
+    padding: 2px;
+    width: 30px;
+    height: 30px;
+}
+
+.submit-img img {
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
