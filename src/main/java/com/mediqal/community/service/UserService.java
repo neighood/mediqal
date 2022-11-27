@@ -16,7 +16,7 @@ public interface UserService {
     //    삭제
     public void remove(Long userNumber);
     //    조회
-    public UserDTO show(Long userNumber);
+    public UserVO show(Long userNumber);
     //    전체 조회
     public List<UserVO> showAll(Criteria criteria);
     //    전체 개수

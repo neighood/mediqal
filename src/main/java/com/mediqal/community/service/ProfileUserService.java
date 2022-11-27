@@ -30,7 +30,7 @@ public class ProfileUserService implements UserService{
     }
 
     @Override
-    public UserDTO show(Long userNumber) {
+    public UserVO show(Long userNumber) {
         return null;
     }
 
