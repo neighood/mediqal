@@ -96,7 +96,26 @@
   border-radius: 5px;
   line-height: 2.4rem;
   padding: 0.5rem 1rem;
-  margin: 1rem 0;
+  /*margin: 1rem 0;*/
+  margin-top: 0.5rem;
+}
+
+/*input margin-bottom 없애고 여기에 margin-top 줌*/
+.label-margin{
+  margin-top: 1rem;
+}
+
+.span-wrapper{
+  margin-left: 6px;
+  margin-top: 2px;
+  /*visibility: hidden;*/
+  height: 19.5px;
+}
+
+.under-input{
+  font-size: 12px;
+  font-family: Pretendard-Regular;
+  color: red;
 }
 
 .__button {
