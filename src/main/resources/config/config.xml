@@ -2,6 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+<<<<<<< HEAD
         <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"></typeAlias>
+=======
+        <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"/>
+>>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
     </typeAliases>
 </configuration>

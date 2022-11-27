@@ -6,47 +6,37 @@ import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.repository.UserDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("admin")
-public class AdminUserService implements UserService{
+@Qualifier("sign") @Primary
+public class SignUserService implements UserService{
     private final UserDAO userDAO;
 
-<<<<<<< HEAD
-    @Override
-    public void register(UserDTO userDTO) {
-
+    public void signUp(UserVO userVO) {
+        userDAO.save(userVO);
     }
 
-    @Override
-    public void modify(UserDTO userDTO) {
-
+    public String findPassword(String userEmail) {
+        return userDAO.findPasswordByEmail(userEmail);
     }
 
-    @Override
-    public void remove(Long userNumber) {
-        userDAO.remove(userNumber);
+    public int checkId(String userEmail) {
+        return userDAO.checkId(userEmail);
     }
 
-    @Override
-    public UserVO show(Long userNumber) {
-        return userDAO.findById(userNumber);
+    public int checkNickname(String userNickname) {
+        return userDAO.checkNickname(userNickname);
     }
 
-    @Override
-    public List<UserVO> showAll(Criteria criteria) {
-        return userDAO.findAll();
+    public int login(String userEmail, String userPassword) {
+        return userDAO.login(userEmail,userPassword);
     }
 
-    @Override
-    public int getTotal() {
-        return 0;
-    }
-=======
 //    @Override
 //    public void register(UserDTO userDTO) {
 //
@@ -76,5 +66,4 @@ public class AdminUserService implements UserService{
 //    public int getTotal() {
 //        return 0;
 //    }
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
 }

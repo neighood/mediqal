@@ -15,6 +15,7 @@ public class UserDAO {
     //    수정
     public void set(UserVO userVO){
 
+<<<<<<< HEAD
     }
 
     //    삭제
@@ -30,5 +31,26 @@ public class UserDAO {
     //    전체 조회
     public List<UserVO> findAll(){
         return userMapper.selectAll();
+=======
+    //    회원가입
+    public void save(UserVO userVO){
+        userMapper.insert(userVO);
+    }
+    //    비밀번호 찾기
+    public String findPasswordByEmail(String userEmail){
+        return userMapper.findPassword(userEmail);
+    }
+    //    아이디 중복 검사
+    public int checkId(String userEmail){
+        return userMapper.checkId(userEmail);
+    }
+    //    닉네임 중복 검사
+    public int checkNickname(String userNickname){
+        return userMapper.checkNickname(userNickname);
+    }
+    //    로그인
+    public int login(String userEmail, String userPassword){
+        return userMapper.login(userEmail,userPassword);
+>>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
     }
 }
