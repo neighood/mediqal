@@ -1,7 +1,6 @@
 package com.mediqal.community.mapper;
 
 import com.mediqal.community.domain.dto.Criteria;
->>>>>>> 83aeae1a3c26dc5f4508994c4054fb96bcff4be8
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -34,14 +33,11 @@ public interface UserMapper {
     //    로그인
     public int login(String userEmail, String userPassword);
 
-<<<<<<< HEAD
     //  내 프로필
     public UserVO profileSelect(Long userNumber);
     // 유저 정보 수정
     public void profileUpdate(UserDTO userDTO);
     // 회원 탈퇴
     public void profileDelete(Long userNumber);
-=======
 
->>>>>>> 83aeae1a3c26dc5f4508994c4054fb96bcff4be8
 }
