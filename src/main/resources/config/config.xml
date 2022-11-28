@@ -2,14 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-<<<<<<< HEAD
-        <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"></typeAlias>
-        <typeAlias type="com.mediqal.community.domain.dto.UserDTO" alias="userDTO"></typeAlias>
-=======
         <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"/>
         <typeAlias type="com.mediqal.community.domain.dto.UserDTO" alias="userDTO"/>
         <typeAlias type="com.mediqal.community.domain.vo.InterestVO" alias="interestVO"/>
         <typeAlias type="com.mediqal.community.domain.vo.IllVO" alias="illVO"/>
->>>>>>> 7736e25ff94146b26623594f286e4115dabf1fab
+        <typeAlias type="com.mediqal.community.domain.vo.CertifyVO" alias="certifyVO"/>
     </typeAliases>
 </configuration>

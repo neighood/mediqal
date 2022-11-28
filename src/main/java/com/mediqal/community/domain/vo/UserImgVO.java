@@ -18,7 +18,7 @@ public class UserImgVO {
 
     private String userImgUuid;
 
-    private String userImgImageCheck;
+    private boolean userImgImageCheck;
 
     private Long userImgSize;
 }

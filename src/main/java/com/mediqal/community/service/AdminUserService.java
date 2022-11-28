@@ -33,10 +33,7 @@ public class AdminUserService implements UserService{
 
     @Override
     public UserDTO show(Long userNumber) {
-<<<<<<< HEAD
-=======
 //        return userDAO.findById(userNumber);
->>>>>>> 7736e25ff94146b26623594f286e4115dabf1fab
         return null;
     }
 

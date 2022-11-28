@@ -20,7 +20,7 @@ public class CertifyVO {
 
     private String certifyUuid;
 
-    private String certifyImageCheck;
+    private boolean certifyImageCheck;
 
     private Long certifySize;
 }
