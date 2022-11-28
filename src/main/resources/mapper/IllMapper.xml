@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.IllMapper">
-    
+    <select id="profileSelectAll" resultType="illVO">
+        SELECT ILL_NUMBER, ILL_NAME
+        FROM TBL_ILL
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <update id="profileUpdate">
+        UPDATE TBL_ILL
+        SET ILL_NAME = #{illName}
+        WHERE ILL_NUMBER = #{illNumber}
+    </update>
+
 </mapper>
