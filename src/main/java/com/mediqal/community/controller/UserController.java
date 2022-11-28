@@ -3,11 +3,13 @@ package com.mediqal.community.controller;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.service.SignUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class UserController {
 
+    @Qualifier("sign")
     private final SignUserService signUserService;
 
     public UserController(SignUserService signUserService) {
@@ -25,7 +28,15 @@ public class UserController {
 
     //    회원가입
     @GetMapping("/signup")
-    public void signup(){ log.info("signup 실행"); }
+    public void signup(){
+        log.info("signup 실행");
+
+    }
+    @PostMapping
+    public RedirectView signup(UserVO userVO){
+        signUserService.signUp(userVO);
+        return new RedirectView("/user/signin");
+    }
 
 
     //    로그인
