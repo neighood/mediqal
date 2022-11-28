@@ -1,6 +1,7 @@
 package com.mediqal.community.mapper;
 
 
+import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -51,4 +52,27 @@ public class UserMapperTest {
         log.info("userNumber" + userMapper.login("ksy@naver.com", "1234"));
 
     }
+
+    @Test
+    public void profileSelect(){
+        log.info("유저 정보" + userMapper.profileSelect((long) 1));
+    }
+
+    @Test
+    public void profileUpdate(){
+        UserDTO userDTO = new UserDTO();
+        userDTO.create((long) 1,
+                "4321",
+                "이순신",
+                "이이순신");
+        userMapper.profileUpdate(userDTO);
+        log.info("유저 업데이트");
+    }
+
+    @Test
+    public void profileDelete(){
+        userMapper.profileDelete((long) 1);
+        log.info("회원 탈퇴");
+    }
+
 }

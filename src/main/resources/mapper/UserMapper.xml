@@ -37,4 +37,25 @@
         FROM TBL_USER
         WHERE USER_EMAIL = #{userEmail} AND USER_PASSWORD = ${userPassword}
     </select>
+
+    <!-- 유저 정보 가져오기 -->
+    <select id="profileSelect" resultType="userVO">
+        SELECT USER_PASSWORD, USER_NAME, USER_NICKNAME
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+    
+    <!-- 유저 정보 수정 -->
+    <update id="profileUpdate">
+        UPDATE TBL_USER
+        SET USER_PASSWORD = #{userPassword}, USER_NAME = #{userName}, USER_NICKNAME = #{userNickname}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
+    <!-- 회원 탈퇴 -->
+    <delete id="profileDelete">
+        DELETE FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </delete>
+
 </mapper>

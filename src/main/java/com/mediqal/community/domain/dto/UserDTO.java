@@ -45,5 +45,11 @@ public class UserDTO {
 
     private List<LikeVO> likeVOs;
 
+    public void create(Long userNumber, String userPassword, String userName, String userNickname) {
+        this.userNumber = userNumber;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userNickname = userNickname;
+    }
 
 }
