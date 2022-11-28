@@ -19,6 +19,7 @@
 
     <select id="selectAll" resultType="userVO">
         SELECT USER_NUMBER, USER_NAME, USER_EMAIL, USER_TYPE FROM TBL_USER
+    </select>
 
     <!-- 회원가입 -->
     <insert id="insert">
