@@ -53,4 +53,15 @@ public class UserDAO {
     public int login(String userEmail, String userPassword){
         return userMapper.login(userEmail,userPassword);
     }
+
+    //  내 프로필
+    public UserVO profileSelect(Long userNumber){
+        return userMapper.profileSelect(userNumber);
+    }
+    // 유저 정보 수정
+    public void profileUpdate(UserDTO userDTO){userMapper.profileUpdate(userDTO);}
+    // 회원 탈퇴
+    public void profileDelete(Long userNumber){userMapper.profileDelete(userNumber);}
+
+
 }

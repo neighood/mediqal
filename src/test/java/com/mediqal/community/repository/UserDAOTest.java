@@ -78,4 +78,26 @@ public class UserDAOTest {
     @Test
     public void loginTest(){log.info("로그인 회원번호" + userDAO.login("hgd@naver.com", "1234"));}
 
+    @Test
+    public void profileSelect(){
+        log.info("유저 정보" + userDAO.profileSelect((long) 1));
+    }
+
+    @Test
+    public void profileUpdate(){
+        UserDTO userDTO = new UserDTO();
+        userDTO.create((long) 1,
+                "4321",
+                "이순신",
+                "이이순신");
+        userDAO.profileUpdate(userDTO);
+        log.info("유저 업데이트");
+    }
+
+    @Test
+    public void profileDelete(){
+        userDAO.profileDelete((long) 1);
+        log.info("회원 탈퇴");
+    }
+
 }

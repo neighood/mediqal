@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.InterestMapper">
-    
+    <select id="profileSelectAll" resultType="interestVO">
+        SELECT INTEREST_NUMBER, INTEREST_NAME
+        FROM TBL_INTEREST
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <update id="profileUpdate">
+        UPDATE TBL_INTEREST
+        SET INTEREST_NAME = #{interestName}
+        WHERE INTEREST_NUMBER = #{interestNumber}
+    </update>
+
 </mapper>

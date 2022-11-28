@@ -44,4 +44,27 @@ public class UserDTO {
     private List<ConfirmVO> confirmVOs;
 
     private List<LikeVO> likeVOs;
+<<<<<<< HEAD
+=======
+
+    public void create(Long userNumber, String userPassword, String userName, String userNickname) {
+        this.userNumber = userNumber;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userNickname = userNickname;
+    }
+
+    public void create(UserVO userVO) {
+        this.userNumber = userVO.getUserNumber();
+        this.userPassword = userVO.getUserPassword();
+        this.userName = userVO.getUserName();
+        this.userNickname = userVO.getUserNickname();
+    }
+
+    public void create(Long userNumber, List<InterestVO> interestVOs) {
+        this.userNumber = userNumber;
+        this.interestVOs = interestVOs;
+    }
+
+>>>>>>> 7736e25ff94146b26623594f286e4115dabf1fab
 }
