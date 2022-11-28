@@ -15,7 +15,6 @@ public class UserDAO {
     //    수정
     public void set(UserVO userVO){
 
-<<<<<<< HEAD
     }
 
     //    삭제
@@ -29,9 +28,9 @@ public class UserDAO {
     }
 
     //    전체 조회
-    public List<UserVO> findAll(){
+    public List<UserVO> findAll() {
         return userMapper.selectAll();
-=======
+    }
     //    회원가입
     public void save(UserVO userVO){
         userMapper.insert(userVO);
@@ -51,6 +50,5 @@ public class UserDAO {
     //    로그인
     public int login(String userEmail, String userPassword){
         return userMapper.login(userEmail,userPassword);
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
     }
 }

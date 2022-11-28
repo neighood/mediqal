@@ -1,9 +1,6 @@
 package com.mediqal.community.mapper;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -13,15 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Slf4j
 public class UserMapperTest {
-<<<<<<< HEAD
 
-=======
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
     @Autowired
     private UserMapper userMapper;
 
     @Test
-<<<<<<< HEAD
     public void updateTest(){
         UserVO userVO = userMapper.select(2L);
         userVO.setUserPassword("1234");
@@ -40,9 +33,11 @@ public class UserMapperTest {
     }
 
     @Test
-    public void selectAllTest(){
+    public void selectAllTest() {
         userMapper.selectAll().stream().map(UserVO::getUserName).forEach(log::info);
-=======
+    }
+
+    @Test
     public void insertTest() {
         UserVO userVO = new UserVO();
         userVO.create(0L,
@@ -79,6 +74,5 @@ public class UserMapperTest {
     public void loginTest() {
         log.info("userNumber" + userMapper.login("ksy@naver.com", "1234"));
 
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
     }
 }

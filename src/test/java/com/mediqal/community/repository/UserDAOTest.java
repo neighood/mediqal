@@ -6,17 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
 
 @SpringBootTest
 @Slf4j
 public class UserDAOTest {
 
     @Autowired
-<<<<<<< HEAD
     private  UserDAO userDAO;
 
     //    삭제
@@ -36,8 +32,6 @@ public class UserDAOTest {
 //    public void findAllTest(){
 //        userDAO.findAll().stream().map(UserVO::getUserNumber).forEach(log::info);
 //    }
-=======
-    private UserDAO userDAO;
 
     @Test
     public void saveTest(){
@@ -74,5 +68,4 @@ public class UserDAOTest {
     @Test
     public void loginTest(){log.info("로그인 회원번호" + userDAO.login("hgd@naver.com", "1234"));}
 
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
 }

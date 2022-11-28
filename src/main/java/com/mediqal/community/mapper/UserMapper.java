@@ -1,10 +1,7 @@
 package com.mediqal.community.mapper;
 
-<<<<<<< HEAD
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
-=======
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
 import com.mediqal.community.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,7 +9,6 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-<<<<<<< HEAD
     //    추가
     //    수정
     public void update(UserVO userVO);
@@ -25,7 +21,7 @@ public interface UserMapper {
 
     //    전체 조회
     public List<UserVO> selectAll();
-=======
+
     //    회원가입
     public void insert(UserVO userVO);
     //    비밀번호 찾기
@@ -37,5 +33,5 @@ public interface UserMapper {
     //    로그인
     public int login(String userEmail, String userPassword);
 
->>>>>>> 9677e63debc280b7067b40622acfbc4e1238907e
+
 }
