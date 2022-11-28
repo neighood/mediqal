@@ -5,4 +5,21 @@
         INSERT INTO TBL_CERTIFY(CERTIFY_NUMBER, CERTIFY_NAME, CERTIFY_UPLOAD_PATH, CERTIFY_UUID, CERTIFY_IMAGE_CHECK, CERTIFY_SIZE, CONFIRM_NUMBER)
         VALUES(SEQ_CERTIFY.NEXTVAL, #{certifyName}, #{certifyUploadPath}, #{certifyUuid}, #{certifyImageCheck}, #{certifySize}, #{confirmNumber})
     </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_CERTIFY
+        WHERE BOARD_NUMBER = #{boardNumber}
+    </delete>
+
+    <select id="selectAll" resultType="certifyVO">
+        SELECT CERTIFY_NUMBER, CERTIFY_NAME, CERTIFY_UPLOAD_PATH, CERTIFY_UUID, CERTIFY_IMAGE_CHECK, CERTIFY_SIZE, CONFIRM_NUMBER
+        FROM TBL_CERTIFY
+        WHERE CONFIRM_NUMBER = #{confirmNumber}
+    </select>
+
+    <select id="selectOldFiles" resultType="certifyVO">
+        SELECT CERTIFY_NUMBER, CERTIFY_NAME, CERTIFY_UPLOAD_PATH, CERTIFY_UUID, CERTIFY_IMAGE_CHECK, CERTIFY_SIZE, CONFIRM_NUMBER
+        FROM TBL_CERTIFY
+        WHERE CERTIFY_UPLOAD_PATH = TO_CHAR(CURRENT_DATE - 3, 'YYYY/MM/DD')
+    </select>
 </mapper>

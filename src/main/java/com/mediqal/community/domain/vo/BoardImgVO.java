@@ -20,7 +20,7 @@ public class BoardImgVO {
 
     private String boardImgUuid;
 
-    private String boardImgImageCheck;
+    private boolean boardImgImageCheck;
 
     private Long boardImgSize;
 }
