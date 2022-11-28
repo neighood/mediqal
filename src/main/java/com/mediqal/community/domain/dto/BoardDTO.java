@@ -35,6 +35,4 @@ public class BoardDTO {
     private List<BoardImgVO> boardImgVOs;
 
     private List<TagVO> tagVOs;
-
-
 }
