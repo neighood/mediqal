@@ -1,5 +1,6 @@
 package com.mediqal.community.repository;
 
+import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -15,23 +16,32 @@ public class UserDAOTest {
     @Autowired
     private  UserDAO userDAO;
 
-    //    삭제
-//    @Test
-//    public void removeTest(Long userNumber){
-//        userDAO.remove(userNumber);
-//    }
+//      수정
+    @Test
+    public void setTest(){
+        UserVO userVO = userDAO.findById(12L);
+        userVO.setUserNickname("레이");
+        userVO.setUserPassword("1234");
+        userDAO.set(userVO);
+    }
 
-    //    조회
+//      삭제
+    @Test
+    public void removeTest(){
+        userDAO.remove(9L);
+    }
+
+//      조회
     @Test
     public void findByIdTest(){
         log.info("findByIdTest : " + userDAO.findById(2L));
     }
 
-    //    전체 조회
-//    @Test
-//    public void findAllTest(){
-//        userDAO.findAll().stream().map(UserVO::getUserNumber).forEach(log::info);
-//    }
+//      전체 조회
+    @Test
+    public void findAllTest(){
+        userDAO.findAll().stream().map(UserVO::getUserName).forEach(log::info);
+    }
 
     @Test
     public void saveTest(){

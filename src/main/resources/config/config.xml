@@ -3,5 +3,6 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"></typeAlias>
+        <typeAlias type="com.mediqal.community.domain.dto.UserDTO" alias="userDTO"></typeAlias>
     </typeAliases>
 </configuration>

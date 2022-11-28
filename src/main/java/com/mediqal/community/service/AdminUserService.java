@@ -33,7 +33,7 @@ public class AdminUserService implements UserService{
 
     @Override
     public UserDTO show(Long userNumber) {
-        return userDAO.findById(userNumber);
+        return null;
     }
 
     @Override

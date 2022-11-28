@@ -1,5 +1,6 @@
 package com.mediqal.community.repository;
 
+import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +13,10 @@ import java.util.List;
 public class UserDAO {
     private final UserMapper userMapper;
     //    추가
+
     //    수정
     public void set(UserVO userVO){
-
+        userMapper.update(userVO);
     }
 
     //    삭제

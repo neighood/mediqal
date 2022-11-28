@@ -44,6 +44,4 @@ public class UserDTO {
     private List<ConfirmVO> confirmVOs;
 
     private List<LikeVO> likeVOs;
-
-
 }

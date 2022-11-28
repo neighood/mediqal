@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.UserMapper">
+
+    <!-- admin/userTest 선택 수정   -->
     <update id="update">
         UPDATE TBL_USER
         SET USER_PASSWORD = #{userPassword}, USER_NICKNAME = #{userNickname}
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
+    <!-- admin/userTest 선택 삭제   -->
     <delete id="delete">
         DELETE FROM TBL_USER
         WHERE USER_NUMBER = #{userNumber}
     </delete>
 
+    <!-- admin/userTest 검색 조회   -->
     <select id="select" resultType="userVO">
-        SELECT USER_NUMBER, USER_NAME, USER_EMAIL, USER_TYPE FROM TBL_USER
+        SELECT USER_NUMBER, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_TYPE FROM TBL_USER
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <!-- admin/userTest 전체 조회   -->
     <select id="selectAll" resultType="userVO">
-        SELECT USER_NUMBER, USER_NAME, USER_EMAIL, USER_TYPE FROM TBL_USER
+        SELECT USER_NUMBER, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_TYPE FROM TBL_USER
+    </select>
 
     <!-- 회원가입 -->
     <insert id="insert">
