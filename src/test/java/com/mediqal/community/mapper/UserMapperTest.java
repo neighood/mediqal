@@ -32,12 +32,12 @@ public class UserMapperTest {
 
     @Test
     public void findPasswordTest() {
-        log.info("userPassword" + userMapper.findPassword("jbg@naver.com"));
+        log.info("userPassword" + userMapper.findPassword("ksy@naver.com"));
     }
 
     @Test
     public void checkIdTest() {
-        log.info("아이디 중복개수" + userMapper.checkId("ksy1@naver.com"));
+        log.info("아이디 중복개수" + userMapper.checkId("ksy@naver.com"));
     }
 
     @Test

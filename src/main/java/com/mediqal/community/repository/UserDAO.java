@@ -9,11 +9,8 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class UserDAO {
     private final UserMapper userMapper;
-
     //    회원가입
-    public void save(UserVO userVO){
-        userMapper.insert(userVO);
-    }
+    public void save(UserVO userVO){userMapper.insert(userVO);}
     //    비밀번호 찾기
     public String findPasswordByEmail(String userEmail){
         return userMapper.findPassword(userEmail);

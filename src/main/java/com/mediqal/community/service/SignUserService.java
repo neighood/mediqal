@@ -17,22 +17,23 @@ import java.util.List;
 public class SignUserService implements UserService{
     private final UserDAO userDAO;
 
+//      회원가입
     public void signUp(UserVO userVO) {
         userDAO.save(userVO);
     }
-
+//      비밀번호 찾기
     public String findPassword(String userEmail) {
         return userDAO.findPasswordByEmail(userEmail);
     }
-
+//      아이디 중복검사
     public int checkId(String userEmail) {
         return userDAO.checkId(userEmail);
     }
-
+//      닉네임 중복검사
     public int checkNickname(String userNickname) {
         return userDAO.checkNickname(userNickname);
     }
-
+//      로그인
     public int login(String userEmail, String userPassword) {
         return userDAO.login(userEmail,userPassword);
     }
