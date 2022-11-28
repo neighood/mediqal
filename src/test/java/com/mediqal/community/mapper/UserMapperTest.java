@@ -17,15 +17,15 @@ public class UserMapperTest {
 
     @Test
     public void updateTest(){
-        UserVO userVO = userMapper.select(2L);
+        UserVO userVO = userMapper.select(4L);
         userVO.setUserPassword("1234");
-        userVO.setUserNickname("수정된 닉네임");
+        userVO.setUserNickname("고래");
         userMapper.update(userVO);
     }
 
     @Test
     public void deleteTest(){
-        userMapper.delete(4L);
+        userMapper.delete(8L);
     }
 
     @Test
@@ -42,10 +42,10 @@ public class UserMapperTest {
     public void insertTest() {
         UserVO userVO = new UserVO();
         userVO.create(0L,
-                "jbg@naver.com",
+                "hgd@naver.com",
                 "1234",
-                "장보고",
-                "장장보고",
+                "홍길동",
+                "홍홍길동",
                 "email",
                 "일반",
                 "",
