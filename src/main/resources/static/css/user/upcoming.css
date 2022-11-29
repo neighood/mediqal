@@ -1,14 +1,10 @@
-body{
-  margin-top: 70px;
-}
-
-.page-wrapper {
-  width: 1200px;
-  margin: 0 auto;
-  padding: 3rem;
-  display: flex;
-  flex-direction: row;
-}
+/* .page-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 3rem;
+    display: flex;
+    flex-direction: row;
+} */
 
 .main {
   padding-left: 3rem;
@@ -17,7 +13,8 @@ body{
 }
 
 .upcoming {
-  min-width: 1000px;
+  /* min-width: 1000px; */
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;
