@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class UserImgDAO {
     private final UserImgMapper userImgMapper;
-    
+
+
 }

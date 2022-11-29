@@ -32,6 +32,10 @@ public class BoardDTO {
 
     private LikeVO likeVO;
 
+    private int likeCount;
+
+    private int replyCount;
+
     private List<BoardImgVO> boardImgVOs;
 
     private List<TagVO> tagVOs;

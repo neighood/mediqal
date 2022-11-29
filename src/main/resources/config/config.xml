@@ -7,5 +7,7 @@
         <typeAlias type="com.mediqal.community.domain.vo.InterestVO" alias="interestVO"/>
         <typeAlias type="com.mediqal.community.domain.vo.IllVO" alias="illVO"/>
         <typeAlias type="com.mediqal.community.domain.vo.CertifyVO" alias="certifyVO"/>
+        <typeAlias type="com.mediqal.community.domain.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="com.mediqal.community.domain.vo.UserImgVO" alias="userImgVO"/>
     </typeAliases>
 </configuration>
