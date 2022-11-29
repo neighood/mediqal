@@ -45,8 +45,8 @@ public class UserDAOTest {
 
     @Test
     public void saveTest(){
-        UserVO userVO = new UserVO();
-        userVO.create(0L,
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(
                 "jbg@naver.com",
                 "1234",
                 "장보고",
@@ -57,7 +57,7 @@ public class UserDAOTest {
                 "",
                 "",
                 "");
-        userDAO.save(userVO);
+        userDAO.save(userDTO);
     }
 
     @Test

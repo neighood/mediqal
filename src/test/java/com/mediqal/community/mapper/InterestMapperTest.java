@@ -30,5 +30,12 @@ public class InterestMapperTest {
         interestMapper.profileUpdate(interestVO);
     }
 
+    @Test
+    public void insertInterestTest(){
+        InterestVO interestVO = new InterestVO();
+        interestVO.create(1L,"감기");
+        interestMapper.insertInterest(interestVO);
+    }
+
 
 }

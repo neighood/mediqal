@@ -1,5 +1,6 @@
 package com.mediqal.community.controller;
 
+import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.service.SignUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,8 +34,8 @@ public class UserController {
 
     }
     @PostMapping
-    public RedirectView signup(UserVO userVO){
-        signUserService.signUp(userVO);
+    public RedirectView signup(UserDTO userDTO){
+//        signUserService.signUp(userDTO);
         return new RedirectView("/user/signin");
     }
 

@@ -1,10 +1,16 @@
 package com.mediqal.community.service;
 
+import com.mediqal.community.domain.dto.UserDTO;
+import com.mediqal.community.domain.vo.IllVO;
+import com.mediqal.community.domain.vo.InterestVO;
+import com.mediqal.community.domain.vo.UserImgVO;
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,19 +22,31 @@ public class SignUserServiceTest {
 
     @Test
     public void saveTest(){
-        UserVO userVO = new UserVO();
-        userVO.create(0L,
-                "jbg@naver.com",
-                "1234",
-                "장보고",
-                "장장보고",
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(
+                "hds@naver.com",
+                "5678",
+                "한동석",
+                "한한동석",
                 "email",
                 "일반",
                 "",
                 "",
                 "",
                 "");
-        signUserService.signUp(userVO);
+        userDTO.getUserImgVO().create(10L, "userImg11", "C:\\upload", UUID.randomUUID().toString(), true, 300L);
+        IllVO illVO = new IllVO();
+        illVO.create(11L, "두통");
+        InterestVO interestVO = new InterestVO();
+        interestVO.create(11L, "두통");
+        signUserService.signUp(userDTO);
+//        UserImgVO userImgVO = new UserImgVO();
+//        userImgVO.create(10L, "userImg11", "C:\\upload", UUID.randomUUID().toString(), true, 300L);
+//        IllVO illVO = new IllVO();
+//        illVO.create(11L, "두통");
+//        InterestVO interestVO = new InterestVO();
+//        interestVO.create(11L, "두통");
+//        signUserService.signUp(userDTO, userImgVO, illVO, interestVO);
     }
 
     @Test

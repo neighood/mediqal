@@ -24,7 +24,8 @@ public interface UserMapper {
     public List<UserVO> selectAll();
 
     //    회원가입
-    public void insert(UserVO userVO);
+    public void insert(UserDTO userDTO);
+//    public void insert(UserVO userVO);
 
     //    비밀번호 찾기
     public String findPassword(String userEmail);
