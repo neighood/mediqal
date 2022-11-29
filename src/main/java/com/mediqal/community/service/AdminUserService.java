@@ -23,7 +23,7 @@ public class AdminUserService implements UserService{
 
     @Override
     public void modify(UserDTO userDTO) {
-
+        userDAO.set(userDTO);
     }
 
     @Override
@@ -33,8 +33,9 @@ public class AdminUserService implements UserService{
 
     @Override
     public UserDTO show(Long userNumber) {
-//        return userDAO.findById(userNumber);
-        return null;
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(userDAO.findById(userNumber));
+        return userDTO;
     }
 
     @Override

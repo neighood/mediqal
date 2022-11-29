@@ -19,10 +19,10 @@ public class UserDAOTest {
 //      수정
     @Test
     public void setTest(){
-        UserVO userVO = userDAO.findById(12L);
-        userVO.setUserNickname("레이");
-        userVO.setUserPassword("1234");
-        userDAO.set(userVO);
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(10L, "1234", "장보고", "덕배");
+        userDAO.set(userDTO);
+        log.info("유저 업데이트");
     }
 
 //      삭제
@@ -34,7 +34,7 @@ public class UserDAOTest {
 //      조회
     @Test
     public void findByIdTest(){
-        log.info("findByIdTest : " + userDAO.findById(2L));
+        log.info("findByIdTest : " + userDAO.findById(10L));
     }
 
 //      전체 조회
