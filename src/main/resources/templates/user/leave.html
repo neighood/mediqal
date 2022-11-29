@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>서비스 준비중입니다.</title>
+  <title>작성한 글</title>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="/css/user/t-sanitize.css" />
   <link rel="stylesheet" href="/css/user/root.css" />
   <link rel="stylesheet" href="/css/user/aside.css" />
-  <link rel="stylesheet" href="/css/user/upcoming.css" />
+  <link rel="stylesheet" href="/css/user/leave.css" />
   <link rel="stylesheet" href="/css/components/header.css" />
   <link rel="stylesheet" href="/css/components/footer.css" />
 </head>
@@ -34,7 +34,9 @@
       <p class="menu-list-title">커뮤니티</p>
       <ul class="menu-list-container memu-list--community">
         <li class="menu-list">
-          <a href="/user/article" class="menu-list-link">작성한 글</a>
+          <a href="/user/article" class="menu-list-link"
+          >작성한 글</a
+          >
         </li>
         <li class="menu-list">
           <a href="/user/reply" class="menu-list-link">작성한 답변</a>
@@ -61,22 +63,44 @@
           <a href="/user/password" class="menu-list-link">비밀번호 변경</a>
         </li>
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link">휴대폰 인증</a>
+          <a href="/user/upcoming" class="menu-list-link menu-list--upcoming">휴대폰 인증</a>
         </li>
         <li class="menu-list">
-          <a href="/user/leave" class="menu-list-link">회원탈퇴</a>
+          <a href="/user/leave" class="menu-list-link menu-list--current">회원탈퇴</a>
         </li>
       </ul>
     </nav>
   </aside>
   <main class="main">
-    <div class="upcoming">
-      <p class="upcoming-title">서비스 준비중입니다.</p>
-      <p class="upcoming-detail">빠른 시일 내로 찾아뵙겠습니다!</p>
-      <button type="button" class="upcoming-notify-btn" disabled>
-        서비스 알람 받기
-      </button>
-    </div>
+    <section class="user-leave">
+      <p class="user-leave-title">회원탈퇴</p>
+      <form action="#none" class="leave-form">
+        <div class="leave__item leave-detail">
+          <div class="leave-label">주의사항</div>
+          <p class="leave-text">떠나신다니 정말 아쉽습니다.</p>
+          <p class="leave-text">만족한 서비스를 제공해드리지 못한 점 죄송합니다.</p>
+          <p class="leave-text">탈퇴 시 개인정보는 파기되어 <span class="leave-text-span">복구할 수 없습니다.</span></p>
+          <p class="leave-text">여전히 탈퇴하시겠습니까?</p>
+        </div>
+        <div class="leave__item leave-input-container">
+          <label for="leave--current-input" class="leave-label"
+          >회원탈퇴</label
+          >
+          <p class="leave-text">
+            아래에 <span class="leave-submit-text">회원탈퇴</span> 입력 후
+            탈퇴하기 버튼을 누르면 탈퇴처리 됩니다.
+          </p>
+          <input type="text"
+           class="leave-input"
+           id="leave--current-input"
+           placeholder="회원탈퇴"
+          />
+        </div>
+        <div class="leave__item leave__btn">
+          <button type="submit" class="leave__btn-btn">탈퇴하기</button>
+        </div>
+      </form>
+    </section>
   </main>
 </div>
 <footer th:replace="/components/footer.html :: .footer-container"></footer>
@@ -84,4 +108,5 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/components/header.js"></script>
 <script src="/js/components/footer.js"></script>
+<script src="/js/user/leave.js"></script>
 </html>

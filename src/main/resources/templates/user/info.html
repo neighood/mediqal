@@ -1,143 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원 정보</title>
-    <!-- 경로 변경 필요 -->
-    <link rel="stylesheet" href="/css/user/t-sanitize.css" />
-    <link rel="stylesheet" href="/css/user/root.css" />
-    <link rel="stylesheet" href="/css/user/aside.css" />
-    <link rel="stylesheet" href="/css/user/info.css" />
-    <link rel="stylesheet" href="/css/components/header.css"  />
-    <link rel="stylesheet" href="/css/components/footer.css"  />
-  </head>
-  <body>
-  <header th:replace="/components/header.html :: .header-container"></header>
-    <div class="page-wrapper">
-      <aside class="profile-menu">
-        <p class="menu-title">내 계정</p>
-        <nav class="menu-list-wrapper">
-          <p class="menu-list-title">메인</p>
-          <ul class="menu-list-container menu-list--home">
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">대시보드</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/info" class="menu-list-link menu-list--current"
-                >회원정보</a
-              >
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">알림</a>
-            </li>
-          </ul>
-          <p class="menu-list-title">커뮤니티</p>
-          <ul class="menu-list-container memu-list--community">
-            <li class="menu-list">
-              <a href="/user/article" class="menu-list-link">작성한 글</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">작성한 답변</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">도움된 글</a>
-            </li>
-          </ul>
-          <p class="menu-list-title">진료후기</p>
-          <ul class="menu-list-container menu-list--review">
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">작성한 후기</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">스크랩 후기</a>
-            </li>
-          </ul>
-          <p class="menu-list-title">계정설정</p>
-          <ul class="menu-list-container menu-list--settings">
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">이메일 인증/변경</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">비밀번호 변경</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">휴대폰 인증</a>
-            </li>
-            <li class="menu-list">
-              <a href="/user/upcoming" class="menu-list-link">회원탈퇴</a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
-        <section class="user-info">
-          <p class="user-info-title">회원정보</p>
-          <form action="/user/upcoming" class="info-form">
-            <div class="info__img">
-              <p class="info__img-title">프로필 이미지</p>
-              <!-- 테스트 -->
-              <div class="info__img-img"></div>
-              <!-- <img src="/user/upcoming" alt="" class="info__img-img" /> -->
-              <button type="button" class="info__img-btn">이미지 수정</button>
-            </div>
-            <div class="info__item info__id">
-              <label for="id-input" class="info-label">닉네임</label>
-              <input
-                type="text"
-                class="info-input"
-                id="id-input"
-                value="NICKisMyName"
-                placeholder="원래 닉네임"
-              />
-            </div>
-            <div class="info__item info__name">
-              <label for="name-input" class="info-label">이름</label>
-              <input
-                type="text"
-                class="info-input"
-                id="name-input"
-                value="성이름"
-                placeholder="원래 이름"
-              />
-            </div>
-            <div class="info__item info__ill">
-              <label for="ill-input" class="info-label">나의 병명</label>
-              <input
-                type="text"
-                class="info-input"
-                id="ill-input"
-                value="아토피"
-                placeholder="예) 아토피"
-              />
-              <input type="text" class="info-input" placeholder="예) 비염" />
-            </div>
-            <div class="info__item info__interest">
-              <label for="interest-input" class="info-label">관심분야</label>
-              <input
-                type="text"
-                class="info-input"
-                id="interest-input"
-                value="치매"
-                placeholder="예) 치매"
-              />
-              <input
-                type="text"
-                class="info-input"
-                placeholder="예) 우한폐렴 "
-              />
-            </div>
-            <div class="info__item info__btn">
-              <button type="submit" class="info__btn-btn">저장하기</button>
-            </div>
-          </form>
-        </section>
-      </main>
-    </div>
-  <footer th:replace="/components/footer.html :: .footer-container"></footer>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script src="/js/components/header.js"></script>
-  <script src="/js/components/footer.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원 정보</title>
+  <!-- 경로 변경 필요 -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="/css/user/t-sanitize.css" />
+  <link rel="stylesheet" href="/css/user/root.css" />
+  <link rel="stylesheet" href="/css/user/aside.css" />
+  <link rel="stylesheet" href="/css/user/info.css" />
+  <link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/components/footer.css" />
+</head>
+<body>
+<header th:replace="/components/header.html :: .header-container"></header>
+<div class="page-wrapper">
+  <aside class="profile-menu">
+    <p class="menu-title">내 계정</p>
+    <nav class="menu-list-wrapper">
+      <p class="menu-list-title">메인</p>
+      <ul class="menu-list-container menu-list--home">
+        <li class="menu-list">
+          <a href="/user/upcoming" class="menu-list-link">대시보드</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/info" class="menu-list-link menu-list--current"
+          >회원정보</a
+          >
+        </li>
+        <li class="menu-list">
+          <a href="/user/notification" class="menu-list-link">알림</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">커뮤니티</p>
+      <ul class="menu-list-container memu-list--community">
+        <li class="menu-list">
+          <a href="/user/article" class="menu-list-link">작성한 글</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/reply" class="menu-list-link">작성한 답변</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/upcoming" class="menu-list-link">도움된 글</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">진료후기</p>
+      <ul class="menu-list-container menu-list--review">
+        <li class="menu-list">
+          <a href="/user/upcoming" class="menu-list-link">작성한 후기</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/upcoming" class="menu-list-link">스크랩 후기</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">계정설정</p>
+      <ul class="menu-list-container menu-list--settings">
+        <li class="menu-list">
+          <a href="/user/email" class="menu-list-link">이메일 인증/변경</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/password" class="menu-list-link">비밀번호 변경</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/upcoming" class="menu-list-link menu-list--upcoming">휴대폰 인증</a>
+        </li>
+        <li class="menu-list">
+          <a href="/user/leave" class="menu-list-link">회원탈퇴</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main">
+    <section class="user-info">
+      <p class="user-info-title">회원정보</p>
+      <form action="#none" class="info-form">
+        <div class="info__img">
+          <p class="info__img-title">프로필 이미지</p>
+          <!-- 테스트 -->
+          <div class="info__img-img"></div>
+          <!-- <img src="#none" alt="" class="info__img-img" /> -->
+          <button type="button" class="info__img-btn">이미지 수정</button>
+        </div>
+        <div class="info__item info__id">
+          <label for="id-input" class="info-label">닉네임</label>
+          <input
+                  type="text"
+                  class="info-input"
+                  id="id-input"
+                  value="NICKisMyName"
+                  placeholder="원래 닉네임"
+          />
+        </div>
+        <div class="info__item info__name">
+          <label for="name-input" class="info-label">이름</label>
+          <input
+                  type="text"
+                  class="info-input"
+                  id="name-input"
+                  value="성이름"
+                  placeholder="원래 이름"
+          />
+        </div>
+        <div class="info__item info__ill">
+          <label for="ill-input" class="info-label">나의 병명</label>
+          <input
+                  type="text"
+                  class="info-input"
+                  id="ill-input"
+                  value="아토피"
+                  placeholder="예) 아토피"
+          />
+          <input type="text" class="info-input" placeholder="예) 비염" />
+        </div>
+        <div class="info__item info__interest">
+          <label for="interest-input" class="info-label">관심분야</label>
+          <input
+                  type="text"
+                  class="info-input"
+                  id="interest-input"
+                  value="치매"
+                  placeholder="예) 치매"
+          />
+          <input
+                  type="text"
+                  class="info-input"
+                  placeholder="예) 우한폐렴 "
+          />
+        </div>
+        <div class="info__item info__btn">
+          <button type="submit" class="info__btn-btn">저장하기</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+<footer th:replace="/components/footer.html :: .footer-container"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/components/header.js"></script>
+<script src="/js/components/footer.js"></script>
+<script src="/js/user/info.js"></script>
 </html>

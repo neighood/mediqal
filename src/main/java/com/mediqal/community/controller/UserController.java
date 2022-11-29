@@ -57,8 +57,23 @@ public class UserController {
     @GetMapping("/article")
     public void article(){ log.info("article 실행"); }
 
+    @GetMapping("/email")
+    public void email(){ log.info("email 실행"); }
+
     @GetMapping("/info")
     public void info(){ log.info("info 실행"); }
+
+    @GetMapping("/leave")
+    public void leave(){ log.info("leave 실행"); }
+
+    @GetMapping("/notification")
+    public void notification(){ log.info("leave 실행"); }
+
+    @GetMapping("/password")
+    public void password(){ log.info("password 실행"); }
+
+    @GetMapping("/reply")
+    public void reply(){ log.info("leave 실행"); }
 
     @GetMapping("/upcoming")
     public void upcoming(){ log.info("upcoming 실행"); }

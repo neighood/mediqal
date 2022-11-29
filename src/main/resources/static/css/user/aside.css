@@ -1,18 +1,21 @@
 /* wrapper */
-/* .page-wrapper {
-  width: 1200px;
+.page-wrapper {
+  /* width: 1200px; */
+  /* 변경 */
+  width: fit-content;
   margin: 0 auto;
   padding: 3rem;
   display: flex;
   flex-direction: row;
-} */
+}
 
 /* aside */
 .profile-menu {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
-  width: 20%;
+  /* 변경 */
+  min-width: 120px;
+  width: 10vw;
 }
 
 .menu-title {
@@ -65,4 +68,12 @@
   width: 1px;
   padding-left: 1rem;
   border-radius: 3px;
+}
+
+.menu-list--upcoming {
+  color: #ababab;
+}
+
+.menu-list--upcoming:hover {
+  color: var(--red-color-dark);
 }
