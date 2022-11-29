@@ -12,7 +12,7 @@ public interface UserMapper {
     //    추가
 
     //    수정
-    public void update(UserVO userVO);
+    public void update(UserDTO userDTO);
 
     //    삭제
     public void delete(Long userNumber);

@@ -17,10 +17,10 @@ public class UserMapperTest {
 
     @Test
     public void updateTest(){
-        UserVO userVO = userMapper.select(4L);
-        userVO.setUserPassword("1234");
-        userVO.setUserNickname("고래");
-        userMapper.update(userVO);
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(4L, "1234", "홍길동", "음바페");
+        userMapper.update(userDTO);
+        log.info("유저 업데이트");
     }
 
     @Test
@@ -30,7 +30,7 @@ public class UserMapperTest {
 
     @Test
     public void selectTest(){
-        log.info("select : " + userMapper.select(2L));
+        log.info("select : " + userMapper.select(4L));
     }
 
     @Test

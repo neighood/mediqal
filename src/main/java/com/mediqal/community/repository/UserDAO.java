@@ -15,8 +15,8 @@ public class UserDAO {
     //    추가
 
     //    수정
-    public void set(UserVO userVO){
-        userMapper.update(userVO);
+    public void set(UserDTO userDTO){
+        userMapper.update(userDTO);
     }
 
     //    삭제

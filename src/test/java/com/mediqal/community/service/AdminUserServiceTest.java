@@ -19,8 +19,8 @@ public class AdminUserServiceTest {
     //      수정
     @Test
     public void modifyTest(){
-        UserDTO userDTO = userService.show(12L);
-        userDTO.setUserNickname("레이");
+        UserDTO userDTO = userService.show(10L);
+        userDTO.setUserNickname("호날두");
         userDTO.setUserPassword("1234");
         userService.modify(userDTO);
     }
@@ -28,13 +28,13 @@ public class AdminUserServiceTest {
     //      삭제
     @Test
     public void removeTest(){
-        userService.remove(9L);
+        userService.remove(5L);
     }
 
     //      조회
     @Test
     public void showTest(){
-        log.info("findByIdTest : " + userService.show(2L));
+        log.info("유저 정보 : " + userService.show(10L));
     }
 
     //      전체 조회
