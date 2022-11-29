@@ -18,7 +18,7 @@ public interface BoardService {
     //    조회
     public BoardDTO show(Long boardNumber);
     //    전체 조회
-    public List<BoardVO> showAll(Criteria criteria);
+    public List<BoardDTO> showAll(Criteria criteria);
     //    전체 개수
     public int getTotal();
 }
