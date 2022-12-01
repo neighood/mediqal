@@ -61,4 +61,16 @@ public class ProfileUserService implements UserService{
     public int getTotal() {
         return 0;
     }
+
+    public boolean updatePW(UserVO userVO, String userPasswordNew){
+        if(userDAO.profileCheckPW(userVO) == 1){
+            userDAO.profileUpdatePW(userPasswordNew);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
 }
