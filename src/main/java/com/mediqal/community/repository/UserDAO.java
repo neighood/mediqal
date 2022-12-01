@@ -48,7 +48,7 @@ public class UserDAO {
         return userMapper.checkNickname(userNickname);
     }
     //    로그인
-    public int login(String userEmail, String userPassword){
+    public long login(String userEmail, String userPassword){
         return userMapper.login(userEmail,userPassword);
     }
 

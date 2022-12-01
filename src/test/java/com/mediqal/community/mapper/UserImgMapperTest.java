@@ -21,7 +21,7 @@ class UserImgMapperTest {
     @Test
     public void insertUserImgTest(){
         UserImgVO userImgVO = new UserImgVO();
-        userImgVO.create(5L, "userImg5", "C:\\upload", UUID.randomUUID().toString(),true, 500L);
+        userImgVO.create(1L, true);
         userImgMapper.insertUserImg(userImgVO);
     }
 }

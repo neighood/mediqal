@@ -14,8 +14,7 @@ public class IllVO {
 
     private String illName;
 
-    public void create(Long userNumber, String illName){
+    public void create(Long userNumber){
         this.userNumber = userNumber;
-        this.illName = illName;
     }
 }

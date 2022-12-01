@@ -14,8 +14,7 @@ public class InterestVO {
 
     private String interestName;
 
-    public void create(Long userNumber, String interestName){
+    public void create(Long userNumber){
         this.userNumber = userNumber;
-        this.interestName = interestName;
     }
 }

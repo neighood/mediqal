@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user/*")
@@ -29,25 +31,46 @@ public class UserController {
 
     //    회원가입
     @GetMapping("/signup")
-    public void signup(){
-        log.info("signup 실행");
-
+    public void signup(Model model){
+        model.addAttribute("user", new UserDTO());
     }
+    //    public void signup(){
+//        log.info("signup 실행");
+//    }
     @PostMapping
-    public RedirectView signup(UserDTO userDTO){
-//        signUserService.signUp(userDTO);
+        public RedirectView signup(UserDTO userDTO, RedirectAttributes redirectAttributes){
+        signUserService.signUp(userDTO);
+        redirectAttributes.addFlashAttribute("userNumber", userDTO.getUserNumber());
         return new RedirectView("/user/signin");
     }
+//        public RedirectView signup(UserDTO userDTO){
+//        signUserService.signUp(userDTO);
+//        return new RedirectView("/user/signin");
+//    }
 
 
     //    로그인
     @GetMapping("/signin")
-    public void signin(HttpServletRequest request, Model model){
-        model.addAttribute( "userNumber", request.getSession().getAttribute("userNumber"));
-//        세션에 유저 정보 담기?
-        log.info("signin 실행");
+    public void signin(Model model){
+        model.addAttribute("user", new UserDTO());
     }
 
+    @PostMapping("/signin")
+    public RedirectView signin(HttpServletRequest request, Model model, String userEmail, String userPassword) {
+//        세션에 유저 정보 담기?
+        HttpSession session = request.getSession();
+        log.info(userEmail + userPassword);
+        Long userNumber = null;
+        try {
+            userNumber = signUserService.login(userEmail, userPassword);
+            session.setAttribute("userNumber", userNumber);
+            return new RedirectView("/main/index");
+        } catch (Exception e) {
+            return new RedirectView("/user/signin");
+        }
+    }
+//    }
+//    Long userNumber = (Long) session.getAttribute("userNumber");
 //    @PostMapping("signin")
 //    public void singin(UserVO userVO){
 //        signUserService.

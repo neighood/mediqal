@@ -21,12 +21,8 @@ class UserImgDAOTest {
     @Test
     public void saveTest() {
         UserImgVO userImgVO = new UserImgVO();
-        userImgVO.create(4L,
-                "userImg4",
-                "C:\\upload",
-                UUID.randomUUID().toString(),
-                true,
-                400L);
+//        userImgVO.create(4L, false);
+        userImgVO.setUserNumber(5L);
         userImgDAO.save(userImgVO);
     }
 

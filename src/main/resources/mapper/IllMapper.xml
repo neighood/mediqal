@@ -14,7 +14,7 @@
     </update>
 
     <insert id="insertIll">
-        INSERT INTO TBL_ILL (ILL_NUMBER, USER_NUMBER, ILL_NAME)
-        VALUES (SEQ_ILL.NEXTVAL, #{userNumber}, #{illName})
+        INSERT INTO TBL_ILL (ILL_NUMBER, USER_NUMBER)
+        VALUES (SEQ_ILL.NEXTVAL, #{userNumber})
     </insert>
 </mapper>

@@ -33,7 +33,7 @@ public class InterestMapperTest {
     @Test
     public void insertInterestTest(){
         InterestVO interestVO = new InterestVO();
-        interestVO.create(1L,"감기");
+        interestVO.create(1L);
         interestMapper.insertInterest(interestVO);
     }
 

@@ -22,12 +22,8 @@ public class UserImgVO {
 
     private Long userImgSize;
 
-    public void create(Long userNumber, String userImgName, String userImgUploadPath, String userImgUuid, boolean userImgImageCheck, long userImgSize){
+    public void create(Long userNumber,boolean userImgImageCheck){
         this.userNumber = userNumber;
-        this.userImgName = userImgName;
-        this.userImgUploadPath = userImgUploadPath;
-        this.userImgUuid = userImgUuid;
         this.userImgImageCheck = userImgImageCheck;
-        this.userImgSize = userImgSize;
     }
 }

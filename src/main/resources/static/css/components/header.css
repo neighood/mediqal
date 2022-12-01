@@ -76,5 +76,5 @@ ul li{
     display: flex;
 }
 .header-user-on{
-    display: none;
+    display: flex;
 }

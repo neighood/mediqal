@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.UserImgMapper">
     <insert id="insertUserImg">
-        INSERT INTO TBL_USER_IMG (USER_IMG_NUMBER, USER_NUMBER, USER_IMG_NAME, USER_IMG_UPLOAD_PATH, USER_IMG_UUID, USER_IMG_IMAGE_CHECK, USER_IMG_SIZE)
-        VALUES (SEQ_USER_IMG.NEXTVAL, #{userNumber}, #{userImgName}, #{userImgUploadPath}, #{userImgUuid}, #{userImgImageCheck}, #{userImgSize})
+        INSERT INTO TBL_USER_IMG (USER_IMG_NUMBER, USER_NUMBER, USER_IMG_IMAGE_CHECK)
+        VALUES (SEQ_USER_IMG.NEXTVAL, #{userNumber}, #{userImgImageCheck})
     </insert>
 </mapper>

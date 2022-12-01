@@ -29,7 +29,7 @@ public class InterestDAOTest {
     @Test
     public void saveTest(){
         InterestVO interestVO = new InterestVO();
-        interestVO.create(3L,"당뇨");
+        interestVO.create(3L);
         interestDAO.save(interestVO);
     }
 }

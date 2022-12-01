@@ -29,7 +29,7 @@ public class IllDAOTest {
     @Test
     public void saveTest(){
         IllVO illVO = new IllVO();
-        illVO.create(3L,  "코로나");
+        illVO.create(3L);
         illDAO.save(illVO);
     }
 }

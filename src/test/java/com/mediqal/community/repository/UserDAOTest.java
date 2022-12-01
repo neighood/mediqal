@@ -49,10 +49,10 @@ public class UserDAOTest {
         userDTO.create(
                 "jbg@naver.com",
                 "1234",
-                "장보고",
+                "",
                 "장장보고",
-                "email",
-                "일반",
+                "",
+                "",
                 "",
                 "",
                 "",

@@ -20,11 +20,11 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <ul class="header-user-off">
+                    <ul class="header-user-off" th:if="${session.userNumber == null}">
                         <li class="header-signin">로그인</li>
                         <li class="header-signup">회원가입</li>
                     </ul>
-                    <ul class="header-user-on">
+                    <ul class="header-user-on" th:unless="${session.userNumber == null}">
                         <li class="header-mypage">마이페이지</li>
                         <li class="header-signout">로그아웃</li>
                     </ul>

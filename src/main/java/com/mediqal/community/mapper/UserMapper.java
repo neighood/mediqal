@@ -37,7 +37,7 @@ public interface UserMapper {
     public int checkNickname(String userNickname);
 
     //    로그인
-    public int login(String userEmail, String userPassword);
+    public long login(String userEmail, String userPassword);
 
     //  내 프로필
     public UserVO profileSelect(Long userNumber);
