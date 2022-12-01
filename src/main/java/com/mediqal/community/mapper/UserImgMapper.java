@@ -12,4 +12,6 @@ public interface UserImgMapper {
     public void insert(UserImgVO userImgVO);
     //    파일 삭제
     public void delete(Long userImgNumber);
+    //    추가
+    public void insertUserImg(UserImgVO userImgVO);
 }

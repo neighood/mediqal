@@ -27,5 +27,11 @@ public class IllMapperTest {
         illMapper.profileUpdate(illVO);
     }
 
+    @Test
+    public void insertIllTest(){
+        IllVO illVO = new IllVO();
+        illVO.create(1L);
+        illMapper.insertIll(illVO);
+    }
 
 }

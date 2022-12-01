@@ -24,4 +24,6 @@ public class UserImgDAO {
         userImgMapper.delete(userImgNumber);
     }
 
+    // 추가
+    public void save(UserImgVO userImgVO){userImgMapper.insertUserImg(userImgVO);}
 }

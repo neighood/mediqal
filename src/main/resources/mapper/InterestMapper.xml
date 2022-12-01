@@ -13,4 +13,8 @@
         WHERE INTEREST_NUMBER = #{interestNumber}
     </update>
 
+    <insert id="insertInterest">
+        INSERT INTO TBL_INTEREST (INTEREST_NUMBER, USER_NUMBER)
+        VALUES (SEQ_INTEREST.NEXTVAL, #{userNumber})
+    </insert>
 </mapper>

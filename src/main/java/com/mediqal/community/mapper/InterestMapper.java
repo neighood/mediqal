@@ -1,6 +1,5 @@
 package com.mediqal.community.mapper;
 
-import com.mediqal.community.domain.vo.IllVO;
 import com.mediqal.community.domain.vo.InterestVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,4 +11,6 @@ public interface InterestMapper {
     public List<InterestVO> profileSelectAll(Long userNumber);
     //    프로필 수정
     public void profileUpdate(InterestVO interestVO);
+    //    추가
+    public void insertInterest(InterestVO interestVO);
 }

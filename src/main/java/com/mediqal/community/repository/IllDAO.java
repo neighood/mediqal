@@ -20,4 +20,6 @@ public class IllDAO {
     }
     //    프로필 수정
     public void profileUpdate(IllVO illVO){ illMapper.profileUpdate(illVO);}
+    //    추가
+    public void save(IllVO illVO){illMapper.insertIll(illVO);}
 }

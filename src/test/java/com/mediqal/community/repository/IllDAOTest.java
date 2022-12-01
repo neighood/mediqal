@@ -25,4 +25,11 @@ public class IllDAOTest {
         illVO.setIllName("편두통");
         illDAO.profileUpdate(illVO);
     }
+
+    @Test
+    public void saveTest(){
+        IllVO illVO = new IllVO();
+        illVO.create(3L);
+        illDAO.save(illVO);
+    }
 }
