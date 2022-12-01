@@ -44,5 +44,10 @@ public interface UserMapper {
     public void profileUpdate(UserDTO userDTO);
     // 회원 탈퇴
     public void profileDelete(Long userNumber);
+//    비밀번호 체크
+    public int profileCheckPW(UserVO userVO);
+//    비밀번호 변경
+    public void profileUpdatePW(String userPasswordNew);
+
 
 }

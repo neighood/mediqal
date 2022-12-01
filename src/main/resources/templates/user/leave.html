@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,7 +74,7 @@
   <main class="main">
     <section class="user-leave">
       <p class="user-leave-title">회원탈퇴</p>
-      <form action="#none" class="leave-form">
+      <form th:action="/profile/leave" class="leave-form" method="post">
         <div class="leave__item leave-detail">
           <div class="leave-label">주의사항</div>
           <p class="leave-text">떠나신다니 정말 아쉽습니다.</p>

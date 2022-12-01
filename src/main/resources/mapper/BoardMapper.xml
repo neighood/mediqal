@@ -30,7 +30,7 @@
         WHERE BOARD_NUMBER = #{boardNumber}
     </select>
 
-    <update id="profileSelect">
+    <update id="profileUpdate">
         UPDATE TBL_BOARD
         SET BOARD_TITLE = #{boardTitle}, BOARD_CONTENT = #{boardContent}, BOARD_UPDATE_DATE = SYSDATE
         WHERE BOARD_NUMBER = #{boardNumber}
