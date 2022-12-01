@@ -24,6 +24,8 @@ public class BoardDTO {
 
     private String boardUpdateDate;
 
+    private String userNickname;
+
     private Long boardView;
 
     private UserVO userVO;
@@ -31,6 +33,10 @@ public class BoardDTO {
     private UserImgVO userImgVO;
 
     private LikeVO likeVO;
+
+    private int likeCount;
+
+    private int replyCount;
 
     private List<BoardImgVO> boardImgVOs;
 

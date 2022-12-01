@@ -77,6 +77,19 @@
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
+    <!-- 유저 비밀 번호 수정 -->
+    <select id="profileCheckPW" resultType="_int">
+        SELECT COUNT(USER_NUMBER)
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber} AND USER_PASSWORD = #{userPassword}
+    </select>
+
+    <update id="profileUpdatePW">
+        UPDATE TBL_USER
+        SET USER_PASSWORD = #{userPassword}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
     <!-- 회원 탈퇴 -->
     <delete id="profileDelete">
         DELETE FROM TBL_USER

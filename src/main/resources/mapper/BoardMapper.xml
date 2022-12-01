@@ -2,4 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.BoardMapper">
 
+<!--  프로필  -->
+    <select id="profileSelectAll" resultType="boardVO">
+        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_TITLE, BOARD_REGISTER_DATE
+        FROM
+        (
+            SELECT ROWNUM R, BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE
+            FROM
+            (
+                SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE
+                FROM TBL_BOARD B
+                WHERE USER_NUMBER = #{userNumber} AND BOARD_CATEGORY = #{boardCategory} ORDER BY BOARD_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="profileGetTotal" resultType="_int">
+        SELECT COUNT(BOARD_NUMBER) FROM TBL_BOARD WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="profileSelect" resultType="boardVO">
+        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT
+        FROM TBL_BOARD
+        WHERE BOARD_NUMBER = #{boardNumber}
+    </select>
+
+    <update id="profileUpdate">
+        UPDATE TBL_BOARD
+        SET BOARD_TITLE = #{boardTitle}, BOARD_CONTENT = #{boardContent}, BOARD_UPDATE_DATE = SYSDATE
+        WHERE BOARD_NUMBER = #{boardNumber}
+    </update>
+
+<!-- 프로필 끝 -->
+
+    <delete id="delete">
+        DELETE FROM TBL_BOARD
+        WHERE BOARD_NUMBER = #{boardNumber}
+    </delete>
+
+
+
 </mapper>

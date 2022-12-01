@@ -60,6 +60,10 @@ public class UserDAO {
     public void profileUpdate(UserDTO userDTO){userMapper.profileUpdate(userDTO);}
     // 회원 탈퇴
     public void profileDelete(Long userNumber){userMapper.profileDelete(userNumber);}
+    //    비밀번호 체크
+    public int profileCheckPW(UserVO userVO){return userMapper.profileCheckPW(userVO);}
+    //    비밀번호 변경
+    public void profileUpdatePW(String userPasswordNew){userMapper.profileUpdatePW(userPasswordNew);}
 
 
 }

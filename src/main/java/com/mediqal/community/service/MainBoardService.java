@@ -35,7 +35,7 @@ public class MainBoardService implements BoardService{
     }
 
     @Override
-    public List<BoardVO> showAll(Criteria criteria) {
+    public List<BoardDTO> showAll(Criteria criteria) {
         return null;
     }
 
