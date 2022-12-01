@@ -22,4 +22,10 @@
         FROM TBL_FILE
         WHERE FILE_UPLOAD_PATH = TO_CHAR(CURRENT_DATE - 3, 'YYYY/MM/DD')
     </select>-->
+
+    <select id="select" resultType="userImgVO">
+        SELECT USER_IMG_NUMBER, USER_IMG_NAME, USER_IMG_UPLOAD_PATH, USER_IMG_UUID, USER_IMG_IMAGE_CHECK, USER_IMG_SIZE, USER_NUMBER
+        FROM TBL_USER_IMG
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
 </mapper>

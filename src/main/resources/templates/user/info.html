@@ -75,11 +75,13 @@
   <main class="main">
     <section class="user-info">
       <p class="user-info-title">회원정보</p>
-      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post">
+      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post" >
         <div class="info__img">
           <p class="info__img-title">프로필 이미지</p>
           <!-- 테스트 -->
-          <div class="info__img-img"></div>
+          <!--<div class="info__img-img"></div>-->
+          <img class="info__img-img" th:if="${userImgVO.userImgImageCheck}" th:src="@{/userImg/display(userImgName=${userImgVO.userImgUploadPath} + '/s_' + ${userImgVO.userImgUuid} + '_' + ${userImgVO.userImgName})}">
+          <img class="info__img-img" th:unless="${userImgVO.userImgImageCheck}" th:src="https://avatars.dicebear.com/api/identicon/medirqlasdf${userNickname}.svg">
           <!-- <img src="#none" alt="" class="info__img-img" /> -->
           <button type="button" class="info__img-btn">이미지 수정</button>
         </div>

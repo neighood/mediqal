@@ -3,10 +3,12 @@ package com.mediqal.community.service;
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.InterestVO;
+import com.mediqal.community.domain.vo.UserImgVO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.repository.IllDAO;
 import com.mediqal.community.repository.InterestDAO;
 import com.mediqal.community.repository.UserDAO;
+import com.mediqal.community.repository.UserImgDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class ProfileUserService implements UserService{
     private final UserDAO userDAO;
     private final InterestDAO interestDAO;
     private final IllDAO illDAO;
+    private final UserImgDAO userImgDAO;
 
 
     @Override
@@ -49,6 +52,7 @@ public class ProfileUserService implements UserService{
         userDTO.create(userDAO.profileSelect(userNumber));
         userDTO.setInterestVOs(interestDAO.profileSelectAll(userNumber));
         userDTO.setIllVOs(illDAO.profileSelectAll(userNumber));
+        userDTO.setUserImgVO(userImgDAO.select(userNumber));
         return userDTO;
     }
 
