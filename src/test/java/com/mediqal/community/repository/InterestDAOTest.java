@@ -25,4 +25,11 @@ public class InterestDAOTest {
         interestVO.setInterestName("안아파");
         interestDAO.profileUpdate(interestVO);
     }
+
+    @Test
+    public void saveTest(){
+        InterestVO interestVO = new InterestVO();
+        interestVO.create(3L);
+        interestDAO.save(interestVO);
+    }
 }

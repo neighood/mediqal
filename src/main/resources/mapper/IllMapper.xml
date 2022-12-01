@@ -13,4 +13,8 @@
         WHERE ILL_NUMBER = #{illNumber}
     </update>
 
+    <insert id="insertIll">
+        INSERT INTO TBL_ILL (ILL_NUMBER, USER_NUMBER)
+        VALUES (SEQ_ILL.NEXTVAL, #{userNumber})
+    </insert>
 </mapper>

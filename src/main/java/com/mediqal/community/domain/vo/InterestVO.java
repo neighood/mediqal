@@ -13,4 +13,8 @@ public class InterestVO {
     private Long userNumber;
 
     private String interestName;
+
+    public void create(Long userNumber){
+        this.userNumber = userNumber;
+    }
 }

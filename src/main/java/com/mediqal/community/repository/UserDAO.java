@@ -34,7 +34,7 @@ public class UserDAO {
         return userMapper.selectAll();
     }
     //    회원가입
-    public void save(UserVO userVO){userMapper.insert(userVO);}
+    public void save(UserDTO userDTO){userMapper.insert(userDTO);}
     //    비밀번호 찾기
     public String findPasswordByEmail(String userEmail){
         return userMapper.findPassword(userEmail);
@@ -48,7 +48,7 @@ public class UserDAO {
         return userMapper.checkNickname(userNickname);
     }
     //    로그인
-    public int login(String userEmail, String userPassword){
+    public long login(String userEmail, String userPassword){
         return userMapper.login(userEmail,userPassword);
     }
 

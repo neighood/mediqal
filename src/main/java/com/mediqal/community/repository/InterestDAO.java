@@ -19,4 +19,6 @@ public class InterestDAO {
     }
     //    프로필 수정
     public void profileUpdate(InterestVO interestVO){ interestMapper.profileUpdate(interestVO);}
+//    추가
+    public void save(InterestVO interestVO){interestMapper.insertInterest(interestVO);}
 }
