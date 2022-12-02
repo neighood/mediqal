@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -75,7 +75,7 @@
   <main class="main">
     <section class="user-info">
       <p class="user-info-title">회원정보</p>
-      <form action="#none" class="info-form">
+      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post">
         <div class="info__img">
           <p class="info__img-title">프로필 이미지</p>
           <!-- 테스트 -->
@@ -89,7 +89,7 @@
                   type="text"
                   class="info-input"
                   id="id-input"
-                  value="NICKisMyName"
+                  th:field="*{userNickname}"
                   placeholder="원래 닉네임"
           />
         </div>
@@ -99,35 +99,31 @@
                   type="text"
                   class="info-input"
                   id="name-input"
-                  value="성이름"
+                  th:field="*{userName}"
                   placeholder="원래 이름"
           />
         </div>
         <div class="info__item info__ill">
           <label for="ill-input" class="info-label">나의 병명</label>
-          <input
-                  type="text"
-                  class="info-input"
-                  id="ill-input"
-                  value="아토피"
-                  placeholder="예) 아토피"
-          />
-          <input type="text" class="info-input" placeholder="예) 비염" />
+            <th:block th:each="ill:*{illVOs}">
+              <input
+                      type="text"
+                      class="info-input"
+                      th:field="*{ill.illName}"
+                      placeholder="예) 아토피"
+              />
+            </th:block>
         </div>
-        <div class="info__item info__interest">
+        <div class="info__item info__interest" >
           <label for="interest-input" class="info-label">관심분야</label>
-          <input
-                  type="text"
-                  class="info-input"
-                  id="interest-input"
-                  value="치매"
-                  placeholder="예) 치매"
-          />
-          <input
-                  type="text"
-                  class="info-input"
-                  placeholder="예) 우한폐렴 "
-          />
+          <th:block th:each="interest:*{interestVOs}">
+            <input
+                    type="text"
+                    class="info-input"
+                    th:field="*{interest.interestName}"
+                    placeholder="예) 우한폐렴 "
+            />
+          </th:block>
         </div>
         <div class="info__item info__btn">
           <button type="submit" class="info__btn-btn">저장하기</button>

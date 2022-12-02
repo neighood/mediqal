@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.SplittableRandom;
 
 @Component
 @Data
@@ -63,6 +64,35 @@ public class UserDTO {
     public void create(Long userNumber, List<InterestVO> interestVOs) {
         this.userNumber = userNumber;
         this.interestVOs = interestVOs;
+    }
+
+    public void create(String userEmail, String userPassword, String userName, String userNickname, String userAuthType, String userType, String userDateJoin, String userDateRecent, String userDateVerification, String userEmailCheck){
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userNickname = userNickname;
+        this.userAuthType = userAuthType;
+        this.userType = userType;
+        this.userDateJoin = userDateJoin;
+        this.userDateRecent = userDateRecent;
+        this.userDateVerification = userDateVerification;
+        this.userEmailCheck = userEmailCheck;
+    }
+
+    public void create(String userEmail, String userPassword, String userName, String userNickname, String userAuthType, String userType, String userDateJoin, String userDateRecent, String userDateVerification, String userEmailCheck/*, UserImgVO userImgVO*/, List<IllVO> illVOS, List<InterestVO> interestVOS){
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userNickname = userNickname;
+        this.userAuthType = userAuthType;
+        this.userType = userType;
+        this.userDateJoin = userDateJoin;
+        this.userDateRecent = userDateRecent;
+        this.userDateVerification = userDateVerification;
+        this.userEmailCheck = userEmailCheck;
+//        this.userImgVO = userImgVO;
+        this.illVOs = illVOS;
+        this.interestVOs = interestVOS;
     }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/css/components/footer.css" />
 </head>
 <body>
+<script th:if="${updatePW == 'yes'}">alert("비밀번호 변경");</script>
+<script th:if="${updatePW == 'no'}">alert("비밀번호 확인하세요!");</script>
 <header th:replace="/components/header.html :: .header-container"></header>
 <div class="page-wrapper">
     <aside class="profile-menu">

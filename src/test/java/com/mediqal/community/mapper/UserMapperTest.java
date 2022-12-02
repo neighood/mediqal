@@ -41,8 +41,8 @@ public class UserMapperTest {
 
     @Test
     public void insertTest() {
-        UserVO userVO = new UserVO();
-        userVO.create(0L,
+        UserDTO userDTO = new UserDTO();
+        userDTO.create(
                 "hgd@naver.com",
                 "1234",
                 "홍길동",
@@ -53,7 +53,7 @@ public class UserMapperTest {
                 "",
                 "",
                 "1");
-        userMapper.insert(userVO);
+        userMapper.insert(userDTO);
     }
 
     @Test

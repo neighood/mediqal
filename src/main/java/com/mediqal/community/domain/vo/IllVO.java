@@ -13,4 +13,8 @@ public class IllVO {
     private Long userNumber;
 
     private String illName;
+
+    public void create(Long userNumber){
+        this.userNumber = userNumber;
+    }
 }

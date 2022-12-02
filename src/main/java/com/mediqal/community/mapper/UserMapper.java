@@ -27,7 +27,8 @@ public interface UserMapper {
     public int getTotal();
 
     //    회원가입
-    public void insert(UserVO userVO);
+    public void insert(UserDTO userDTO);
+//    public void insert(UserVO userVO);
 
     //    비밀번호 찾기
     public String findPassword(String userEmail);
@@ -39,7 +40,7 @@ public interface UserMapper {
     public int checkNickname(String userNickname);
 
     //    로그인
-    public int login(String userEmail, String userPassword);
+    public long login(String userEmail, String userPassword);
 
     //  내 프로필
     public UserVO profileSelect(Long userNumber);
@@ -47,5 +48,10 @@ public interface UserMapper {
     public void profileUpdate(UserDTO userDTO);
     // 회원 탈퇴
     public void profileDelete(Long userNumber);
+//    비밀번호 체크
+    public int profileCheckPW(UserVO userVO);
+//    비밀번호 변경
+    public void profileUpdatePW(String userPasswordNew);
+
 
 }

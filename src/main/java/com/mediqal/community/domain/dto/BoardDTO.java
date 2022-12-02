@@ -24,6 +24,8 @@ public class BoardDTO {
 
     private String boardUpdateDate;
 
+    private String userNickname;
+
     private Long boardView;
 
     private UserVO userVO;

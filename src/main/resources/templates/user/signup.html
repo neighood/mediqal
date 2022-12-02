@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -151,9 +151,10 @@
     </div>
     <article class="signup--email">
       <div class="signup-form-container">
-        <form action="#none" class="signup-form">
+        <form method="post" th:action="@{/user/signup}" id="signupForm" class="signup-form" th:object="${user}">
           <label class="__email-label input-id">아이디</label>
           <input
+                  th:field="*{userEmail}"
                   type="text"
                   class="__email-input"
                   placeholder="example@email.com"
@@ -164,7 +165,8 @@
           </div>
           <label class="__pw-label label-margin">비밀번호</label>
           <input
-                  type="password"
+                  th:field="*{userPassword}"
+                  type="text"
                   class="__pw-input"
                   placeholder="대소문자, 특수문자 포함 8자 이상의 비밀번호"
           />
@@ -180,8 +182,19 @@
           <div class="span-wrapper">
             <span class="under-input" style="visibility: hidden">비밀번호가 일치하지 않습니다.</span>
           </div>
+          <label class="__name-label label-margin">이름</label>
+          <input
+                  th:field="*{userName}"
+                  type="text"
+                  class="__name-input"
+                  placeholder="이름을 입력해주세요."
+          />
+          <div class="span-wrapper">
+            <span class="under-input" style="visibility: hidden">한글로 입력해주세요.</span>
+          </div>
           <label class="__id-label label-margin">닉네임</label>
           <input
+                  th:field="*{userNickname}"
                   type="text"
                   class="__id-input"
                   placeholder="설정하지 않으면 기본(ㅇㅇ)으로 설정되며, 변경할 수 있습니다."
@@ -212,7 +225,7 @@
               </p>
             </div>
           </div>
-          <button type="button" class="__button">회원가입</button>
+          <button type="submit" class="__button">회원가입</button>
         </form>
       </div>
     </article>

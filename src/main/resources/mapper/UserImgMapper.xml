@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.UserImgMapper">
-    <insert id="insert">
+    <insert id="insertUserImg">
+        INSERT INTO TBL_USER_IMG (USER_IMG_NUMBER, USER_NUMBER, USER_IMG_IMAGE_CHECK)
+        VALUES (SEQ_USER_IMG.NEXTVAL, #{userNumber}, #{userImgImageCheck})
+    </insert>
+    <!--<insert id="insert">
         INSERT INTO TBL_FILE(FILE_NUMBER, FILE_NAME, FILE_UPLOAD_PATH, FILE_UUID, FILE_IMAGE_CHECK, FILE_SIZE, BOARD_NUMBER)
         VALUES(SEQ_FILE.NEXTVAL, #{fileName}, #{fileUploadPath}, #{fileUuid}, #{fileImageCheck}, #{fileSize}, #{boardNumber})
     </insert>
@@ -21,5 +25,5 @@
         SELECT FILE_NUMBER, FILE_NAME, FILE_UPLOAD_PATH, FILE_UUID, FILE_SIZE, FILE_IMAGE_CHECK, BOARD_NUMBER
         FROM TBL_FILE
         WHERE FILE_UPLOAD_PATH = TO_CHAR(CURRENT_DATE - 3, 'YYYY/MM/DD')
-    </select>
+    </select>-->
 </mapper>

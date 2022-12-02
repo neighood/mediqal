@@ -21,4 +21,9 @@ public class UserImgVO {
     private boolean userImgImageCheck;
 
     private Long userImgSize;
+
+    public void create(Long userNumber,boolean userImgImageCheck){
+        this.userNumber = userNumber;
+        this.userImgImageCheck = userImgImageCheck;
+    }
 }
