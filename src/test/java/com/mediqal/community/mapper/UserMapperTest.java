@@ -1,6 +1,7 @@
 package com.mediqal.community.mapper;
 
 
+import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,8 @@ public class UserMapperTest {
     }
 
     @Test
-    public void selectAllTest() {
-        userMapper.selectAll().stream().map(UserVO::getUserName).forEach(log::info);
+    public void selectAllTest(Criteria criteria) {
+        userMapper.selectAll(criteria).stream().map(UserVO::getUserName).forEach(log::info);
     }
 
     @Test

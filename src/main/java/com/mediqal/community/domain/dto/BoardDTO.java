@@ -39,4 +39,19 @@ public class BoardDTO {
     private List<BoardImgVO> boardImgVOs;
 
     private List<TagVO> tagVOs;
+
+    public void create(Long boardNumber, String boardTitle, String boardContent, Long boardView) {
+        this.boardNumber = boardNumber;
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+        this.boardView = boardView;
+    }
+
+    public void create(BoardVO boardVO) {
+        this.boardNumber = boardVO.getBoardNumber();
+        this.boardTitle = boardVO.getBoardTitle();
+        this.boardContent = boardVO.getBoardContent();
+        this.boardView = boardVO.getBoardView();
+    }
+
 }

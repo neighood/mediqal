@@ -245,50 +245,45 @@
                 </div>
             </div>
             <div class="content-list__info-container">
-                <div class="content-list__info-unit">
-                    <input
-                            type="checkbox"
-                            class="content__checkbox"
-                            id="hds"
-                            name="checkbox"
-                    />
-                    <label for="hds" class="content__checkbox--label">
-                        <ul class="content-list__info">
-                            <li class="content__id">1234</li>
-                            <li class="content__title">코로나 일까요?</li>
-                            <li class="content__user-nickname">아프지말자</li>
-                            <li class="content__date-post">2022.10.17</li>
-                            <li class="content__user-like">12</li>
-                            <li class="content__user-views">456</li>
-                            <li class="content__detail">
-                                <button type="button" class="detail-button" onclick="modal()">상세보기</button>
-                            </li>
-                        </ul>
-                    </label>
-                </div>
-<!--                <div class="content-list__info-unit">-->
-<!--                    <input-->
-<!--                            type="checkbox"-->
-<!--                            class="content__checkbox"-->
-<!--                            id="hds"-->
-<!--                            name="checkbox"-->
-<!--                    />-->
-<!--                    <label for="hds" class="content__checkbox&#45;&#45;label">-->
-<!--                        <ul class="content-list__info">-->
-<!--                            <li class="content__id">1234</li>-->
-<!--                            <li class="content__title">어디어디가 아파요</li>-->
-<!--                            <li class="content__user-nickname">아프지말자</li>-->
-<!--                            <li class="content__date-post">2022.10.17</li>-->
-<!--                            <li class="content__user-like">12</li>-->
-<!--                            <li class="content__user-views">456</li>-->
-<!--                            <li class="content__detail">-->
-<!--                                <button type="button" class="detail-button" onclick="modal()">상세보기</button>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </label>-->
-<!--                </div>-->
+                <th:block th:each="user:${boards}">
+                    <div class="content-list__info-unit">
+                        <input
+                                type="checkbox"
+                                class="content__checkbox"
+                                id="hds"
+                                name="checkbox"
+                        />
+                        <label for="hds" class="content__checkbox--label">
+                            <ul class="content-list__info" th:object="${board}">
+                                <li class="content__id" th:text="*{boardNumber}"></li>
+                                <li class="content__title" th:text="*{boardTitle}"></li>
+                                <li class="content__user-nickname" th:text="*{userNumber}"></li>
+                                <li class="content__date-post"th:text="*{boardRegisterDate}"></li>
+                                <li class="content__user-like" th:text="*{likeCount}"></li>
+                                <li class="content__user-views" th:text="*{boardView}"></li>
+                                <li class="content__detail">
+                                    <button type="button" class="detail-button" onclick="modal()">상세보기</button>
+                                </li>
+                            </ul>
+                        </label>
+                    </div>
+                </th:block>
             </div>
         </article>
+        <div th:object="${pagination}">
+            <div style="text-align: center">
+                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                    <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                    <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                </th:block>
+                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+            </div>
+            <form th:action="@{/admin/contentsTest}" th:object="${criteria}" name="pageForm">
+                <input type="hidden" th:field="*{page}">
+                <input type="hidden" th:field="*{amount}">
+            </form>
+        </div>
         <div class="delete-button">삭제하기</div>
     </main>
     <div class="modal">
@@ -330,4 +325,13 @@
 <script src="/js/admin/admin.js"></script>
 <!-- 아래에 페이지 별로 갈아 끼워야할 JS -->
 <script src="/js/admin/contentsTest.js"></script>
+<script th:inline="javascript">
+    let $pages = $("a.changePage");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+</script>
 </html>

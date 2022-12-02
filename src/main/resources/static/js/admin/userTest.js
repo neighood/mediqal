@@ -47,57 +47,75 @@
 const checkBoxAll = document.getElementsByName("checkbox-all");
 const checkBox = document.querySelectorAll('input[name = "checkbox"]');
 const checkBoxChecked = document.querySelectorAll(
-  'input[name = "checkbox"]:checked'
+    'input[name = "checkbox"]:checked'
 );
 
 const selectAll = function () {
-  if (checkBoxAll[0].checked) {
-    checkBox.forEach((e) => (e.checked = true));
-  }
-  if (!checkBoxAll[0].checked) {
-    checkBox.forEach((e) => (e.checked = false));
-  }
+    if (checkBoxAll[0].checked) {
+        checkBox.forEach((e) => (e.checked = true));
+    }
+    if (!checkBoxAll[0].checked) {
+        checkBox.forEach((e) => (e.checked = false));
+    }
 };
 
 const checkSelectAll = function () {
-  if (checkBox.length === checkBoxChecked.length) {
-    checkBoxAll[0].checked = true;
-  } else if (checkBox.length != checkBoxChecked.length) {
-    checkBoxAll[0].checked = false;
-  }
-  console.log(checkBox.length);
+    if (checkBox.length === checkBoxChecked.length) {
+        checkBoxAll[0].checked = true;
+    } else if (checkBox.length != checkBoxChecked.length) {
+        checkBoxAll[0].checked = false;
+    }
+    console.log(checkBox.length);
 };
 
 checkBoxAll[0].addEventListener("click", selectAll);
 checkBox.forEach((e) => {
-  e.addEventListener("click", checkSelectAll);
+    e.addEventListener("click", checkSelectAll);
 });
 
 console.log(checkBoxChecked);
 
 /*----------------------------------------*/
-function changeButton(){
-  $('#edit-button1').css('visibility', 'hidden');
-  $('.user-input2').attr('readOnly', false);
+function changeButton() {
+    $('#edit-button1').css('visibility', 'hidden');
+    $('.user-input2').attr('readOnly', false);
 }
-function changeButton2(){
-  $('#edit-button1').css('visibility', 'visible');
-  $('.user-input2').attr('readOnly', true);
+
+function changeButton2() {
+    $('#edit-button1').css('visibility', 'visible');
+    $('.user-input2').attr('readOnly', true);
 }
 
 /*----------------------------------------*/
 
 /*유저 정보 모달 창 띄우기*/
 function modal() {
-  $('.modal').css('visibility', 'visible');
-  $('#edit-button1').css('visibility', 'visible');
-  $('.user-input2').attr('readOnly', true);
+    $('.modal').css('visibility', 'visible');
+    $('#edit-button1').css('visibility', 'visible');
+    $('.user-input2').attr('readOnly', true);
 }
+
 function closeModal() {
-  $('.modal').css('visibility', 'hidden');
-  $('#edit-button1').css('visibility', 'hidden');
+    $('.modal').css('visibility', 'hidden');
+    $('#edit-button1').css('visibility', 'hidden');
 }
 
 /*------------*/
 // const showModal = document.getElementsByClassName("detail-button");
 // showModal.addEventListener("click", modal());
+
+// let adminUserService = (function () {
+//     function remove(userNumber, callback) {
+//         $.ajax({
+//             url: "/admin/userTest/" + userNumber,
+//             type: "delete",
+//             success: function () {
+//                 if (callback) {
+//                     callback();
+//                 }
+//             }
+//         })
+//     }
+//
+//     return {remove: remove}
+// })();

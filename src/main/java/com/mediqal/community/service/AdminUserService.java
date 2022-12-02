@@ -40,11 +40,11 @@ public class AdminUserService implements UserService{
 
     @Override
     public List<UserVO> showAll(Criteria criteria) {
-        return userDAO.findAll();
+        return userDAO.findAll(criteria);
     }
 
     @Override
     public int getTotal() {
-        return 0;
+        return userDAO.findCountAll();
     }
 }
