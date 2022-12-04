@@ -245,11 +245,11 @@
 
             <div class="user-list__info-container">
                 <th:block th:each="user:${users}">
-                    <div class="user-list__info-unit">
+                    <div class="user-list__info-unit" onclick="getUserNumber()" th:object="${user}">
                         <input
                                 type="checkbox"
                                 class="user__checkbox"
-                                id="user"
+                                th:id="*{userNumber}"
                                 name="checkbox"
                         />
                         <label class="user__checkbox--label">
@@ -268,7 +268,7 @@
                 </th:block>
             </div>
         </article>
-        <div class="delete-button" onclick="deleteGet()">삭제하기</div>
+        <div class="delete-button" method="deleteGet">삭제하기</div>
         <div th:object="${pagination}">
             <div style="text-align: center">
                 <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
@@ -363,10 +363,26 @@
     // })();
 
     let adminUserService = (function () {
-        function remove(userNumber, callback) {
+        function remove(check, callback) {
+            // console.log(checkBoxArr);
+            // $.ajax({
+            //     url : "/admin/arrayTest/",
+            //     type : 'post',
+            //     dataType : 'json',
+            //     data : {
+            //         "checkBoxArr" : checkBoxArr,
+            //     },
+            //     success: function(data){
+            //         console.log("성공");
+            //     }
+            // });
+            // console.log(checkBox);
+            var userNumber = check;
+            console.log(userNumber);
             $.ajax({
-                url: "/admin/userTest/" + userNumber,
+                url: "/admin/userTest/ "+ userNumber,
                 type: "delete",
+                // data: userNumber,
                 success: function () {
                     if (callback) {
                         callback();
@@ -374,28 +390,25 @@
                 }
             })
         }
-
         return {remove: remove}
     })();
 
-    adminUserService.remove(86);
-
-    $("div.delete-button").on("click", function(e){
-       e.preventDefault();
-       let userNumber = $(this).attr("href");
-       adminUserService.remove(userNumber, function(){
-
-       })
-    });
-
-    var userNumber = $("input[type='checkbox']:checked").value();
-
-    function deleteGet(userNumber){
-        if ( confirm(userNumber + "번의 회원을 삭제하시겠습니까?") ) {
-            adminUserService.remove(userNumber);
+    $(".delete-button").on("click", function(){
+        if (confirm(checkBoxArr + "번의 회원을 삭제하시겠습니까?") ) {
+            checkBoxArr.forEach(check => adminUserService.remove(check));
+            // adminUserService.remove(checkBoxArr);
             return false;
         }
-    }
+    });
 
+    var checkBoxArr;
+
+    function getUserNumber(){
+        checkBoxArr = [];
+        $("input:checkbox[name='checkbox']:checked").each(function() {
+            checkBoxArr.push($(this).attr('id'));
+            console.log(checkBoxArr);
+        })
+    }
 </script>
 </html>

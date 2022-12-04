@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/*")
 @RequiredArgsConstructor
@@ -32,8 +34,8 @@ public class AdminController {
         log.info("admin 실행");
     }
 
-    @GetMapping("/contentsTest")
-    public void contentsTest(){ log.info("contentsTest 실행"); }
+//    @GetMapping("/contentsTest")
+//    public void contentsTest(){ log.info("contentsTest 실행"); }
 
     @GetMapping("/grade")
     public void grade(){ log.info("grade 실행"); }
@@ -53,29 +55,32 @@ public class AdminController {
         return new RedirectView("/admin/userTest");
     }
 
-//    @GetMapping("/delete")
-//    public RedirectView delete(Long userNumber){
+//    @DeleteMapping("userTest/{userNumber}")
+//    public void delete(@PathVariable Long userNumber){
 //        adminUserService.remove(userNumber);
-//        return new RedirectView("/admin/userTest");
 //    }
 
-    @DeleteMapping("userTest/{userNumber}")
+    @DeleteMapping("/userTest")
     public void delete(@PathVariable Long userNumber){
         adminUserService.remove(userNumber);
     }
 
-//    @GetMapping("/contentsTest")
-//    public void contentsTest(Criteria criteria, Model model){
-//
-//        if(criteria.getPage() == 0){
-//            criteria.create(1, 10);
-//        }
-//        model.addAttribute("boards", adminBoardService.showAll(criteria));
-//        model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, adminUserService.getTotal()));
-//    }
+    @PostMapping("/arrayTest")
+    public @ResponseBody void testArray( @RequestParam(value="checkBoxArr[]") Object[] checkBoxArr){
+//        log.info("========== 배열확인 : "+ checkBoxArr);
+        System.out.println("배열 확인 : " + checkBoxArr);
+    }
+
+    @GetMapping("/contentsTest")
+    public void contentsTest(Criteria criteria, Model model){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("boards", adminBoardService.showAll(criteria));
+        model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, adminUserService.getTotal()));
+    }
 }
-
-
 
 
 

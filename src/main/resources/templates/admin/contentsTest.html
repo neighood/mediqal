@@ -245,7 +245,7 @@
                 </div>
             </div>
             <div class="content-list__info-container">
-                <th:block th:each="user:${boards}">
+                <th:block th:each="board:${boards}">
                     <div class="content-list__info-unit">
                         <input
                                 type="checkbox"
@@ -258,7 +258,7 @@
                                 <li class="content__id" th:text="*{boardNumber}"></li>
                                 <li class="content__title" th:text="*{boardTitle}"></li>
                                 <li class="content__user-nickname" th:text="*{userNumber}"></li>
-                                <li class="content__date-post"th:text="*{boardRegisterDate}"></li>
+                                <li class="content__date-post" th:text="*{boardRegisterDate}"></li>
                                 <li class="content__user-like" th:text="*{likeCount}"></li>
                                 <li class="content__user-views" th:text="*{boardView}"></li>
                                 <li class="content__detail">
@@ -270,7 +270,8 @@
                 </th:block>
             </div>
         </article>
-        <div th:object="${pagination}">
+        <div class="delete-button">삭제하기</div>
+        <div th:object="${pagination}" class="page-count">
             <div style="text-align: center">
                 <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
                 <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
@@ -284,7 +285,6 @@
                 <input type="hidden" th:field="*{amount}">
             </form>
         </div>
-        <div class="delete-button">삭제하기</div>
     </main>
     <div class="modal">
         <div class="modal-wrapper">
@@ -297,17 +297,17 @@
             <div id="modal-main">
                 <form action="">
                     <div>글 번호</div>
-                    <input type="text" id="board-number" value="1234" class="input-info1" readonly>
+                    <input type="text" id="board-number" class="input-info1" readonly>
                     <div>작성자</div>
-                    <input type="text" id="user-nickname" value="아프지말자" class="input-info1" readonly>
+                    <input type="text" id="user-nickname" class="input-info1" readonly>
                     <div>좋아요 수</div>
-                    <input type="text" id="board-likes" value="12" class="input-info1" readonly>
+                    <input type="text" id="board-likes" class="input-info1" readonly>
                     <div>조회 수</div>
-                    <input type="text" id="board-views" value="456" class="input-info1" readonly>
+                    <input type="text" id="board-views" class="input-info1" readonly>
                     <div>제목</div>
-                    <input type="text" id="board-title" value="코로나 일까요?" class="user-input input-info1 input2" readonly>
+                    <input type="text" id="board-title" class="user-input input-info1 input2" readonly>
                     <div>내용</div>
-                    <textarea name="board-title" cols="30" class="user-input input2" readonly>컨디션이 안좋고 발열 ,기침, 두통, 몸살 기운이 있어요.&#10;뭘 먹어도 맛이 잘 안느껴져요.&#10;코로나 일까요?...
+                    <textarea name="board-title" cols="30" class="user-input input2" readonly>
                     </textarea>
                     <!-- &#10; 사용하면 textarea 안에서 줄바꿈 &nbsp; 띄어쓰기 -->
                     <!--                <input type="text" id="board-contents">-->
