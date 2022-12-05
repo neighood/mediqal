@@ -1,6 +1,8 @@
 .page-wrapper {
   margin: 0 auto;
-  margin-top: 8rem;
+  margin-top: 2rem;
+  /*margin-top: 3.5rem;*/
+  /*margin-top: 8rem;*/
   min-width: 500px;
   max-width: 500px;
   box-sizing: border-box;
@@ -19,8 +21,10 @@
 }
 
 .logo {
-  width: 42px;
-  height: 42px;
+  font-size: 50px;
+  font-weight: bolder;
+  color: blueviolet;
+  height: 60px;
 }
 
 .welcome__title {

@@ -38,5 +38,5 @@ $mypage.on("click", function(e){
 
 $signout.on("click", function(e){
     e.preventDefault();
-    location.href = "/signout";
+    location.href = "/user/signout";
 });

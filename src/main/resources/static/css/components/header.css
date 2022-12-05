@@ -20,7 +20,7 @@ li{
     border-style: solid;
     border-width: 0 0 1px;
     border-color: #eaecee;
-    /*z-index: 10;*/
+    z-index: 10;
 }
 
 .header-wrapper{
