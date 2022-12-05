@@ -112,64 +112,6 @@
                         </ul>
                     </details>
                 </li>
-                <!--            <li>-->
-                <!--                <details>-->
-                <!--                    <summary class="nav-menu">-->
-                <!--                        <img-->
-                <!--                                src="/img/icon/support.png"-->
-                <!--                                alt="icon"-->
-                <!--                                class="menu__icon"-->
-                <!--                        />-->
-                <!--                        <h2 class="menu__title">문의관리</h2>-->
-                <!--                        <img-->
-                <!--                                src="/img/icon/dropdown.png"-->
-                <!--                                alt="icon"-->
-                <!--                                class="menu__icon&#45;&#45;drop-down"-->
-                <!--                        />-->
-                <!--                    </summary>-->
-                <!--                    <ul class="nav-menu-submenu">-->
-                <!--                        <a href="">-->
-                <!--                            <h3>-->
-                <!--                                <li class="submenu__item">문의관리</li>-->
-                <!--                            </h3>-->
-                <!--                        </a>-->
-                <!--                        <a href="">-->
-                <!--                            <h3>-->
-                <!--                                <li class="submenu__item">분쟁관리</li>-->
-                <!--                            </h3>-->
-                <!--                        </a>-->
-                <!--                    </ul>-->
-                <!--                </details>-->
-                <!--            </li>-->
-                <!--          <li>-->
-                <!--            <details>-->
-                <!--              <summary class="nav-menu">-->
-                <!--                <img-->
-                <!--                  src="/img/icon/megaphone.png"-->
-                <!--                  alt="icon"-->
-                <!--                  class="menu__icon"-->
-                <!--                />-->
-                <!--                <h2 class="menu__title">공지/FAQ관리</h2>-->
-                <!--                <img-->
-                <!--                  src="/img/icon/dropdown.png"-->
-                <!--                  alt="icon"-->
-                <!--                  class="menu__icon&#45;&#45;drop-down"-->
-                <!--                />-->
-                <!--              </summary>-->
-                <!--              <ul class="nav-menu-submenu">-->
-                <!--                <a href="">-->
-                <!--                  <h3>-->
-                <!--                    <li class="submenu__item">공지사항</li>-->
-                <!--                  </h3>-->
-                <!--                </a>-->
-                <!--                <a href="">-->
-                <!--                  <h3>-->
-                <!--                    <li class="submenu__item">FAQ</li>-->
-                <!--                  </h3>-->
-                <!--                </a>-->
-                <!--              </ul>-->
-                <!--            </details>-->
-                <!--          </li>-->
                 <li>
                     <details>
                         <summary class="nav-menu">
@@ -223,58 +165,56 @@
                 <div class="user-list__title-unit">
                     <input type="checkbox" id="title__checkbox" name="checkbox-all"/>
                     <ul class="user-list__title">
-                        <!--<li class="title__id">고객번호</li>
-                        <li class="title__name">이름</li>
-                        <li class="title__user-id">회원 ID</li>
-                        <li class="title__email">이메일</li>
-                        <li class="title__phone">핸드폰 번호</li>
-                        <li class="title__join">가입일</li>
-                        <li class="title__recent">최근 접속일</li>
-                        <li class="title__status">상태</li>
-                        <li class="title__detail">상세</li>-->
                         <li class="title__id">회원 번호</li>
                         <li class="title__name">이름</li>
                         <li class="title__email">이메일</li>
-                        <li class="title__phone">핸드폰 번호</li>
+                        <li class="title__phone">닉네임</li>
                         <li class="title__grade">등급</li>
                         <li class="title__detail"></li>
                     </ul>
 
                 </div>
             </div>
-
             <div class="user-list__info-container">
-                <div class="user-list__info-unit">
-                    <input
-                            type="checkbox"
-                            class="user__checkbox"
-                            id="hds"
-                            name="checkbox"
-                    />
-                    <label for="hds" class="user__checkbox--label">
-                        <ul class="user-list__info">
-                            <li class="user__id">123</li>
-                            <li class="user__name">한동석</li>
-                            <li class="user__email">hds1234@naver.com</li>
-                            <li class="user__phone">010-1004-1004</li>
-                            <li class="user__grade">일반회원</li>
-                            <li class="user__detail">
-                                <button type="button" class="detail-button" onclick="modal()">상세보기</button>
-                            </li>
-                            <!--                <li class="user__id">365KOREAJ</li>-->
-                            <!--                <li class="user__name">한동석</li>-->
-                            <!--                <li class="user__user-id">bugbug</li>-->
-                            <!--                <li class="user__email">winterstone@cold.com</li>-->
-                            <!--                <li class="user__phone">010-1004-5004</li>-->
-                            <!--                <li class="user__join">2001.01.01</li>-->
-                            <!--                <li class="user__recent">3일 전</li>-->
-                            <!--                <li class="user__status">활성</li>-->
-                            <!--                <li class="user__detail">20대</li>-->
-                        </ul>
-                    </label>
-                </div>
+                <th:block th:each="user:${users}">
+                    <div class="user-list__info-unit" onclick="getUserNumber()" th:object="${user}">
+                        <input
+                                type="checkbox"
+                                class="user__checkbox"
+                                th:id="*{userNumber}"
+                                name="checkbox"
+                        />
+                        <label class="user__checkbox--label">
+                                <ul class="user-list__info">
+                                    <li class="user__id" th:text="*{userNumber}"></li>
+                                    <li class="user__name" th:text="*{userName}"></li>
+                                    <li class="user__email" th:text="*{userEmail}"></li>
+                                    <li class="user__phone" th:text="*{userNickname}"></li>
+                                    <li class="user__grade" th:text="*{userType}"></li>
+                                <li class="user__detail">
+                                    <button type="button" class="detail-button" onclick="modal()">상세보기</button>
+                                </li>
+                            </ul>
+                        </label>
+                    </div>
+                </th:block>
+            </div>
         </article>
-        <div class="delete-button">삭제하기</div>
+        <div class="delete-button" method="deleteGet">삭제하기</div>
+        <div th:object="${pagination}">
+            <div style="text-align: center">
+                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                    <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                    <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                </th:block>
+                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+            </div>
+            <form th:action="@{/admin/userTest}" th:object="${criteria}" name="pageForm">
+                <input type="hidden" th:field="*{page}">
+                <input type="hidden" th:field="*{amount}">
+            </form>
+        </div>
     </main>
 </div>
 <div class="modal">
@@ -292,30 +232,30 @@
             </div>
         </div>
         <div id="modal-main">
-            <form>
+            <form id="hds">
                 <div class="input-wrapper">
                     <div class="input-text">이름</div>
-                    <input type="text" id="user-name" value="한동석" class="user-input" readonly>
+                    <input type="text" id="user-name" class="user-input" readonly>
                 </div>
-                <div class="input-wrapper">
+                <div class="input-wrapper" >
                     <div class="input-text">이메일</div>
-                    <input type="text" id="user-email" value="hds1234@naver.com" class="user-input" readonly>
+                    <input type="text" id="user-email" class="user-input" readonly>
                 </div>
                 <div class="input-wrapper">
                     <div class="input-text">비밀번호</div>
-                    <input type="text" id="user-password" value="abcd8468" class="user-input user-input2" readonly>
+                    <input type="text" id="user-password" class="user-input user-input2" readonly>
                 </div>
                 <div class="input-wrapper">
                     <div class="input-text">닉네임</div>
-                    <input type="text" id="user-nickname" value="닉네임1234" class="user-input user-input2" readonly>
+                    <input type="text" id="user-nickname" class="user-input user-input2" readonly>
                 </div>
-                <div class="input-wrapper">
-                    <div class="input-text">핸드폰번호</div>
-                    <input type="text" id="user-phone-number" value="01056337014" class="user-input" readonly>
-                </div>
+<!--                <div class="input-wrapper">-->
+<!--                    <div class="input-text">핸드폰번호</div>-->
+<!--                    <input type="text" id="user-phone-number" value="01056337014" class="user-input" readonly>-->
+<!--                </div>-->
                 <div class="input-wrapper">
                     <div class="input-text">유저등급</div>
-                    <input type="text" id="user-grade" value="일반회원" class="user-input" readonly>
+                    <input type="text" id="user-grade" class="user-input" readonly>
                 </div>
             </form>
         </div>
