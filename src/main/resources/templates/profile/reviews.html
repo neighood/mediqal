@@ -128,6 +128,7 @@
                   id="head__checkbox"
           />
           <ul class="list-head-container">
+            <li class="list-head__number">글번호</li>
             <li class="list-head__title">제목</li>
             <li class="list-head__date">작성일</li>
             <li class="list-head__useful">추천수</li>
@@ -142,11 +143,11 @@
                     id="unit__checkbox"
             />
             <ul class="list-unit-container">
+              <li class="list-unit__number" th:text="${board.boardNumber}"></li>
               <li class="list-unit__title" th:text="${board.boardTitle}" ></li>
               <li class="list-unit__date" th:text="${board.boardRegisterDate}"></li>
               <li class="list-unit__useful" th:text="${board.likeCount}"></li>
               <li class="list-unit__reply" th:text="${board.replyCount}"></li>
-              <li class="list-unit__number" th:text="${board.boardNumber}"></li>
               <li class="list-unit__content" th:text="${board.boardContent}"></li>
             </ul>
           </form>
@@ -176,7 +177,6 @@
           <input type="hidden" th:field="${criteria.amount}">
           <div class="article-detail">
             <p class="article-detail__title">
-              Q.
               <span class="article-detail__title-span"
               ></span
               >
