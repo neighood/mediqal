@@ -11,7 +11,7 @@ $list.on("click",function () {
     let content = $(this).children(".list-unit__content").text();
 
     $("#boardNumber").val(number);
-    $(".article-detail__title-span").text(title);
+    $(".article-detail__title-span").text("Q." + title);
     $(".article-detail__detail").text(content);
 
     $bDelete.css("display","inline-block");
@@ -28,3 +28,9 @@ $bUpdate.on("click", function () {
     location.href="/board/edit?boardNumber=" + boardNumber;
 });
 
+let urlParams = new URL(location.href).searchParams;
+let check = urlParams.get("profileCheck");
+console.log(check);
+if(check == 'yes'){
+    alert("게시물 삭제");
+}

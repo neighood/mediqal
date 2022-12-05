@@ -57,4 +57,11 @@ function showUploadResult(files){
 
 $(".info__img-btn").on("click", function (e) {
     $("#upload").click();
-})
+});
+
+let urlParams = new URL(location.href).searchParams;
+let check = urlParams.get("profileCheck");
+console.log(check);
+if(check == 'yes'){
+    alert("회원 정보 수정");
+}

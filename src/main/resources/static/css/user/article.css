@@ -189,12 +189,16 @@
   text-align: center;
 }
 
+.list-head__number {
+  flex: 1;
+}
+
 .list-head__title {
   flex: 2;
 }
 
 .list-head__date {
-  flex: 1;
+  flex: 2;
 }
 
 .list-head__useful {
@@ -240,6 +244,10 @@
   display: flex;
   width: 90%;
   text-align: center;
+}
+
+.list-unit__number{
+  flex: 1;
 }
 
 .list-unit__title {
@@ -369,18 +377,34 @@
   margin-bottom: 0.5rem;
 }
 
-.list-unit__content, .list-unit__number, .list-unit__like_number, .list-unit__category {
+.list-unit__content, .list-unit__like_number, .list-unit__category {
   display: none;
 }
 
-.changePage{
+
+.pagination code{
   font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
   "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", arial, dotum,
   돋움, sans-serif;
 
-  -moz-transition: color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out;
-  -ms-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  text-decoration: none;
+  background-color: #262626;
+  height: 20px;
+  width: 12px;
+  color: white;
+  border-radius: 6px;
+  font-weight: 550;
+  font-size: 14px;
+  line-height: 30px;
+  padding: 0 7px;
+  text-align: center;
+  box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
+}
+
+.pagination a code{
+  background-color: white;
+  color: #262626;
+}
+
+input[type=checkbox]{
+  display: none;
 }

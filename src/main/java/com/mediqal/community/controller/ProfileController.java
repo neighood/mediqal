@@ -52,7 +52,7 @@ public class ProfileController {
         userDTO.setUserNumber((long)session.getAttribute("userNumber"));
         log.info(String.valueOf(userDTO.getUserImgVO()));
         userService.modify(userDTO);
-        return new RedirectView("/profile/info");
+        return new RedirectView("/profile/info?profileCheck=yes");
     }
 
 //  회원 탈퇴
@@ -66,7 +66,7 @@ public class ProfileController {
         HttpSession session = request.getSession();
         userService.remove((long)session.getAttribute("userNumber"));
         session.invalidate();
-        return new RedirectView("/main/index");
+        return new RedirectView("/main/index?profileCheck=true");
     }
 
 //  비밀번호 수정
@@ -84,10 +84,10 @@ public class ProfileController {
         userVO.setUserNumber((long)session.getAttribute("userNumber"));
 
         if(userService.updatePW(userVO, userPasswordNew)){
-            return new RedirectView("/profile/password?updatePW=yes");
+            return new RedirectView("/profile/password?profileCheck=yes");
         }
         else{
-            return new RedirectView("/profile/password?updatePW=no");
+            return new RedirectView("/profile/password?profileCheck=no");
         }
     }
 
@@ -117,7 +117,7 @@ public class ProfileController {
     public RedirectView comDelete(Long boardNumber, Criteria criteria){
         boardService.remove(boardNumber);
         String url = "/profile/article?page=" + criteria.getPage() + "&amount=" + criteria.getAmount();
-        return new RedirectView(url);
+        return new RedirectView(url+"&profileCheck=yes");
     }
 
 //    후기 게시판 리스트
@@ -146,7 +146,7 @@ public class ProfileController {
     public RedirectView reDelete(Long boardNumber, Criteria criteria){
         boardService.remove(boardNumber);
         String url = "/profile/reviews?page=" + criteria.getPage() + "&amount=" + criteria.getAmount();
-        return new RedirectView(url);
+        return new RedirectView(url+"&profileCheck=yes");
     }
 
 //    좋아요 게시판 리스트
@@ -173,7 +173,7 @@ public void likeList(HttpServletRequest request, Model model, Criteria criteria)
     public RedirectView likeDelete(Long likeNumber, Criteria criteria){
         likeService.remove(likeNumber);
         String url = "/profile/like?page=" + criteria.getPage() + "&amount=" + criteria.getAmount();
-        return new RedirectView(url);
+        return new RedirectView(url+"&profileCheck=yes");
     }
 
 
