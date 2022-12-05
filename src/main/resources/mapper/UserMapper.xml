@@ -48,8 +48,8 @@
         <selectKey keyProperty="userNumber" order="BEFORE" resultType="long">
             SELECT SEQ_USER.NEXTVAL FROM DUAL
         </selectKey>
-        INSERT INTO TBL_USER (USER_NUMBER, USER_EMAIL, USER_PASSWORD, USER_NAME, USER_NICKNAME)
-        VALUES (#{userNumber}, #{userEmail}, #{userPassword}, #{userName}, #{userNickname})
+        INSERT INTO TBL_USER (USER_NUMBER, USER_EMAIL, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_AUTH_TYPE)
+        VALUES (#{userNumber}, #{userEmail}, #{userPassword}, #{userName}, #{userNickname}, #{userAuthType})
     </insert>
 
     <!-- 비밀번호 찾기 -->

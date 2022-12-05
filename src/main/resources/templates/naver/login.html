@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>네이버 로그인</title>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<!-- 네이버 로그인 버튼 노출 영역 -->
+<div id="naver_id_login" style="display: none"></div>
+<a class="btn sns-naver" id="button"
+><svg
+        class="h-5 w-5"
+        viewBox="-1 -1 17 16"
+        width="20"
+        height="20"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+            d="M9.88343 0V7.06382L5.13527 0H0V14H5.11657V6.93618L9.8666 14H15V0H9.88343Z"
+            fill="#222"
+    ></path></svg
+></a>
+<!-- //네이버 로그인 버튼 노출 영역 -->
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("n_JH1m5FF3XfKJsf0aTy", "http://localhost:11000/naver/naverSuccess");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2,40);
+    naver_id_login.setDomain("http://localhost:11000/naver");
+    naver_id_login.setState(state);
+    naver_id_login.setPopup();
+    naver_id_login.init_naver_id_login();
+
+    /*-------------------------------*/
+    var button = $("#button");
+    $("#button").on("click",function (e) {
+        console.log("눌림");
+        // e.preventDefault();
+        $("#naver_id_login_anchor").click();
+    })
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

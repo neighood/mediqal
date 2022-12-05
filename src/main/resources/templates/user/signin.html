@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
     <!-- 경로 변경 필요 -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="/css/user/t-sanitize.css" />
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="/css/components/footer.css"  />
   </head>
   <body>
-<!--  <script th:if="${!loginOk}">alert("로그인 실패")</script>-->
+<!--  <script th:if="${check=='false'}">alert("로그인 실패")</script>-->
 <!--  <script th:if="${!signupOk}">alert("회원가입 성공")</script>-->
   <header th:replace="/components/header.html :: .header-container"></header>
     <main class="page-wrapper">
@@ -22,7 +23,10 @@
         <div class="logo-container">
           <!-- p태그 지우고 이미지로 교체 -->
           <!-- <img class="logo" src="" alt=""> -->
-          <p>로고</p>
+<!--          <p>로고</p>-->
+          <div class="logo">
+            MediQa!
+          </div>
         </div>
         <div class="welcome__title">
           <p>MediQa!에 오신 것을 환영합니다.</p>
@@ -65,7 +69,8 @@
               ></a>
             </li>
             <li class="oauth-module oauth-module--naver">
-              <a href="#none"
+              <div id="naver_id_login" style="display:none;"></div>
+              <a href="" class="btn sns-naver" id ="naver-button"
                 ><svg
                   class="h-5 w-5"
                   viewBox="-1 -1 17 16"
@@ -81,8 +86,8 @@
               ></a>
             </li>
             <li class="oauth-module oauth-module--kakao">
-              <a href="#none"
-                ><svg
+              <a href="https://kauth.kakao.com/oauth/authorize?client_id=b1942603844093783ad7859daa3b5918&redirect_uri=http://localhost:11000/user/kakao&response_type=code">
+                <svg
                   class="h-5 w-5"
                   viewBox="0 0 22 21"
                   width="22"
@@ -173,7 +178,7 @@
             <span>혹시 잊으셨나요? <a href="#none">계정찾기</a></span>
           </div>
           <div class="signup-suggest">
-            <span>아직 회원이 아니신가요? <a href="#none">회원가입</a></span>
+            <span>아직 회원이 아니신가요? <a href="/user/signup">회원가입</a></span>
           </div>
         </article>
       </section>
@@ -183,4 +188,54 @@
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script src="/js/components/header.js"></script>
   <script src="/js/components/footer.js"></script>
+  <!--네이버 로그인-->
+  <!--네이버 로그인 ^-->
+  <script>
+    // var naverLogin = new naver.LoginWithNaverId({
+    //   clientId: "n_JH1m5FF3XfKJsf0aTy",
+    //   callbackUrl: "http://localhost:11000/naver/naverSuccess",
+    //   isPopup: true,
+    //   loginButton: {color: "green", type: 3, height: 50}
+    //
+    // });
+    //
+    // naverLogin.init(); //initialize Naver Login Button
+    //
+    // $(document).on("click", "#naverLogin", function(){
+    //   var btnNaverLogin = document.getElementById("naverIdLogin").firstChild;
+    //   btnNaverLogin.click();
+    // });
+
+    /*네이버 로그인*/
+    var naver_id_login = new naver_id_login("n_JH1m5FF3XfKJsf0aTy", "http://localhost:11000/user/naverLogin");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2,40);
+    naver_id_login.setDomain("http://localhost:11000/user/signin");
+    naver_id_login.setState(state);
+    naver_id_login.setPopup();
+    naver_id_login.init_naver_id_login();
+
+    /*-------------------------------*/
+    // var button = $("#naver-button");
+    $("#naver-button").on("click",function (e) {
+      console.log("눌림");
+      // e.preventDefault();
+      $("#naver_id_login_anchor").click();
+    })
+
+    /* 로그인 실패 시*/
+    let urlParams = new URL(location.href).searchParams;
+    let check = urlParams.get("check");
+    console.log(check);
+    window.onload(setTimeout(()=> alertf(),100));
+    function alertf() {
+      if(check == 'false'){
+        alert("아이디와 비밀번호를 확인해주세요.");
+      } else {
+        return;
+      }
+    }
+
+
+  </script>
 </html>

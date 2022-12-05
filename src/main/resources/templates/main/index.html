@@ -332,4 +332,18 @@
 <script src="/js/main/index.js"></script>
 <script src="/js/components/header.js"></script>
 <script src="/js/components/footer.js"></script>
+<script>
+    let urlParams = new URL(location.href).searchParams;
+    let login = urlParams.get("login");
+    console.log(login);
+    window.onload(setTimeout(()=> check(), 100));
+    function check() {
+        if(login == 'ok'){
+            alert("안녕하세요 회원님");
+        }
+        else if(login == 'x'){
+            alert("로그아웃 되었습니다.");
+        }
+    }
+</script>
 </html>

@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>회원가입</title>
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   <!-- 경로 변경 필요 -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="/css/user/t-sanitize.css" />
@@ -20,7 +21,10 @@
     <div class="logo-container">
       <!-- p태그 지우고 이미지로 교체 -->
       <!-- <img class="logo" src="" alt=""> -->
-      <p>로고</p>
+<!--      <p>로고</p>-->
+      <div class="logo">
+        MediQa!
+      </div>
     </div>
     <div class="welcome__title">
       <p>MediQa!에 오신 것을 환영합니다.</p>
@@ -79,8 +83,8 @@
           ></a>
         </li>
         <li class="oauth-module oauth-module--kakao">
-          <a href="#none"
-          ><svg
+          <a href="https://kauth.kakao.com/oauth/authorize?client_id=b1942603844093783ad7859daa3b5918&redirect_uri=http://localhost:11000/user/kakao&response_type=code">
+          <svg
                   class="h-5 w-5"
                   viewBox="0 0 22 21"
                   width="22"
@@ -151,56 +155,143 @@
     </div>
     <article class="signup--email">
       <div class="signup-form-container">
-        <form method="post" th:action="@{/user/signup}" id="signupForm" class="signup-form" th:object="${user}">
-          <label class="__email-label input-id">아이디</label>
+<!--        <form method="post" th:action="@{/user/signup}" id="hiddenForm" name="hiddenForm" th:object="${userNaver}" style="display: none">-->
+<!--          <input-->
+<!--                  id="naver-email"-->
+<!--                  name="userEmail"-->
+<!--                  readonly-->
+<!--                  style="display: none"-->
+<!--          >-->
+<!--          <input-->
+<!--                  id="naver-password"-->
+<!--                  name="userPassword"-->
+<!--                  readonly-->
+<!--                  style="display: none"-->
+<!--          >-->
+<!--          <input-->
+<!--                  id="naver-name"-->
+<!--                  name="userName"-->
+<!--                  readonly-->
+<!--                  style="display: none"-->
+<!--          >-->
+<!--          <input-->
+<!--                  id="naver-authtype"-->
+<!--                  name="userAuthType"-->
+<!--                  value="naver"-->
+<!--                  readonly-->
+<!--                  style="display: none"-->
+<!--          >-->
+<!--        </form>-->
+        <form method="post" th:action="@{/user/signup}" id="signupForm" class="signup-form" name="userForm" th:object="${user}">
           <input
-                  th:field="*{userEmail}"
+                  th:if="${session.userEmail != null}"
+                  th:value="${session.user.userAuthType}"
+                  name="userAuthType"
+                  id="userAuthType"
+                  readonly
+                  style="display: none"
+          />
+          <input
+                  th:unless="${session.userEmail != null}"
+                  value="email"
+                  name="userAuthType"
+                  id="userAuthTypeInput"
+                  readonly
+                  style="display: none"
+          />
+          <label class="__email-label input-id" >아이디</label>
+          <input
+                  th:if="${session.userEmail == null}"
+                  name="userEmail"
                   type="text"
                   class="__email-input"
                   placeholder="example@email.com"
                   id="userEmail"
+                  oninput="checkId()"
+          />
+          <input
+                  th:unless="${session.userEmail == null}"
+                  th:value="${session.userEmail}"
+                  name="userEmail"
+                  type="text"
+                  class="__email-input"
+                  id="userEmailInput"
           />
           <div class="span-wrapper">
             <span class="under-input" id="result" style="visibility: hidden">중복된 아이디가 있습니다.</span>
           </div>
           <label class="__pw-label label-margin">비밀번호</label>
           <input
-                  th:field="*{userPassword}"
-                  type="text"
+                  th:if="${session.userEmail == null}"
+                  type="password"
+                  name="userPassword"
                   class="__pw-input"
-                  placeholder="대소문자, 특수문자 포함 8자 이상의 비밀번호"
+                  id="password"
+                  placeholder="대소문자, 특수문자 포함 8자 이상 20자 이하의 비밀번호"
+                  oninput="chkPW(), chkPW2(), chkPW3()"
+          />
+          <input
+                  th:unless="${session.userEmail == null}"
+                  th:value="${session.user.userPassword}"
+                  type="password"
+                  name="userPassword"
+                  class="__pw-input"
+                  id="passwordInput"
           />
           <div class="span-wrapper">
-            <span class="under-input" style="visibility: hidden">비밀번호를 입력해주세요.</span>
+            <span class="under-input" id="under-password" style="visibility: hidden">비밀번호를 입력해주세요.</span>
           </div>
           <label class="__pw-label label-margin">비밀번호 확인</label>
           <input
+                  th:if="${session.userEmail == null}"
                   type="password"
                   class="__pw-input"
+                  id="passwordCheck"
                   placeholder="위와 동일한 비밀번호"
+                  oninput="chkPW2()"
           />
-          <div class="span-wrapper">
-            <span class="under-input" style="visibility: hidden">비밀번호가 일치하지 않습니다.</span>
+          <input
+                  th:unless="${session.userEmail == null}"
+                  th:value="${session.user.userPassword}"
+                  type="password"
+                  class="__pw-input"
+                  id="passwordCheckInput"
+          />
+          <div class="span-wrapper" >
+            <span class="under-input" id="under-passwordCheck" style="visibility: hidden">비밀번호가 일치하지 않습니다.</span>
           </div>
           <label class="__name-label label-margin">이름</label>
           <input
-                  th:field="*{userName}"
+                  th:if="${session.userEmail == null}"
                   type="text"
                   class="__name-input"
+                  name="userName"
+                  id="userName"
                   placeholder="이름을 입력해주세요."
+                  oninput="checkName()"
+          />
+          <input
+                  th:unless="${session.userEmail == null}"
+                  th:value="${session.userName}"
+                  type="text"
+                  class="__name-input"
+                  name="userName"
+                  id="userNameInput"
           />
           <div class="span-wrapper">
-            <span class="under-input" style="visibility: hidden">한글로 입력해주세요.</span>
+            <span class="under-input" id="under-name" style="visibility: hidden">한글로 입력해주세요.</span>
           </div>
           <label class="__id-label label-margin">닉네임</label>
           <input
-                  th:field="*{userNickname}"
                   type="text"
                   class="__id-input"
+                  id="userNickname"
+                  name="userNickname"
                   placeholder="설정하지 않으면 기본(ㅇㅇ)으로 설정되며, 변경할 수 있습니다."
+                  oninput="checkNickname()"
           />
           <div class="span-wrapper">
-            <span class="under-input" style="visibility: hidden">중복된 닉네임이 있습니다.</span>
+            <span class="under-input" id="result2" style="visibility: hidden">중복된 닉네임이 있습니다.</span>
           </div>
           <div class="agreement-container">
             <div class="agreement--terms">
@@ -225,7 +316,8 @@
               </p>
             </div>
           </div>
-          <button type="submit" class="__button">회원가입</button>
+          <button type="button" class="__button" id="signup-button" onclick="checkNull()" th:if="${session.userEmail == null}">회원가입</button>
+          <button type="button" class="__button" id="signup-button2" onclick="checkNull2()" th:unless="${session.userEmail == null}">회원가입</button>
         </form>
       </div>
     </article>
@@ -237,4 +329,20 @@
 <script src="/js/user/signUp.js"></script>
 <script src="/js/components/header.js"></script>
 <script src="/js/components/footer.js"></script>
+<script>
+  var naver_id_login = new naver_id_login("n_JH1m5FF3XfKJsf0aTy", "http://localhost:11000/naver/naverSuccess");
+  // 접근 토큰 값 출력
+  // alert(naver_id_login.oauthParams.access_token);
+  // 네이버 사용자 프로필 조회
+  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  function naverSignInCallback() {
+    // alert(naver_id_login.getProfileData('email'));
+    // alert(naver_id_login.getProfileData('name'));
+    // alert(naver_id_login.getProfileData('age'));
+    $("#naver-id").val(naver_id_login.getProfileData('email'));
+    $("#naver-password").val("naver");
+    $("#naver-name").val(naver_id_login.getProfileData('name'));
+  }
+</script>
 </html>
