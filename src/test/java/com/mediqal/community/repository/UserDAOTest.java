@@ -1,5 +1,6 @@
 package com.mediqal.community.repository;
 
+import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
@@ -39,8 +40,8 @@ public class UserDAOTest {
 
 //      전체 조회
     @Test
-    public void findAllTest(){
-        userDAO.findAll().stream().map(UserVO::getUserName).forEach(log::info);
+    public void findAllTest(Criteria criteria){
+        userDAO.findAll(criteria).stream().map(UserVO::getUserName).forEach(log::info);
     }
 
     @Test

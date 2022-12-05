@@ -58,6 +58,7 @@ public class UserDTO {
         this.userPassword = userVO.getUserPassword();
         this.userName = userVO.getUserName();
         this.userNickname = userVO.getUserNickname();
+        this.userEmail = userVO.getUserEmail();
     }
 
     public void create(Long userNumber, List<InterestVO> interestVOs) {

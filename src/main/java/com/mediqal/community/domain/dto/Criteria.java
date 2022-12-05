@@ -16,6 +16,12 @@ public class Criteria {
         return this;
     }
 
+    public Criteria criteria(int page, int amount) {
+        this.page = page;
+        this.amount = amount;
+        return this;
+    }
+
     public String getQueryString(){
         UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
                 .queryParam("page", this.page)
