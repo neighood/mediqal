@@ -33,7 +33,7 @@ $signup.on("click", function(e){
 
 $mypage.on("click", function(e){
     e.preventDefault();
-    location.href = "/mypage";
+    location.href = "/profile/info";
 });
 
 $signout.on("click", function(e){

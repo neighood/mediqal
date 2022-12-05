@@ -51,7 +51,7 @@ public interface UserMapper {
 //    비밀번호 체크
     public int profileCheckPW(UserVO userVO);
 //    비밀번호 변경
-    public void profileUpdatePW(String userPasswordNew);
+    public void profileUpdatePW(UserVO userVO);
 
 
 }

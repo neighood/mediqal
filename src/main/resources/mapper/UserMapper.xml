@@ -90,7 +90,7 @@
     <!-- 유저 정보 수정 -->
     <update id="profileUpdate">
         UPDATE TBL_USER
-        SET USER_PASSWORD = #{userPassword}, USER_NAME = #{userName}, USER_NICKNAME = #{userNickname}
+        SET USER_NAME = #{userName}, USER_NICKNAME = #{userNickname}
         WHERE USER_NUMBER = #{userNumber}
     </update>
 

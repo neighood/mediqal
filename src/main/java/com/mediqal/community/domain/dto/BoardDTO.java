@@ -71,4 +71,5 @@ public class BoardDTO {
         this.boardView = boardVO.getBoardView();
     }
 
+    private String likeNumber;
 }
