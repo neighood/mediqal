@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>도움된 글</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="/css/user/t-sanitize.css" />
+  <link rel="stylesheet" href="/css/user/root.css" />
+  <link rel="stylesheet" href="/css/user/aside.css" />
+  <link rel="stylesheet" href="/css/user/article.css" />
+  <link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/components/footer.css" />
+</head>
+<body>
+<header th:replace="/components/header.html :: .header-container"></header>
+<div class="page-wrapper">
+  <aside class="profile-menu">
+    <p class="menu-title">내 계정</p>
+    <nav class="menu-list-wrapper">
+      <p class="menu-list-title">메인</p>
+      <ul class="menu-list-container menu-list--home">
+        <li class="menu-list">
+          <a href="/profile/upcoming" class="menu-list-link">대시보드</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/info" class="menu-list-link">회원정보</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/notification" class="menu-list-link">알림</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">커뮤니티</p>
+      <ul class="menu-list-container memu-list--community">
+        <li class="menu-list">
+          <a href="/profile/article" class="menu-list-link"
+          >작성한 글</a
+          >
+        </li>
+        <li class="menu-list">
+          <a href="/profile/reply" class="menu-list-link">작성한 답변</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/like" class="menu-list-link menu-list--current">도움된 글</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">진료후기</p>
+      <ul class="menu-list-container menu-list--review">
+        <li class="menu-list">
+          <a href="/profile/reviews" class="menu-list-link">작성한 후기</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/upcoming" class="menu-list-link">스크랩 후기</a>
+        </li>
+      </ul>
+      <p class="menu-list-title">계정설정</p>
+      <ul class="menu-list-container menu-list--settings">
+        <li class="menu-list">
+          <a href="/profile/email" class="menu-list-link">이메일 인증/변경</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/password" class="menu-list-link">비밀번호 변경</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/upcoming" class="menu-list-link menu-list--upcoming">휴대폰 인증</a>
+        </li>
+        <li class="menu-list">
+          <a href="/profile/leave" class="menu-list-link">회원탈퇴</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main">
+    <p class="user-article-title">도움된 글</p>
+    <section class="user-article">
+      <div class="article-searchbox">
+        <form action="/profile/upcoming" class="searchbox-form" name="boxForm">
+          <input
+                  id="searchbox"
+                  class="searchbox__input"
+                  type="text"
+                  placeholder="키워드로 찾아보세요."
+          />
+          <button type="button" class="searchbox__btn">
+            <img
+                    src="/img/icon/search.png"
+                    alt=""
+                    class="searchbox__btn-img"
+            />
+          </button>
+        </form>
+      </div>
+      <div class="article-module article-controller">
+        <div class="search-result-container">
+          <p class="search-result">
+            검색결과 : [<span class="search-result-keyword">장염</span>]에
+            대한 결과 총 <span class="search-result-count">13</span>개
+          </p>
+          <button class="delete-btn">삭제하기</button>
+        </div>
+      </div>
+      <div class="article-module article-summary">
+        <div class="summary-module summary__total">
+          <p class="summary-title">총 게시글</p>
+          <p class="summary-detail">
+            <span class="summary-detail-count" th:text="${total}"></span>개
+          </p>
+        </div>
+        <div class="summary-module summary__average">
+          <p class="summary-title">일일 평균</p>
+          <p class="summary-detail">
+            <span class="summary-detail-count">4</span>개
+          </p>
+        </div>
+        <div class="summary-module summary__useful">
+          <p class="summary-title">총 도움 수</p>
+          <p class="summary-detail">
+            <span class="summary-detail-count">56</span>회
+          </p>
+        </div>
+      </div>
+      <div class="article-module article-list-container">
+        <div class="article-list-head">
+          <input
+                  type="checkbox"
+                  class="list-head__checkbox"
+                  id="head__checkbox"
+          />
+          <ul class="list-head-container">
+            <li class="list-head__title">제목</li>
+            <li class="list-head__date">작성일</li>
+            <li class="list-head__useful">추천수</li>
+            <li class="list-head__reply">답변수</li>
+          </ul>
+        </div>
+        <th:block th:each="board:${boards}">
+          <form class="article-list-unit">
+            <input
+                    type="checkbox"
+                    class="list-unit__checkbox"
+                    id="unit__checkbox"
+            />
+            <ul class="list-unit-container">
+              <li class="list-unit__title" th:text="${board.boardTitle}" ></li>
+              <li class="list-unit__date" th:text="${board.boardRegisterDate}"></li>
+              <li class="list-unit__useful" th:text="${board.likeCount}"></li>
+              <li class="list-unit__reply" th:text="${board.replyCount}"></li>
+              <li class="list-unit__number" th:text="${board.boardNumber}"></li>
+              <li class="list-unit__content" th:text="${board.boardContent}"></li>
+              <li class="list-unit__like_number" th:text="${board.likeNumber}" ></li>
+              <li class="list-unit__category" th:text="${board.boardCategory}" ></li>
+            </ul>
+          </form>
+        </th:block>
+        <div th:object="${pagination}" class="pagination">
+          <div style="text-align: center">
+            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+            <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+              <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+              <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+            </th:block>
+            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+          </div>
+          <form th:action="@{/profile/like}" th:object="${criteria}" name="pageForm">
+            <input type="hidden" th:field="*{page}">
+            <input type="hidden" th:field="*{amount}">
+          </form>
+        </div>
+      </div>
+      <div class="article-module article-detail-container">
+        <div class="article-detail-head">
+          <p class="list-head-text">게시글 상세보기</p>
+        </div>
+        <form th:action="@{/profile/likeDelete}" method="post" name="deleteForm" id="deleteForm">
+          <input type="hidden" id="boardNumber" name="boardNumber">
+          <input type="hidden" id="likeNumber" name="likeVO.likeNumber">
+          <input type="hidden" id="boardCategory" name="boardCategory">
+          <input type="hidden" th:field="${criteria.page}">
+          <input type="hidden" th:field="${criteria.amount}">
+          <div class="article-detail">
+            <p class="article-detail__title">
+              Q.
+              <span class="article-detail__title-span"
+              ></span
+              >
+            </p>
+            <p class="article-detail__detail">
+            </p>
+          </div>
+        </form>
+
+        <div class="article-detail__reply-container">
+          <div class="article-detail__reply-unit">
+            <div class="__reply-unit__profile">
+              <button class="detail-edit-btn">수정하기</button>
+              <button class="detail-remove-btn">삭제하기</button>
+            </div>
+          </div>
+        </div>
+        <!--<div class="article-detail__reply-container">
+          <div class="article-detail__reply-unit">
+            <div class="__reply-unit__profile">
+              <img src="#none" class="__profile-img"></img>
+              <p class="__profile-user-id">답변자1</p>
+              &lt;!&ndash; <button class="reply-edit-btn">수정하기</button>
+              <button class="reply-remove-btn">삭제하기</button> &ndash;&gt;
+            </div>
+            <p class="__reply-unit__detail">그럼요 당연하죠.</p>
+          </div>
+          <div class="article-detail__reply-unit">
+            <div class="__reply-unit__profile">
+              <img src="#none" class="__profile-img"></img>
+              <p class="__profile-user-id">작성자본인</p>
+              <button class="reply-edit-btn">수정하기</button>
+              <button class="reply-remove-btn">삭제하기</button>
+            </div>
+            <p class="__reply-unit__detail">감사합니다.</p>
+          </div>
+        </div>-->
+      </div>
+    </section>
+  </main>
+</div>
+<footer th:replace="/components/footer.html :: .footer-container"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/components/header.js"></script>
+<script src="/js/components/footer.js"></script>
+<script src="/js/user/like.js"></script>
+<script th:inline="javascript">
+  let $pages = $("a.changePage");
+
+  $pages.on("click", function(e){
+    e.preventDefault();
+    $(document.pageForm.page).val($(this).attr("href"));
+    document.pageForm.submit();
+  });
+
+
+
+</script>
+</html>

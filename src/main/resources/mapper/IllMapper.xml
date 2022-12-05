@@ -9,7 +9,7 @@
 
     <update id="profileUpdate">
         UPDATE TBL_ILL
-        SET ILL_NAME = #{illName}
+        SET ILL_NAME = #{illName, jdbcType=VARCHAR}
         WHERE ILL_NUMBER = #{illNumber}
     </update>
 

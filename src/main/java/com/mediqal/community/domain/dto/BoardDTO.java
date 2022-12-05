@@ -41,4 +41,8 @@ public class BoardDTO {
     private List<BoardImgVO> boardImgVOs;
 
     private List<TagVO> tagVOs;
+
+    private Criteria criteria;
+
+    private String likeNumber;
 }

@@ -9,8 +9,12 @@ $list.on("click",function () {
     let number = $(this).children(".list-unit__number").text();
     let title= $(this).children(".list-unit__title").text();
     let content = $(this).children(".list-unit__content").text();
+    let likeNumber = $(this).children(".list-unit__like_number").text();
+    let category = $(this).children(".list-unit__category").text();
 
     $("#boardNumber").val(number);
+    $("#likeNumber").val(likeNumber);
+    $("#boardCategory").val(category);
     $(".article-detail__title-span").text(title);
     $(".article-detail__detail").text(content);
 
@@ -25,6 +29,12 @@ $bDelete.on("click", function () {
 
 $bUpdate.on("click", function () {
     let boardNumber = $("#boardNumber").val();
-    location.href="/board/edit?boardNumber=" + boardNumber;
+    let boardCategory = $("#boardCategory").val();
+    if(boardCategory == "community") {
+        location.href = "/board/board_detail?boardNumber=" + boardNumber;
+    }
+    else if(boardCategory == "review"){
+        location.href = "/board/review_detail?boardNumber=" + boardNumber;
+    }
 });
 

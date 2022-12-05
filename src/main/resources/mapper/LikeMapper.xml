@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.LikeMapper">
-    
+    <select id="profileSelectAll" resultType="boardDTO">
+        SELECT
+        L.LIKE_NUMBER, B.BOARD_NUMBER, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_REGISTER_DATE, B.BOARD_CATEGORY,
+        (SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE L2 WHERE L2.BOARD_NUMBER = L.BOARD_NUMBER) AS LIKE_COUNT,
+        (SELECT COUNT(REPLY_NUMBER) FROM TBL_REPLY P WHERE P.BOARD_NUMBER = L.BOARD_NUMBER) AS REPLY_COUNT
+        FROM
+        (
+            SELECT ROWNUM R, LIKE_NUMBER, BOARD_NUMBER
+            FROM
+            (
+                SELECT LIKE_NUMBER, BOARD_NUMBER
+                FROM TBL_LIKE
+                WHERE USER_NUMBER = #{userNumber} ORDER BY LIKE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        ) L, TBL_BOARD B
+        WHERE R > (#{criteria.page} - 1) * #{criteria.amount}
+        AND B.BOARD_NUMBER = L.BOARD_NUMBER
+        ]]>
+    </select>
+
+    <select id="profileGetTotal" resultType="_int">
+        SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <delete id="profileDelete">
+        DELETE FROM TBL_LIKE
+        WHERE LIKE_NUMBER = #{likeNumber}
+    </delete>
+
 </mapper>
