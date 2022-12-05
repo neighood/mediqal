@@ -31,10 +31,18 @@ class BoardMapperTest {
 
     @Test
     public void selectTest(){
-        log.info("boardSelect" + boardMapper.select(252L));
+        log.info("boardSelect" + boardMapper.adminSelectTest(252L));
     }
 
     @Test
     public void selectAllTest(Criteria criteria){
+    }
+
+    @Test
+    public void insertTest(){
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.create("insertTestTitle", 10L, "insertTestContent");
+        boardMapper.insert(boardDTO);
+        log.info("boardNumber: " + boardDTO.getBoardNumber());
     }
 }

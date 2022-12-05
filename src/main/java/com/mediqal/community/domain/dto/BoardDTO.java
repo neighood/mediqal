@@ -44,6 +44,16 @@ public class BoardDTO {
 
     private Criteria criteria;
 
+    private String likeNumber;
+
+
+
+    public void create(String boardTitle, Long userNumber, String boardContent) {
+        this.boardTitle = boardTitle;
+        this.userNumber = userNumber;
+        this.boardContent = boardContent;
+    }
+
     public void create(Long boardNumber, String boardTitle, String boardContent, Long boardView) {
         this.boardNumber = boardNumber;
         this.boardTitle = boardTitle;
@@ -70,6 +80,4 @@ public class BoardDTO {
         this.boardContent = boardVO.getBoardContent();
         this.boardView = boardVO.getBoardView();
     }
-
-    private String likeNumber;
 }

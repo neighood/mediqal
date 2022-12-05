@@ -20,33 +20,33 @@ public class BoardDAO {
     //    추가
 
     //    수정
-    public void set(BoardDTO boardDTO){
+    public void adminSet(BoardDTO boardDTO){
         boardMapper.update(boardDTO);
     }
 
     //    삭제
-    public void remove(Long boardNumber){
+    public void adminRemove(Long boardNumber){
         boardMapper.delete(boardNumber);
     }
 
     //    조회
-    public BoardVO findById(Long boardNumber){
-        return boardMapper.select(boardNumber);
+    public BoardVO adminFindById(Long boardNumber){
+        return boardMapper.adminSelect(boardNumber);
     }
 
     //    조회
-    public BoardDTO findByIdTest(Long boardNumber){
-        return boardMapper.selectTest(boardNumber);
+    public BoardDTO adminFindByIdTest(Long boardNumber){
+        return boardMapper.adminSelectTest(boardNumber);
     }
 
     //    전체 조회
-    public List<BoardDTO> findAll(BoardDTO boardDTO) {
-        return boardMapper.selectAll(boardDTO);
+    public List<BoardDTO> adminFindAll(BoardDTO boardDTO) {
+        return boardMapper.adminSelectAll(boardDTO);
     }
 
     // 개수
-    public int findCountAll(BoardDTO boardDTO){
-        return boardMapper.getTotal(boardDTO);
+    public int adminFindCountAll(BoardDTO boardDTO){
+        return boardMapper.adminGetTotal(boardDTO);
     }
     //    프로필 전체 조회
     public List<BoardDTO> profileSelectAll(BoardDTO boardDTO){
@@ -63,6 +63,20 @@ public class BoardDAO {
     //    좋아요 전체 갯수
     public int profileGetLikeTotal(BoardDTO boardDTO){
         return boardMapper.profileGetLikeTotal(boardDTO);
+    }
+
+
+//    메인
+    public List<BoardDTO> findAll(Criteria criteria){
+        return boardMapper.selectAll(criteria);
+    }
+    //    전체 개수
+    public int findCountAll(){
+        return boardMapper.getTotal();
+    }
+
+    public void save(BoardDTO boardDTO){
+        boardMapper.insert(boardDTO);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.mediqal.community.repository;
 
 import com.mediqal.community.domain.dto.BoardDTO;
+import com.mediqal.community.domain.dto.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +24,23 @@ class BoardDAOTest {
 //    삭제
     @Test
     public void removeTest(){
-        boardDAO.remove(6L);
+        boardDAO.adminRemove(6L);
     }
 
 //    조회
     @Test
     public void findByIdTest(){
-        log.info("findByIdTest" + boardDAO.findById(7L));
+        log.info("findByIdTest" + boardDAO.adminFindById(7L));
     }
 
 //    전제 조회
     @Test
     public void findAllTest(){
 
+    }
+
+    @Test
+    void findAll() {
+        boardDAO.findAll(new Criteria().create(1, 10)).stream().map(BoardDTO::getBoardTitle).forEach(log::info);
     }
 }

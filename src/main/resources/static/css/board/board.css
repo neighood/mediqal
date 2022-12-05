@@ -29,6 +29,7 @@ img {
 }
 
 .container {
+    display: block;
     padding: 20px;
     border: 1px solid #eaecee;
     border-radius: 10px;
@@ -97,7 +98,7 @@ img {
     right: 160px;
     width: 58px;
     height: 58px;
-    background: #2a7de1;
+    background: var(--main-color);
     border-radius: 48px;
     display: flex;
     justify-content: center;
@@ -115,10 +116,25 @@ img {
     filter: opacity(0.5) drop-shadow(0 0 0 #FFFFFF);
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
+.wrapper {
+    margin-bottom: 2rem;
+}
 
+/*.changePageWrapper {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
 
+/*.changePage {*/
+/*    display: block;*/
+/*}*/
 
-
-
-
+.board-register {
+    margin: 0.5em 0;
+    color: #7E848A;
+}
