@@ -13,7 +13,8 @@ $logo.on("click", function(e){
 
 $community.on("click", function(e){
     e.preventDefault();
-    location.href = "/board/board";
+    // location.href = "/board/board";
+    location.href = "/board/list";
 });
 
 $review.on("click", function(e){
