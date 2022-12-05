@@ -1,5 +1,6 @@
 package com.mediqal.community.repository;
 
+import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.mapper.UserMapper;
@@ -30,9 +31,14 @@ public class UserDAO {
     }
 
     //    전체 조회
-    public List<UserVO> findAll() {
-        return userMapper.selectAll();
+    public List<UserVO> findAll(Criteria criteria) {
+        return userMapper.selectAll(criteria);
     }
+    // 개수
+    public int findCountAll(){
+        return userMapper.getTotal();
+    }
+
     //    회원가입
     public void save(UserDTO userDTO){userMapper.insert(userDTO);}
     //    비밀번호 찾기
@@ -63,7 +69,7 @@ public class UserDAO {
     //    비밀번호 체크
     public int profileCheckPW(UserVO userVO){return userMapper.profileCheckPW(userVO);}
     //    비밀번호 변경
-    public void profileUpdatePW(String userPasswordNew){userMapper.profileUpdatePW(userPasswordNew);}
+    public void profileUpdatePW(UserVO userVO){userMapper.profileUpdatePW(userVO);}
 
 
 }

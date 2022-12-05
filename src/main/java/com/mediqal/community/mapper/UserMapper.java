@@ -21,7 +21,10 @@ public interface UserMapper {
     public UserVO select(Long userNumber);
 
     //    전체 조회
-    public List<UserVO> selectAll();
+    public List<UserVO> selectAll(Criteria criteria);
+
+    //    전체 개수
+    public int getTotal();
 
     //    회원가입
     public void insert(UserDTO userDTO);
@@ -48,7 +51,7 @@ public interface UserMapper {
 //    비밀번호 체크
     public int profileCheckPW(UserVO userVO);
 //    비밀번호 변경
-    public void profileUpdatePW(String userPasswordNew);
+    public void profileUpdatePW(UserVO userVO);
 
 
 }

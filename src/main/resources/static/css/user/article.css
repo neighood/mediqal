@@ -285,6 +285,7 @@
   background-color: #434343;
   color: #fff;
   border-radius: 3px;
+  display: none;
 }
 
 .detail-remove-btn {
@@ -294,6 +295,7 @@
   background-color: var(--red-color-light);
   color: #fff;
   border-radius: 3px;
+  display: none;
 }
 
 .detail-head-container {
@@ -305,6 +307,7 @@
 .article-detail {
   padding: 1rem;
   background-color: #fff;
+  height: 300px;
 }
 
 .article-detail__title {
@@ -327,7 +330,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 0.5rem;
+  /*margin-bottom: 0.5rem;*/
 }
 
 .__profile-img {
@@ -364,4 +367,20 @@
 
 .__reply-unit__detail {
   margin-bottom: 0.5rem;
+}
+
+.list-unit__content, .list-unit__number, .list-unit__like_number, .list-unit__category {
+  display: none;
+}
+
+.changePage{
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+  "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", arial, dotum,
+  돋움, sans-serif;
+
+  -moz-transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
 }
