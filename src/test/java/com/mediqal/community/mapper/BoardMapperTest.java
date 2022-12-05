@@ -31,11 +31,10 @@ class BoardMapperTest {
 
     @Test
     public void selectTest(){
-        log.info("boardSelect" + boardMapper.select(14L));
+        log.info("boardSelect" + boardMapper.select(252L));
     }
 
     @Test
     public void selectAllTest(Criteria criteria){
-        boardMapper.selectAll(criteria).stream().map(BoardDTO::getBoardTitle).forEach(log::info);
     }
 }

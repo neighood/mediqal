@@ -42,11 +42,26 @@ public class BoardDTO {
 
     private List<TagVO> tagVOs;
 
+    private Criteria criteria;
+
     public void create(Long boardNumber, String boardTitle, String boardContent, Long boardView) {
         this.boardNumber = boardNumber;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
         this.boardView = boardView;
+    }
+
+    public void create(String boardTitle, String boardContent) {
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+    }
+
+    public void create(BoardDTO boardDTO) {
+        this.boardNumber = boardDTO.getBoardNumber();
+        this.boardTitle = boardDTO.getBoardTitle();
+        this.boardContent = boardDTO.getBoardContent();
+        this.boardView = boardDTO.getBoardView();
+        this.userNickname = boardDTO.getUserNickname();
     }
 
     public void create(BoardVO boardVO) {

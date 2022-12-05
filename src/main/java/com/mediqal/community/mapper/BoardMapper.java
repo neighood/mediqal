@@ -22,9 +22,12 @@ public interface BoardMapper {
     //    조회
     public BoardVO select(Long boardNumber);
 
+    //    조회
+    public BoardDTO selectTest(Long boardNumber);
+
     //    전체 조회
-    public List<BoardDTO> selectAll(Criteria criteria);
+    public List<BoardDTO> selectAll(BoardDTO boardDTO);
 
     //    전체 개수
-    public int getTotal();
+    public int getTotal(BoardDTO boardDTO);
 }

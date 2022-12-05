@@ -112,64 +112,6 @@
                         </ul>
                     </details>
                 </li>
-                <!--            <li>-->
-                <!--                <details>-->
-                <!--                    <summary class="nav-menu">-->
-                <!--                        <img-->
-                <!--                                src="/img/icon/support.png"-->
-                <!--                                alt="icon"-->
-                <!--                                class="menu__icon"-->
-                <!--                        />-->
-                <!--                        <h2 class="menu__title">문의관리</h2>-->
-                <!--                        <img-->
-                <!--                                src="/img/icon/dropdown.png"-->
-                <!--                                alt="icon"-->
-                <!--                                class="menu__icon&#45;&#45;drop-down"-->
-                <!--                        />-->
-                <!--                    </summary>-->
-                <!--                    <ul class="nav-menu-submenu">-->
-                <!--                        <a href="">-->
-                <!--                            <h3>-->
-                <!--                                <li class="submenu__item">문의관리</li>-->
-                <!--                            </h3>-->
-                <!--                        </a>-->
-                <!--                        <a href="">-->
-                <!--                            <h3>-->
-                <!--                                <li class="submenu__item">분쟁관리</li>-->
-                <!--                            </h3>-->
-                <!--                        </a>-->
-                <!--                    </ul>-->
-                <!--                </details>-->
-                <!--            </li>-->
-                <!--          <li>-->
-                <!--            <details>-->
-                <!--              <summary class="nav-menu">-->
-                <!--                <img-->
-                <!--                  src="/img/icon/megaphone.png"-->
-                <!--                  alt="icon"-->
-                <!--                  class="menu__icon"-->
-                <!--                />-->
-                <!--                <h2 class="menu__title">공지/FAQ관리</h2>-->
-                <!--                <img-->
-                <!--                  src="/img/icon/dropdown.png"-->
-                <!--                  alt="icon"-->
-                <!--                  class="menu__icon&#45;&#45;drop-down"-->
-                <!--                />-->
-                <!--              </summary>-->
-                <!--              <ul class="nav-menu-submenu">-->
-                <!--                <a href="">-->
-                <!--                  <h3>-->
-                <!--                    <li class="submenu__item">공지사항</li>-->
-                <!--                  </h3>-->
-                <!--                </a>-->
-                <!--                <a href="">-->
-                <!--                  <h3>-->
-                <!--                    <li class="submenu__item">FAQ</li>-->
-                <!--                  </h3>-->
-                <!--                </a>-->
-                <!--              </ul>-->
-                <!--            </details>-->
-                <!--          </li>-->
                 <li>
                     <details>
                         <summary class="nav-menu">
@@ -223,15 +165,6 @@
                 <div class="user-list__title-unit">
                     <input type="checkbox" id="title__checkbox" name="checkbox-all"/>
                     <ul class="user-list__title">
-                        <!--<li class="title__id">고객번호</li>
-                        <li class="title__name">이름</li>
-                        <li class="title__user-id">회원 ID</li>
-                        <li class="title__email">이메일</li>
-                        <li class="title__phone">핸드폰 번호</li>
-                        <li class="title__join">가입일</li>
-                        <li class="title__recent">최근 접속일</li>
-                        <li class="title__status">상태</li>
-                        <li class="title__detail">상세</li>-->
                         <li class="title__id">회원 번호</li>
                         <li class="title__name">이름</li>
                         <li class="title__email">이메일</li>
@@ -242,7 +175,6 @@
 
                 </div>
             </div>
-
             <div class="user-list__info-container">
                 <th:block th:each="user:${users}">
                     <div class="user-list__info-unit" onclick="getUserNumber()" th:object="${user}">
@@ -253,7 +185,7 @@
                                 name="checkbox"
                         />
                         <label class="user__checkbox--label">
-                                <ul class="user-list__info" th:object="${user}">
+                                <ul class="user-list__info">
                                     <li class="user__id" th:text="*{userNumber}"></li>
                                     <li class="user__name" th:text="*{userName}"></li>
                                     <li class="user__email" th:text="*{userEmail}"></li>
@@ -337,78 +269,4 @@
 <script src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="/js/admin/admin.js"></script>
 <script src="/js/admin/userTest.js"></script>
-<script th:inline="javascript">
-    let $pages = $("a.changePage");
-
-    $pages.on("click", function(e){
-        e.preventDefault();
-        $(document.pageForm.page).val($(this).attr("href"));
-        document.pageForm.submit();
-    });
-
-    // let adminUserService = (function () {
-    //     function remove(userNumber, callback) {
-    //         $.ajax({
-    //             url: "/admin/userTest/" + userNumber,
-    //             type: "delete",
-    //             success: function () {
-    //                 if (callback) {
-    //                     callback();
-    //                 }
-    //             }
-    //         })
-    //     }
-    //
-    //     return {remove: remove}
-    // })();
-
-    let adminUserService = (function () {
-        function remove(check, callback) {
-            // console.log(checkBoxArr);
-            // $.ajax({
-            //     url : "/admin/arrayTest/",
-            //     type : 'post',
-            //     dataType : 'json',
-            //     data : {
-            //         "checkBoxArr" : checkBoxArr,
-            //     },
-            //     success: function(data){
-            //         console.log("성공");
-            //     }
-            // });
-            // console.log(checkBox);
-            var userNumber = check;
-            console.log(userNumber);
-            $.ajax({
-                url: "/admin/userTest/ "+ userNumber,
-                type: "delete",
-                // data: userNumber,
-                success: function () {
-                    if (callback) {
-                        callback();
-                    }
-                }
-            })
-        }
-        return {remove: remove}
-    })();
-
-    $(".delete-button").on("click", function(){
-        if (confirm(checkBoxArr + "번의 회원을 삭제하시겠습니까?") ) {
-            checkBoxArr.forEach(check => adminUserService.remove(check));
-            // adminUserService.remove(checkBoxArr);
-            return false;
-        }
-    });
-
-    var checkBoxArr;
-
-    function getUserNumber(){
-        checkBoxArr = [];
-        $("input:checkbox[name='checkbox']:checked").each(function() {
-            checkBoxArr.push($(this).attr('id'));
-            console.log(checkBoxArr);
-        })
-    }
-</script>
 </html>

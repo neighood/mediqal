@@ -38,6 +38,10 @@ public class AdminUserService implements UserService{
         return userDTO;
     }
 
+    public UserVO showTest(Long userNumber) {
+        return userDAO.findById(userNumber);
+    }
+
     @Override
     public List<UserVO> showAll(Criteria criteria) {
         return userDAO.findAll(criteria);

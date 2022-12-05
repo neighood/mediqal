@@ -38,38 +38,44 @@
 
 <!-- 프로필 끝 -->
 
-
 <!--    <select id="select" resultType="boardVO">-->
-<!--        SELECT B.BOARD_NUMBER,B.BOARD_TITLE, B.BOARD_REGISTER_DATE, B.BOARD_VIEW, U.USER_NICKNAME,-->
-<!--        (SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE WHERE #{boardNumber})-->
-<!--        FROM TBL_BOARD B, TBL_USER U-->
+<!--        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW FROM TBL_BOARD-->
 <!--        WHERE BOARD_NUMBER = #{boardNumber}-->
 <!--    </select>-->
 
-    <select id="select" resultType="boardVO">
-        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW FROM TBL_BOARD
-        WHERE BOARD_NUMBER = #{boardNumber}
-    </select>
-
-<!--    <select id="selectAll" resultType="boardVO">-->
-<!--        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE FROM TBL_BOARD-->
-<!--    </select>-->
-
-    <select id="selectAll" resultType="boardDTO">
-        SELECT BOARD_NUMBER, USER_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW
+    <select id="selectTest" resultType="boardDTO">
+        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_VIEW,
+        (SELECT USER_NICKNAME FROM TBL_USER U WHERE U.USER_NUMBER = B.USER_NUMBER) AS USER_NICKNAME,
+        (SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE P WHERE P.BOARD_NUMBER = B.BOARD_NUMBER) AS LIKE_COUNT
         FROM
         (
-            SELECT ROWNUM R, BOARD_NUMBER, USER_NUMBER,  BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW
+            SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_VIEW, USER_NUMBER
+            FROM TBL_BOARD
+            WHERE BOARD_NUMBER = #{boardNumber}
+            ) B
+    </select>
+
+    <select id="selectAll" resultType="boardDTO">
+        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_CONTENT, BOARD_VIEW,
+        (SELECT USER_NICKNAME FROM TBL_USER U WHERE U.USER_NUMBER = B.USER_NUMBER) AS USER_NICKNAME,
+        (SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE P WHERE P.BOARD_NUMBER = B.BOARD_NUMBER) AS LIKE_COUNT
+        FROM
+        (
+            SELECT ROWNUM R, BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_CONTENT, BOARD_VIEW ,USER_NUMBER
             FROM
             (
-                SELECT BOARD_NUMBER, USER_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW
-                FROM TBL_BOARD B
-                ORDER BY BOARD_NUMBER
+                SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_CONTENT, BOARD_VIEW, USER_NUMBER
+                FROM TBL_BOARD
+                WHERE BOARD_CATEGORY = #{boardCategory} ORDER BY BOARD_NUMBER
             ) D2
         <![CDATA[
-        WHERE ROWNUM <= #{page} * #{amount}
-        ) WHERE R > (#{page} - 1) * #{amount}
+        WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        ) B WHERE R > (#{criteria.page} - 1) * #{criteria.amount}
         ]]>
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(BOARD_NUMBER) FROM TBL_BOARD WHERE BOARD_CATEGORY = #{boardCategory}
     </select>
 
     <delete id="delete">

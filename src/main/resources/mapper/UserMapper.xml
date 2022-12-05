@@ -17,7 +17,7 @@
 
     <!-- admin/userTest 검색 조회   -->
     <select id="select" resultType="userVO">
-        SELECT USER_NUMBER, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_TYPE FROM TBL_USER
+        SELECT USER_NUMBER, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_TYPE, USER_PASSWORD FROM TBL_USER
         WHERE USER_NUMBER = #{userNumber}
     </select>
 

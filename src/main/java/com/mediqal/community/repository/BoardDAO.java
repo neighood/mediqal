@@ -33,13 +33,18 @@ public class BoardDAO {
         return boardMapper.select(boardNumber);
     }
 
+    //    조회
+    public BoardDTO findByIdTest(Long boardNumber){
+        return boardMapper.selectTest(boardNumber);
+    }
+
     //    전체 조회
-    public List<BoardDTO> findAll(Criteria criteria) {
-        return boardMapper.selectAll(criteria);
+    public List<BoardDTO> findAll(BoardDTO boardDTO) {
+        return boardMapper.selectAll(boardDTO);
     }
 
     // 개수
-    public int findCountAll(){
-        return boardMapper.getTotal();
+    public int findCountAll(BoardDTO boardDTO){
+        return boardMapper.getTotal(boardDTO);
     }
 }

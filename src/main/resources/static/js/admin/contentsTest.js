@@ -48,6 +48,108 @@
 //     addcontent(content, i);
 // }
 
+
+let $pages = $("a.changePage");
+
+$pages.on("click", function(e){
+    e.preventDefault();
+    $(document.pageForm.page).val($(this).attr("href"));
+    document.pageForm.submit();
+});
+
+let adminBoardService = (function () {
+    function remove(check, callback) {
+
+        var boardNumber = check;
+        $.ajax({
+            url: "/adminAjax/" + boardNumber,
+            type: "get",
+            // data: userNumber,
+            success: function () {
+                location.reload();
+            },
+            error: function(){
+                console.log(boardNumber);
+                console.log("에러 발생");
+            }
+        })
+    }
+
+    function read(boardNumber, callback){
+        $.ajax({
+            url: "/adminAjax/boardDetailRead?boardNumber=" + boardNumber,
+            type: "get",
+            success: function(board){
+                if(callback){
+                    callback(board);
+                }
+            }
+        })
+    }
+
+    return {remove: remove, read: read}
+})();
+
+$(".delete-button").on("click", function(){
+    if (confirm(checkBoxArr + "번의 회원을 삭제하시겠습니까?") ) {
+        checkBoxArr.forEach(check => adminBoardService.remove(check));
+        // checkBoxArr.forEach(check => console.log(check));
+        // adminUserService.remove(checkBoxArr);
+        return false;
+    }
+});
+
+var checkBoxArr;
+
+function getUserNumber(){
+    checkBoxArr = [];
+    $("input:checkbox[name='checkbox']:checked").each(function() {
+        checkBoxArr.push($(this).attr('id'));
+        console.log(checkBoxArr);
+    })
+}
+
+
+/*$(".detail-button").on("click", function(){
+    let getBoardNumber = $(this).parent(".content__detail").siblings(".content__id").text();
+    adminBoardService.read(getBoardNumber);
+    console.log("getBoardNumber : " + getBoardNumber);
+});*/
+
+// $.ajax({
+//     url:"",
+//     type:"",
+//     contentType:"",
+//     data:"",
+//     dataType:"",
+//     success:"",
+//     error:""
+// })
+
+// $('#contentDiv').on('click', '.image-inner a', function(e) {
+//     e.preventDefault();
+//
+//     //글 번호 얻어오기
+//     const bno = $(this).attr('href');
+//
+//     $.getJSON(
+//         "<c:url value='/snsBoard/getDetail/' />" + bno,
+//         function(data) {
+//             console.log(data);
+//
+//             const img = 'display?fileLoca=' + data.fileloca + '&fileName=' + data.filename;
+//             $('#snsImg').attr('src', img); //이미지 경로 처리
+//             $('#snsWriter').html(data.writer); //작성자 처리
+//             $('#snsRegdate').html(timeStamp(data.regdate)); //날짜 처리
+//             $('#snsContent').html(data.content); //내용 처리
+//             $('#snsModal').modal('show'); //모달 열기
+//         }
+//     );
+//
+// });
+
+///////////////////////////////////////////////////////////////////////////////
+
 // 전체 선택 체크박스
 const checkBoxAll = document.getElementsByName("checkbox-all");
 const checkBox = document.querySelectorAll('input[name = "checkbox"]');
@@ -94,13 +196,26 @@ function changeButton2() {
 /*--------------*/
 
 /*모달 창 띄우기*/
-function modal() {
+$(".detail-button").on("click", function(){
+    let getBoardNumber = $(this).parent(".content__detail").siblings(".content__id").text();
     $('.modal').css('visibility', 'visible');
     $('#edit-button1').css('visibility', 'visible');
     $('.input2').attr('readOnly', true);
-}
+    console.log(getBoardNumber);
+    adminBoardService.read(getBoardNumber, showDetail);
+});
 
 function closeModal() {
     $('.modal').css('visibility', 'hidden');
     $('#edit-button1').css('visibility', 'hidden');
+}
+
+function showDetail(board) {
+    console.log(board);
+    $("#board-number").val(board.boardNumber);
+    $("#user-nickname").val(board.userNickname);
+    $("#board-likes").val(board.likeCount);
+    $("#board-views").val(board.boardView);
+    $("#board-title").val(board.boardTitle);
+    $("#board-content").val(board.boardContent);
 }
