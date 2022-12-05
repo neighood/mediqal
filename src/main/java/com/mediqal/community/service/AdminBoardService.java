@@ -19,23 +19,23 @@ public class AdminBoardService implements BoardService{
 
     @Override
     public void register(BoardDTO boardDTO) {
-        boardDAO.set(boardDTO);
+        boardDAO.adminSet(boardDTO);
     }
 
     @Override
     public void modify(BoardDTO boardDTO) {
-        boardDAO.set(boardDTO);
+        boardDAO.adminSet(boardDTO);
     }
 
     @Override
     public void remove(Long boardNumber) {
-        boardDAO.remove(boardNumber);
+        boardDAO.adminRemove(boardNumber);
     }
 
     @Override
     public BoardDTO show(Long boardNumber) {
         BoardDTO boardDTO = new BoardDTO();
-        boardDTO.create(boardDAO.findByIdTest(boardNumber));
+        boardDTO.create(boardDAO.adminFindByIdTest(boardNumber));
         return boardDTO;
     }
 
@@ -50,10 +50,10 @@ public class AdminBoardService implements BoardService{
     }
 
     public List<BoardDTO> showAll(BoardDTO boardDTO) {
-        return boardDAO.findAll(boardDTO);
+        return boardDAO.adminFindAll(boardDTO);
     }
 
     public int getTotal(BoardDTO boardDTO) {
-        return boardDAO.findCountAll(boardDTO);
+        return boardDAO.adminFindCountAll(boardDTO);
     }
 }

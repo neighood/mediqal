@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판 :: 작성</title>
+    <link rel="stylesheet" href="/css/user/root.css" />
     <link rel="stylesheet" href="/css/board/write.css">
     <link rel="stylesheet" href="/css/components/header.css"  />
     <link rel="stylesheet" href="/css/components/footer.css"  />
 </head>
+<style>
+    .header-container {
+        position: absolute;
+    }
+</style>
 <body>
     <header th:replace="/components/header.html :: .header-container"></header>
     <div class="wrap">
@@ -17,7 +23,7 @@
                     <p class="write-content-sub"><strong>전문인</strong>에게 <strong>정확한 정보</strong>를 물어보세요</p>
                 </h1>
                 <div class="write-box">
-                    <form action="">
+                    <form method="post" th:action="@{/board/write}" th:object="${board}">
 
                         <!-------------------------------------------- 카테고리 --------------------------------------------------->
 
@@ -31,11 +37,11 @@
                         <!-------------------------------------------- 작성하기 --------------------------------------------------->
 
                         <div class="board-title">
-                            <input type="text" class="title" placeholder="제목을 입력하세요.">
+                            <input th:field="*{boardTitle}" type="text" class="title" placeholder="제목을 입력하세요.">
                         </div>
                         <div class="board-content-wrap">
                             <div class="board-content">
-                                <input type="text" class="content" placeholder="궁금한 정보를 함께 공유해 봐요.">
+                                <input th:field="*{boardContent}" type="text" class="content" placeholder="궁금한 정보를 함께 공유해 봐요.">
                             </div>
                         </div>
 
@@ -60,7 +66,7 @@
 
                         <div class="request-wrap">
                             <div class="request">
-                                <input type="button" value="질문하기">
+                                <input type="submit" value="질문하기">
                            </div>
                         </div>
                     </form>

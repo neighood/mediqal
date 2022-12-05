@@ -114,8 +114,9 @@ input, select {
     padding: 1px 2px 1px 12px;
 }
 
-.request input[type='button'] {
-    background-color: #D4E5F9;
+.request input[type='submit'] {
+    /*background-color: #D4E5F9;*/
+    background-color: var(--main-color);
     color: white;
     font-size: 18px;
     width: 527px;
