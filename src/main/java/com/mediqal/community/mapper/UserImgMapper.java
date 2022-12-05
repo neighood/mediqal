@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserImgMapper {
     //    조회
     public UserImgVO select(Long userNumber);
-    //    파일 추가
-    public void insert(UserImgVO userImgVO);
+    //    파일 수정
+    public void update(UserImgVO userImgVO);
     //    파일 삭제
     public void delete(Long userImgNumber);
     //    추가

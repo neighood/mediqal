@@ -23,51 +23,51 @@
       <p class="menu-list-title">메인</p>
       <ul class="menu-list-container menu-list--home">
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link">대시보드</a>
+          <a href="/profile/upcoming" class="menu-list-link">대시보드</a>
         </li>
         <li class="menu-list">
-          <a href="/user/info" class="menu-list-link menu-list--current"
+          <a href="/profile/info" class="menu-list-link menu-list--current"
           >회원정보</a
           >
         </li>
         <li class="menu-list">
-          <a href="/user/notification" class="menu-list-link">알림</a>
+          <a href="/profile/notification" class="menu-list-link">알림</a>
         </li>
       </ul>
       <p class="menu-list-title">커뮤니티</p>
       <ul class="menu-list-container memu-list--community">
         <li class="menu-list">
-          <a href="/user/article" class="menu-list-link">작성한 글</a>
+          <a href="/profile/article" class="menu-list-link">작성한 글</a>
         </li>
         <li class="menu-list">
-          <a href="/user/reply" class="menu-list-link">작성한 답변</a>
+          <a href="/profile/reply" class="menu-list-link">작성한 답변</a>
         </li>
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link">도움된 글</a>
+          <a href="/profile/like" class="menu-list-link">도움된 글</a>
         </li>
       </ul>
       <p class="menu-list-title">진료후기</p>
       <ul class="menu-list-container menu-list--review">
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link">작성한 후기</a>
+          <a href="/profile/reviews" class="menu-list-link">작성한 후기</a>
         </li>
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link">스크랩 후기</a>
+          <a href="/profile/upcoming" class="menu-list-link">스크랩 후기</a>
         </li>
       </ul>
       <p class="menu-list-title">계정설정</p>
       <ul class="menu-list-container menu-list--settings">
         <li class="menu-list">
-          <a href="/user/email" class="menu-list-link">이메일 인증/변경</a>
+          <a href="/profile/email" class="menu-list-link">이메일 인증/변경</a>
         </li>
         <li class="menu-list">
-          <a href="/user/password" class="menu-list-link">비밀번호 변경</a>
+          <a href="/profile/password" class="menu-list-link">비밀번호 변경</a>
         </li>
         <li class="menu-list">
-          <a href="/user/upcoming" class="menu-list-link menu-list--upcoming">휴대폰 인증</a>
+          <a href="/profile/upcoming" class="menu-list-link menu-list--upcoming">휴대폰 인증</a>
         </li>
         <li class="menu-list">
-          <a href="/user/leave" class="menu-list-link">회원탈퇴</a>
+          <a href="/profile/leave" class="menu-list-link">회원탈퇴</a>
         </li>
       </ul>
     </nav>
@@ -75,13 +75,20 @@
   <main class="main">
     <section class="user-info">
       <p class="user-info-title">회원정보</p>
-      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post" >
+      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post" enctype="multipart/form-data">
+        <div class="hidden" style="display: none"></div>
         <div class="info__img">
           <p class="info__img-title">프로필 이미지</p>
           <!-- 테스트 -->
           <!--<div class="info__img-img"></div>-->
-          <img class="info__img-img" th:if="${userImgVO.userImgImageCheck}" th:src="@{/userImg/display(userImgName=${userImgVO.userImgUploadPath} + '/s_' + ${userImgVO.userImgUuid} + '_' + ${userImgVO.userImgName})}">
-          <img class="info__img-img" th:unless="${userImgVO.userImgImageCheck}" th:src="https://avatars.dicebear.com/api/identicon/medirqlasdf${userNickname}.svg">
+          <input type="file" name="upload" style="display: none" id="upload" accept="image/gif, image/jpeg, image/png, image/svg">
+          <img class="info__img-img" th:if="*{userImgVO.userImgImageCheck}" th:src="@{/userImg/display(fileName=*{userImgVO.userImgUploadPath} + '/s_' + *{userImgVO.userImgUuid} + '_' + *{userImgVO.userImgName})}">
+          <img class="info__img-img" th:unless="*{userImgVO.userImgImageCheck}" th:src="@{https://avatars.dicebear.com/api/identicon/medirqlasdf${session.userNumber}.svg}">
+            <input type="hidden" id="userImgName" name="userImgName" th:field="*{userImgVO.userImgName}">
+            <input type="hidden" id="userImgUploadPath" name="userImgUploadPath" th:field="*{userImgVO.userImgUploadPath}">
+            <input type="hidden" id="userImgUuid" name="userImgUuid" th:field="*{userImgVO.userImgUuid}">
+            <input type="hidden" id="userImgSize" name="userImgSize" th:field="*{userImgVO.userImgSize}">
+            <input type="hidden" id="userImgImageCheck" name="userImgImageCheck" th:field="*{userImgVO.userImgImageCheck}">
           <!-- <img src="#none" alt="" class="info__img-img" /> -->
           <button type="button" class="info__img-btn">이미지 수정</button>
         </div>
@@ -107,22 +114,28 @@
         </div>
         <div class="info__item info__ill">
           <label for="ill-input" class="info-label">나의 병명</label>
-            <th:block th:each="ill:*{illVOs}">
+            <th:block th:each="ill, illStat:*{illVOs}">
+              <input type="hidden" th:value="${ill.illNumber}" th:name="'illVOs[' + ${illStat.index} + '].illNumber'">
               <input
                       type="text"
                       class="info-input"
-                      th:field="*{ill.illName}"
+                      id="ill-input"
+                      th:name="'illVOs[' + ${illStat.index} + '].illName'"
+                      th:value="${ill.illName}"
                       placeholder="예) 아토피"
               />
             </th:block>
         </div>
         <div class="info__item info__interest" >
           <label for="interest-input" class="info-label">관심분야</label>
-          <th:block th:each="interest:*{interestVOs}">
+          <th:block th:each="interest, interestStat:*{interestVOs}">
+            <input type="hidden" th:value="${interest.interestNumber}" th:name="'interestVOs[' + ${interestStat.index} + '].interestNumber'">
             <input
                     type="text"
                     class="info-input"
-                    th:field="*{interest.interestName}"
+                    id="interest-input"
+                    th:name="'interestVOs[' + ${interestStat.index} + '].interestName'"
+                    th:value="${interest.interestName}"
                     placeholder="예) 우한폐렴 "
             />
           </th:block>

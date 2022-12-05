@@ -9,7 +9,7 @@
 
     <update id="profileUpdate">
         UPDATE TBL_INTEREST
-        SET INTEREST_NAME = #{interestName}
+        SET INTEREST_NAME = #{interestName, jdbcType=VARCHAR}
         WHERE INTEREST_NUMBER = #{interestNumber}
     </update>
 

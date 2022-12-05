@@ -14,9 +14,9 @@ public class UserImgDAO {
     public UserImgVO select(Long userNumber){
         return userImgMapper.select(userNumber);
     }
-    //    파일 추가
-    public void insert(UserImgVO userImgVO) {
-        userImgMapper.insert(userImgVO);
+    //    파일 수정
+    public void update(UserImgVO userImgVO) {
+        userImgMapper.update(userImgVO);
     }
 
     //    파일 삭제
