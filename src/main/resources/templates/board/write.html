@@ -28,9 +28,11 @@
                     <!-------------------------------------------- 카테고리 --------------------------------------------------->
 
                     <div class="category-wrap">
-                        <select name="which-one">
-                            <option value="">Q&A</option>
-                            <option value="">후기</option>
+                        <!--                        <select name="which-one" th:name="">-->
+                        <!--                        <select th:name="*{boardCategory}">-->
+                        <select name="boardCategory">
+                            <option value="community">Q&A</option>
+                            <option value="review">후기</option>
                         </select>
                     </div>
 
@@ -43,6 +45,10 @@
                         <div class="board-content">
                             <input th:field="*{boardContent}" type="text" class="content" placeholder="궁금한 정보를 함께 공유해 봐요.">
                         </div>
+                    </div>
+                    <div class="nonvisible" style="display: none">
+                        <input th:field="*{boardNumber}" />
+                        <input th:field="*{userNumber}" />
                     </div>
 
                     <!-------------------------------------------- 태그 --------------------------------------------------->

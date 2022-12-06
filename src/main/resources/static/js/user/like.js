@@ -18,6 +18,8 @@ $list.on("click",function () {
     $(".article-detail__title-span").text("Q." + title);
     $(".article-detail__detail").text(content);
 
+
+
     $bDelete.css("display","inline-block");
     $bUpdate.css("display","inline-block");
 
@@ -31,10 +33,10 @@ $bUpdate.on("click", function () {
     let boardNumber = $("#boardNumber").val();
     let boardCategory = $("#boardCategory").val();
     if(boardCategory == "community") {
-        location.href = "/board/board_detail?boardNumber=" + boardNumber;
+        location.href="/board/community/" + boardNumber;
     }
     else if(boardCategory == "review"){
-        location.href = "/board/review_detail?boardNumber=" + boardNumber;
+        location.href="/board/review/" + boardNumber;
     }
 });
 

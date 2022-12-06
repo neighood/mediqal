@@ -28,7 +28,7 @@
                         <div class="board-user-profile">
                             <div class="profile-left">
                                 <div class="user-img">
-                                    <img src="/img/comment-user-img.webp" alt="">
+                                    <!--                                    <img src="/img/comment-user-img.webp" alt="">-->
                                 </div>
                                 <div class="board-user-name">
                                     <span>나는야 토마토</span>
@@ -40,8 +40,8 @@
                         </div>
                         <div class="board-menu-nav" style="display: none">
                             <div class="nav">
-                                <div class="update">수정하기</div>
-                                <div class="delete">삭제하기</div>
+                                <a class="update">수정하기</a>
+                                <a class="delete">삭제하기</a>
                             </div>
                         </div>
                         <div class="board-header">
@@ -71,7 +71,7 @@
                                 <div class="img">
                                     <i class="fa-regular fa-heart"></i>
                                     <!--                                        <i class="fa-solid fa-heart"></i>-->
-                                    <span>좋아요 0</span>
+                                    <span id="likeTotal"></span>
                                 </div>
                             </div>
                             <div class="comment-count">
@@ -94,21 +94,21 @@
                             <div class="display-flex">
                                 <div class="flex-start">
                                     <div class="comment-user-profile">
-                                        <div class="comment-last-name">정</div>
+                                        <!--                                        <div class="comment-last-name">정</div>-->
                                     </div>
-                                    <div class="comment-user-name">
+                                    <div class="comment-user-name" th:text="*{userNickname}">
                                         정졍짱
                                     </div>
                                 </div>
-                                <div class="menu-icon">
+                                <div class="rep-menu-icon">
                                     <img src="/img/menu-icon.png" class="comment-toggle" alt="">
                                 </div>
                             </div>
                             <div class="comment-menu-nav" style="display: none">
                                 <!--                            <div class="comment-menu-nav" th:if="*{userNumber == 3}">-->
-                                <div class="nav">
-                                    <div class="update">수정하기</div>
-                                    <div class="delete">삭제하기</div>
+                                <div class="rep-nav" th:field="replyUser + *{userNumber}">
+                                    <div class="rep-update">수정하기</div>
+                                    <div class="rep-delete">삭제하기</div>
                                 </div>
                             </div>
                         </div>
@@ -129,12 +129,12 @@
             <div class="comment-input-text-wrap">
                 <div class="comment-input-text-box">
                     <div class="comment-input-text">
-                        <input type="text" placeholder="댓글을 입력하세요.">
+                        <input class="newReplyContent" type="text" placeholder="댓글을 입력하세요.">
                     </div>
                 </div>
                 <div class="comment-submit">
                     <div class="submit-img">
-                        <img src="/img/comment-submit-icon.png" alt="">
+                        <img class="submitReply" src="/img/comment-submit-icon.png" alt="">
                     </div>
                 </div>
             </div>
@@ -154,39 +154,161 @@
 <footer th:replace="/components/footer.html :: .footer-container"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<!--<script src="/js/board/board_detail.js"></script>-->
+<script src="/js/board/board_detail.js"></script>
 <script th:inline="javascript">
+
+    let board = [[${board}]];
+    let boardCategory = board.boardCategory;
+    let boardNumber = board.boardNumber;
 
     let boardUserNumber = [[${board.userNumber}]];
     /* TODO: 세션으로 교체 */
-    let userNumber = 4;
-    console.log(boardUserNumber);
+    // let userNumber = 4;
+    // const realUserNumber = sessionStorage.getAttribute("userNumber");
+    let realUserNumber = [[${session.userNumber}]];
 
-    if(boardUserNumber == userNumber) {
+    console.log( [[${session}]]);
+    // console.log("세션" + realUserNumber);
+    console.log("로그인 회원 : " + realUserNumber);
+    console.log("게시글 작성 회원 : " +  boardUserNumber);
+
+    if(boardUserNumber != realUserNumber) {
+        $("div.board-menu-nav").hide();
+        $("div.menu-icon").hide();
+    }
+
+    if(boardUserNumber == realUserNumber) {
         $("img.board-toggle").on("click", function () {
 
             $("div.board-menu-nav").toggle();
         });
-
-        $("img.comment-toggle").on("click", function () {
-            /*if($("div.comment-menu-nav").css('display') === 'none'){
-            $("div.comment-menu-nav").show();
-        } else {
-            $("div.comment-menu-nav").hide();
-        }*/
-
-            $("div.comment-menu-nav").toggle();
-        });
     }
+
+    $("img.comment-toggle").on("click", function () {
+        $("div.comment-menu-nav").toggle();
+    });
+
+    // $("div.rep-menu-icon").hide();
+
+    $(document).ready(function(){
+        $.ajax({
+            url: "/boardLike/check",
+            type: "post",
+            data: {boardNumber: boardNumber, userNumber: realUserNumber},
+            success: function(check){
+                if(check == 0){
+                    $(".fa-heart").attr('class', 'fa-regular fa-heart');
+                }
+                else {
+                    $(".fa-heart").attr('class', 'fa-solid fa-heart');
+                }
+            }
+        });
+        $.ajax({
+            url: "/boardLike/getTotal",
+            type: "post",
+            data: {boardNumber: boardNumber},
+            success: function(total){
+                $("#likeTotal").text("좋아요 "+ total);
+            }
+        });
+    })
+
+
+
+
     $(".fa-heart").on("click", function(){
         // console.log($(this).attr('class'));
-        if($(this).attr('class') == 'fa-regular fa-heart'){
-            $(this).attr('class', 'fa-solid fa-heart');
-        } else {
-            $(this).attr('class', 'fa-regular fa-heart');
+        if(realUserNumber){
+            if($(this).attr('class') == 'fa-regular fa-heart'){
+                $(this).attr('class', 'fa-solid fa-heart');
+                $.ajax({
+                    url: "/boardLike/insert",
+                    type: "post",
+                    data: {boardNumber: boardNumber, userNumber: realUserNumber},
+                    success: function(total){
+                        $("#likeTotal").text("좋아요 "+ total);
+                    }
+                });
+            } else {
+                $(this).attr('class', 'fa-regular fa-heart');
+                $.ajax({
+                    url: "/boardLike/delete",
+                    type: "post",
+                    data: {boardNumber: boardNumber, userNumber: realUserNumber},
+                    success: function(total){
+                        $("#likeTotal").text("좋아요 "+ total);
+                    }
+                });
+            }
         }
     });
 
+    let editUrl = `/board/${boardCategory}/${boardNumber}/edit`;
+    let removeUrl = `/board/${boardCategory}/${boardNumber}/remove`;
+
+    $(".update").on("click", function (e) {
+        e.preventDefault();
+        location.href = editUrl;
+    });
+
+    $(".delete").on("click", function (e) {
+        e.preventDefault();
+        location.href = removeUrl;
+    });
+
+    //  기타
+    $("div.user-img").css({"background":`url(https://avatars.dicebear.com/api/identicon/[[${board.userNumber}]].svg)`})
+
+    //    TODO : 댓글 inline js
+    //    댓글
+
+    let newReply = [[${newReply}]];
+    // let replyContent = newReply.replyContent;
+
+    $("img.submitReply").on("click", function (e) {
+        // e.preventDefault();
+        // let $replyWriter = $("input[name='replyWriter']");
+        // let $replyContent = $("textarea[name='replyContent']");
+
+        let $replyContent = $("input.newReplyContent");
+
+        let replyDTO = {
+            replyContent: $replyContent.val(),
+            boardNumber: boardNumber,
+            // TODO : 테스트 유저 넘버 바꾸기
+            // userNumber : realUserNumber
+            userNumber : 10
+        }
+
+        replyService.add(
+            replyDTO,
+            function () {
+                return true;
+                // window.location.reload(true);
+                // getList();
+            }
+        );
+    });
+
+    // 버튼 숨기기
+    let replyUserNumber;
+
+    // $(".rep-nav").on("click", function() {
+    //     replyUserNumber =
+    // });
+
+    /*if(boardUserNumber != realUserNumber) {
+        $("div.board-menu-nav").hide();
+        $("div.menu-icon").hide();
+    }
+
+    if(boardUserNumber == realUserNumber) {
+        $("img.board-toggle").on("click", function () {
+
+            $("div.board-menu-nav").toggle();
+        });
+    }*/
 </script>
 <script src="/js/components/header.js"></script>
 <script src="/js/components/footer.js"></script>

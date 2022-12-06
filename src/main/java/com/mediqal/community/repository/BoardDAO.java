@@ -45,6 +45,10 @@ public class BoardDAO {
     public int adminFindCountAll(BoardDTO boardDTO){
         return boardMapper.adminGetTotal(boardDTO);
     }
+    //    프로필 조회
+    public BoardVO profileSelect(Long boardNumber){
+        return boardMapper.profileSelect(boardNumber);
+    }
     //    프로필 전체 조회
     public List<BoardDTO> profileSelectAll(BoardDTO boardDTO){
         return boardMapper.profileSelectAll(boardDTO);
@@ -63,9 +67,13 @@ public class BoardDAO {
     }
 
 
-//    메인
+    //    메인
     public List<BoardDTO> findAll(Criteria criteria){
         return boardMapper.selectAll(criteria);
+    }
+
+    public List<BoardDTO> boardFindAll(Criteria criteria){
+        return boardMapper.selectBoardAll(criteria);
     }
     //    전체 개수
     public int findCountAll(){
@@ -80,4 +88,15 @@ public class BoardDAO {
         return boardMapper.select(boardNumber);
     }
 
+    public int findByBoardCategoryCountAll(String boardCategory) {
+        return boardMapper.getCategoryTotal(boardCategory);
+    }
+
+    public void setBoardDTO(BoardDTO boardDTO) {
+        boardMapper.updateBoardDTO(boardDTO);
+    }
+
+    public void remove(Long boardNumber) {
+        boardMapper.delete(boardNumber);
+    }
 }

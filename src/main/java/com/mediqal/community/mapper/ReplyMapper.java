@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface ReplyMapper {
     public List<ReplyDTO> selectAll(Long boardNumber);
+
+    public void insert(ReplyDTO replyDTO);
 }

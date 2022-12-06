@@ -10,6 +10,8 @@ public class Criteria {
     private int page;
     private int amount;
 
+    private String boardCategory;
+
     public Criteria create(int page, int amount) {
         this.page = page;
         this.amount = amount;
@@ -27,5 +29,10 @@ public class Criteria {
                 .queryParam("page", this.page)
                 .queryParam("amount", this.amount);
         return builder.toUriString();
+    }
+
+    public Criteria createCategory(String boardCategory) {
+        this.boardCategory = boardCategory;
+        return this;
     }
 }

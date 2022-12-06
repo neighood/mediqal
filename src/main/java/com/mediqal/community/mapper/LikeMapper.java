@@ -14,4 +14,13 @@ public interface LikeMapper {
     public int profileGetTotal(BoardDTO boardDTO);
     //    프로필 좋아요 삭제
     public void profileDelete(Long likeNumber);
+
+//    보드 좋아요 총 값
+    public int getTotal(BoardDTO boardDTO);
+//    보드 좋아요 검사
+    public int check(BoardDTO boardDTO);
+//    보드 좋아요 추가
+    public void insert(BoardDTO boardDTO);
+//    보드 좋아요 삭제
+    public void delete(BoardDTO boardDTO);
 }
