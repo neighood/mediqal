@@ -3,7 +3,7 @@
 <mapper namespace="com.mediqal.community.mapper.UserMapper">
 
     <!-- admin/userTest 선택 수정   -->
-    <update id="update">
+    <update id="adminUpdate">
         UPDATE TBL_USER
         SET USER_PASSWORD = #{userPassword}, USER_NICKNAME = #{userNickname}
         WHERE USER_NUMBER = #{userNumber}

@@ -271,7 +271,7 @@
             </div>
         </article>
         <div class="delete-button" method="deleteGet">삭제하기</div>
-        <div th:object="${pagination}" class="page-count">
+        <div th:object="${pagination}" class="page-count position-ab">
             <div style="text-align: center">
                 <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
                 <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
@@ -295,7 +295,8 @@
                 </div>
             </div>
             <div id="modal-main">
-                <form action="">
+                <form id="update" name="update" method="post" th:action="@{/admin/boardUpdate}">
+                    <input type="hidden" name="userNumber" id="user-number">
                     <div>글 번호</div>
                     <input type="text" id="board-number" class="input-info1" readonly name="boardNumber" >
                     <div>작성자</div>
@@ -315,7 +316,7 @@
             </div>
             <div id="modal-bottom">
                 <button id="edit-button1" onclick="changeButton()">수정</button>
-                <button id="edit-button2" onclick="changeButton2()">수정완료</button>
+                <button id="edit-button2" onclick="changeButton2()" type="submit">수정완료</button>
                 <!--            <button id="secession-button">탈퇴</button>-->
             </div>
         </div>

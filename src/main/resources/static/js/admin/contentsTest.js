@@ -189,8 +189,9 @@ function changeButton() {
 }
 
 function changeButton2() {
-    $('#edit-button1').css('visibility', 'visible');
-    $('.input2').attr('readOnly', true);
+    // $('#edit-button1').css('visibility', 'visible');
+    // $('.input2').attr('readOnly', true);
+    $("#update").submit();
 }
 
 /*--------------*/

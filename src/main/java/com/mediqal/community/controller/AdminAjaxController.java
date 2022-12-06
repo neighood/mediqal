@@ -2,6 +2,7 @@ package com.mediqal.community.controller;
 
 import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.UserDTO;
+import com.mediqal.community.domain.vo.UserImgVO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.service.AdminBoardService;
 import com.mediqal.community.service.AdminUserService;
@@ -33,12 +34,6 @@ public class AdminAjaxController {
         adminBoardService.remove(boardNumber);
     }
 
-//    @PostMapping("/{boardNumber}")
-//    public void showSelect(@PathVariable Long boardNumber, Model model){
-//        model.addAttribute("board", adminBoardService.show(boardNumber));
-////        adminBoardService.show(boardNumber);
-//    }
-
     @GetMapping("/boardDetailRead")
     public BoardDTO getBoardDetail(Long boardNumber){
         return adminBoardService.show(boardNumber);
@@ -49,13 +44,8 @@ public class AdminAjaxController {
         return adminUserService.showTest(userNumber);
     }
 
-//    @PostMapping("/{boardNumber}")
-//    public BoardDTO show(@PathVariable Long boardNumber){
-//        return adminBoardService.show(boardNumber);
-//    }
-
-//    @GetMapping("/{replyNumber}")
-//    public ReplyVO show(@PathVariable Long replyNumber){
-//        return replyService.show(replyNumber);
-//    }
+    @GetMapping("/getUserImg")
+    public UserImgVO getUserImg(Long userNumber){
+        return adminUserService.adminGetUserImg(userNumber);
+    }
 }

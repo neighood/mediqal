@@ -1,49 +1,4 @@
-// user 목록 생성
-// const UserInfoContainer = document.getElementsByClassName(
-//     "user-list__info-container"
-// )[0];
-//
-// let user = {
-//   id: "123",
-//   name: "홍길동",
-//   email: "hgd3333@gmail.com",
-//   phone: "010-1234-9876",
-//   grade: "일반회원",
-//   detail: "상세보기"
-// };
-//
-// const addUser = function (user, i) {
-//   let newUser = document.createElement("div");
-//   newUser.classList.add("user-list__info-unit");
-//   let userInfoTemplate = `
-//   <div class="user-list__info-unit">
-//     <input
-//       type="checkbox"
-//       class="user__checkbox"
-//       id="user__${user.id + i}"
-//       name="checkbox"
-//     />
-//     <label for="user__${user.id + i}" class="user__checkbox--label">
-//       <ul class="user-list__info">
-//         <li class="user__id">${user.id}</li>
-//         <li class="user__name">${user.name}</li>
-//         <li class="user__email">${user.email}</li>
-//         <li class="user__phone">${user.phone}</li>
-//         <li class="user__detail">${user.grade}</li>
-//         <li class="user__detail"><button type="button" class="detail-button" onclick="modal()">${user.detail}</button></li>
-//       </ul>
-//     </label>
-//   </div>
-//   `;
-//   newUser.innerHTML = userInfoTemplate;
-//   UserInfoContainer.appendChild(newUser);
-// };
-//
-// for (let i = 0; i < 10; i++) {
-//   addUser(user, i);
-// }
-
-////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let $pages = $("a.changePage");
 
@@ -54,6 +9,7 @@ $pages.on("click", function(e){
 });
 
 let adminUserService = (function () {
+
     function remove(check, callback) {
 
         var userNumber = check;
@@ -82,7 +38,20 @@ let adminUserService = (function () {
             }
         })
     }
-    return {remove: remove, read: read}
+
+    function get(userNumber, callback){
+        $.ajax({
+            url: "/adminAjax/getUserImg?userNumber=" + userNumber,
+            type: "get",
+            success: function(userImg){
+                if(callback){
+                    callback(userImg);
+                }
+            }
+        })
+    }
+
+    return {remove: remove, read: read, get: get}
 })();
 
 $(".delete-button").on("click", function(){
@@ -149,8 +118,9 @@ function changeButton() {
 }
 
 function changeButton2() {
-    $('#edit-button1').css('visibility', 'visible');
-    $('.user-input2').attr('readOnly', true);
+    // $('#edit-button1').css('visibility', 'visible');
+    // $('.user-input2').attr('readOnly', true);
+    $("#hds").submit();
 }
 
 /*----------------------------------------*/
@@ -163,6 +133,7 @@ $(".detail-button").on("click", function(){
     $('.input2').attr('readOnly', true);
     console.log(getUserNumber);
     adminUserService.read(getUserNumber, showDetail);
+    adminUserService.get(getUserNumber, showImg);
 });
 
 function closeModal() {
@@ -172,28 +143,20 @@ function closeModal() {
 
 function showDetail(user) {
     console.log(user);
+    $("#user-number").val(user.userNumber);
     $("#user-name").val(user.userName);
     $("#user-email").val(user.userEmail);
-    $("#user-password").val(user.userPassword);
-    $("#user-nickname").val(user.userNickname);
+    $("#userPassword").val(user.userPassword);
+    $("#userNickname").val(user.userNickname);
     $("#user-grade").val(user.userType);
 }
-/*------------*/
-// const showModal = document.getElementsByClassName("detail-button");
-// showModal.addEventListener("click", modal());
 
-// let adminUserService = (function () {
-//     function remove(userNumber, callback) {
-//         $.ajax({
-//             url: "/admin/userTest/" + userNumber,
-//             type: "delete",
-//             success: function () {
-//                 if (callback) {
-//                     callback();
-//                 }
-//             }
-//         })
-//     }
-//
-//     return {remove: remove}
-// })();
+function showImg(userImg){
+    console.log(userImg);
+    if(userImg.userImgImageCheck) {
+        var url = "/userImg/display?fileName=" + userImg.userImgUploadPath + '/s_' + userImg.userImgUuid + '_' + userImg.userImgName;
+    }else {
+        var url = "https://avatars.dicebear.com/api/identicon/medirqlasdf" + userImg.userNumber + ".svg";
+    }
+    $(".profile-image img").attr("src", url);
+}

@@ -26,4 +26,8 @@ public class UserImgDAO {
 
     // 추가
     public void save(UserImgVO userImgVO){userImgMapper.insertUserImg(userImgVO);}
+
+    public UserImgVO adminSelect(Long userNumber){
+        return userImgMapper.adminSelect(userNumber);
+    }
 }
