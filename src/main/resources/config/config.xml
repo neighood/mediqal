@@ -4,6 +4,7 @@
     <typeAliases>
         <typeAlias type="com.mediqal.community.domain.vo.UserVO" alias="userVO"/>
         <typeAlias type="com.mediqal.community.domain.dto.UserDTO" alias="userDTO"/>
+        <typeAlias type="com.mediqal.community.domain.dto.ReplyDTO" alias="replyDTO"/>
         <typeAlias type="com.mediqal.community.domain.vo.InterestVO" alias="interestVO"/>
         <typeAlias type="com.mediqal.community.domain.vo.IllVO" alias="illVO"/>
         <typeAlias type="com.mediqal.community.domain.vo.CertifyVO" alias="certifyVO"/>

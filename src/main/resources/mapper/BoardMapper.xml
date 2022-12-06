@@ -129,4 +129,10 @@
         INSERT INTO TBL_BOARD(BOARD_NUMBER, USER_NUMBER, BOARD_TITLE, BOARD_CONTENT)
         VALUES(#{boardNumber}, #{userNumber}, #{boardTitle}, #{boardContent})
     </insert>
+
+    <select id="select" resultType="boardDTO">
+        SELECT BOARD_NUMBER, USER_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_CATEGORY, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+        FROM TBL_BOARD
+        WHERE BOARD_NUMBER = #{boardNumber}
+    </select>
 </mapper>

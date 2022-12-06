@@ -1,5 +1,6 @@
 body{
     font-family: "Pretendard";
+    user-select: none;
 }
 * {
     margin: 0;
@@ -91,12 +92,12 @@ div.prev {
 }
 
 .board-next {
-    right: 18%;
+    right: 13%;
 }
 
 .board-prev {
     z-index: 1;
-    left: 18%;
+    left: 13%;
 }
 
 .board{

@@ -4,14 +4,21 @@ import com.mediqal.community.aspect.annotation.LogStatus;
 import com.mediqal.community.domain.criteria.BoardPageCountCriteria;
 import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.Criteria;
+import com.mediqal.community.domain.dto.ReplyDTO;
 import com.mediqal.community.service.BoardService;
+import com.mediqal.community.service.CommunityReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,10 +27,12 @@ public class BoardController {
     @Qualifier("community")
     private final BoardService boardService;
 
+    private final CommunityReplyService communityReplyService;
+
 
     //    커뮤니티 게시글 목록
     @LogStatus
-    @GetMapping( "/list")
+    @GetMapping("/list")
 //    @GetMapping("/board")
     public void board(Criteria criteria, Model model){
         if(criteria.getPage() == 0){
@@ -41,9 +50,18 @@ public class BoardController {
 //    }
 
     @LogStatus
-    @GetMapping("/{boardNumber}")
-    public void board_detail(Long boardNumber){
-//        TODO: REST로 detail 실패.
+    @RequestMapping(value="/{boardNumber}", method=RequestMethod.GET)
+    public ModelAndView board_detail(@PathVariable Long boardNumber) throws Exception{
+        ModelAndView mv = new ModelAndView("/board/board_detail");
+
+        BoardDTO board = boardService.show(boardNumber);
+        mv.addObject("board", board);
+
+//        List<ReplyDTO> replies = communityReplyService.showAll(boardNumber);
+        List<ReplyDTO> replies = communityReplyService.replyShowAll(boardNumber);
+        mv.addObject("replies", replies);
+
+        return mv;
     }
 //    public ReplyVO show(@PathVariable Long replyNumber){
 //        return replyService.show(replyNumber);
@@ -72,9 +90,11 @@ public class BoardController {
 
     @LogStatus
     @PostMapping("/write")
-    public RedirectView write(BoardDTO boardDTO, RedirectAttributes redirectAttributes){
+    public RedirectView write(HttpServletRequest request, BoardDTO boardDTO, RedirectAttributes redirectAttributes){
 //        TODO: 세션확인으로 대체
-        boardDTO.setUserNumber(10L);
+        HttpSession session = request.getSession();
+        Long userNumber = (Long) session.getAttribute("userNumber");
+        boardDTO.setUserNumber(userNumber);
         boardService.register(boardDTO);
 //        redirectAttributes.addFlashAttribute("boardNumber", boardDTO.getBoardNumber());
         return new RedirectView("/board/list");

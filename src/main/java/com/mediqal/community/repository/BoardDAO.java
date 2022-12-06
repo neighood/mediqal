@@ -2,9 +2,6 @@ package com.mediqal.community.repository;
 
 import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.Criteria;
-import com.mediqal.community.domain.dto.UserDTO;
-import com.mediqal.community.domain.vo.BoardVO;
-import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.domain.vo.BoardVO;
 import com.mediqal.community.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
@@ -77,6 +74,10 @@ public class BoardDAO {
 
     public void save(BoardDTO boardDTO){
         boardMapper.insert(boardDTO);
+    }
+
+    public BoardDTO findById(Long boardNumber) {
+        return boardMapper.select(boardNumber);
     }
 
 }

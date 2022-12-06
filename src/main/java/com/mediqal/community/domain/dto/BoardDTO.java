@@ -2,7 +2,6 @@ package com.mediqal.community.domain.dto;
 
 import com.mediqal.community.domain.vo.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -72,6 +71,8 @@ public class BoardDTO {
         this.boardContent = boardDTO.getBoardContent();
         this.boardView = boardDTO.getBoardView();
         this.userNickname = boardDTO.getUserNickname();
+        this.boardCategory = boardDTO.getBoardCategory();
+        this.boardRegisterDate = boardDTO.getBoardRegisterDate();
     }
 
     public void create(BoardVO boardVO) {

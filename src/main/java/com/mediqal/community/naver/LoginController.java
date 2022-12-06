@@ -1,12 +1,8 @@
 package com.mediqal.community.naver;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -15,7 +11,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     /* NaverLoginBO */
-    private NaverLoginBO naverLoginBO;
+    /*private NaverLoginBO naverLoginBO;
     private String apiResult = null;
 
     @Autowired
@@ -30,7 +26,7 @@ public class LoginController {
     @GetMapping("/naverSuccess")
     public void naverSuccess(HttpSession session) {
         log.info("callback controller");
-    }
+    }*/
 }
 //    @GetMapping("/login")
 //    public String login(Model model, HttpSession session) {

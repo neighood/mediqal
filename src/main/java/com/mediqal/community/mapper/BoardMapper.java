@@ -2,11 +2,7 @@ package com.mediqal.community.mapper;
 
 import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.Criteria;
-import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.BoardVO;
-import com.mediqal.community.domain.vo.UserVO;
-import com.mediqal.community.domain.vo.BoardVO;
-import com.mediqal.community.domain.vo.CertifyVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -45,4 +41,6 @@ public interface BoardMapper {
     public void insert(BoardDTO boardDTO);
 
     public int getTotal();
+
+    public BoardDTO select(Long boardNumber);
 }
