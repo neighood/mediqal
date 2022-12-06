@@ -293,7 +293,7 @@ body{
   background-color: #fff;
   border-radius: 8px;
   width: 500px;
-  height: 740px;
+  height: 680px;
   /*height: 550px;*/
   position: fixed;
   left: 50%;
@@ -471,3 +471,38 @@ body{
   text-align: center;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
+
+.position-ab code {
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+  "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", arial, dotum,
+  돋움, sans-serif;
+
+  background-color: #262626;
+  height: 20px;
+  width: 12px;
+  color: white;
+  border-radius: 6px;
+  font-weight: 550;
+  font-size: 14px;
+  line-height: 30px;
+  padding: 0 7px;
+  text-align: center;
+  box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
+  margin-right: 3px;
+}
+
+.position-ab a code{
+  background-color: white;
+  color: #262626;
+}
+
+.module-container {
+  position: relative;
+}
+
+.position-ab {
+  position: absolute;
+  bottom: 126px;
+  right: 563px;
+}
+

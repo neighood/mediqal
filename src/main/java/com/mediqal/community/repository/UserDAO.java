@@ -20,6 +20,11 @@ public class UserDAO {
         userMapper.update(userDTO);
     }
 
+    //    수정
+    public void adminSet(UserVO userVO){
+        userMapper.adminUpdate(userVO);
+    }
+
     //    삭제
     public void remove(Long userNumber){
         userMapper.delete(userNumber);
