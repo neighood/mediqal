@@ -138,3 +138,26 @@ a {
     margin: 0.5em 0;
     color: #7E848A;
 }
+
+.table-wrapper code{
+    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", arial, dotum,
+    돋움, sans-serif;
+
+    background-color: var(--main-color);
+    height: 20px;
+    width: 12px;
+    color: white;
+    border-radius: 6px;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 7px;
+    text-align: center;
+    box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
+}
+
+.table-wrapper a code{
+    background-color: white;
+    color: #262626;
+}

@@ -2,7 +2,6 @@ package com.mediqal.community.service;
 
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
-import com.mediqal.community.domain.vo.InterestVO;
 import com.mediqal.community.domain.vo.UserImgVO;
 import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.repository.IllDAO;
@@ -60,6 +59,7 @@ public class ProfileUserService implements UserService{
         userDTO.setInterestVOs(interestDAO.profileSelectAll(userNumber));
         userDTO.setIllVOs(illDAO.profileSelectAll(userNumber));
         userDTO.setUserImgVO(userImgDAO.select(userNumber));
+        userDTO.setUserNickname(userDAO.profileSelect(userNumber).getUserNickname());
         return userDTO;
     }
 

@@ -177,12 +177,24 @@
 
     let realUserNumber = [[${session.userNumber}]];
     console.log( [[${session}]]);
-    if(realUserNumber != null) {
-        $buttonImg.on("click", function (e) {
+
+    $buttonImg.on("click", function (e) {
+        if (realUserNumber == null) {
+            e.preventDefault();
+            return alert("로그인을 진행해주세요!")
+        }
+        if (realUserNumber =! null) {
             e.preventDefault();
             location.href = "/board/write";
-        });
-    }
+        }
+    });
+    //
+    // if(realUserNumber != null) {
+    //     $buttonImg.on("click", function (e) {
+    //         e.preventDefault();
+    //         location.href = "/board/write";
+    //     });
+    // }
 </script>
 <script th:inline="javascript">
     // let boardNumber = [[${boardNumber}]];

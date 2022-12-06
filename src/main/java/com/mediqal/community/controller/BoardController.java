@@ -6,10 +6,7 @@ import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.ReplyDTO;
 import com.mediqal.community.domain.dto.UserDTO;
-import com.mediqal.community.service.CommunityBoardService;
-import com.mediqal.community.service.CommunityLikeService;
-import com.mediqal.community.service.CommunityReplyService;
-import com.mediqal.community.service.ProfileUserService;
+import com.mediqal.community.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +32,8 @@ public class BoardController {
     private final CommunityBoardService boardService;
     private final CommunityReplyService communityReplyService;
     private final CommunityLikeService likeService;
+    private final AdminUserService adminUserService;
+
 
     @Qualifier("profile")
     private final ProfileUserService userService;
@@ -93,6 +92,10 @@ public class BoardController {
             criteria.create(1, 10);
         }
         criteria.createCategory("review");
+
+//        int count = communityReplyService.countReplyAll(boardNumber);
+//        model.addObject("replyCount", count);
+
 //        criteria.createCategory("review");
         model.addAttribute("boards", boardService.boardShowAll(criteria));
         model.addAttribute("pagination",new BoardPageCountCriteria().createBoardPageCountCriteria(criteria, boardService.getCategoryTotal("review")));
@@ -160,12 +163,20 @@ public class BoardController {
 
             mv.addObject("likeCheck", likeCheck);
         }*/
+//
+//        HttpSession session = request.getSession();
+//        Long userNumber = (Long) session.getAttribute("userNumber");
+//        log.info(String.valueOf(userService.show(userNumber)));
+//        mv.addObject("userDTO", userService.show(userNumber));
 
         BoardDTO board = boardService.show(boardNumber);
         mv.addObject("board", board);
 
         UserDTO boardUser = userService.show(board.getUserNumber());
+//        TODO : do
+//        UserDTO boardUser = adminUserService.show(boardNumber);
         mv.addObject("boardUser", boardUser);
+        log.info("왜" + boardUser);
 
 //        List<ReplyDTO> replies = communityReplyService.showAll(boardNumber);
         List<ReplyDTO> replies = communityReplyService.replyShowAll(boardNumber);
@@ -175,6 +186,9 @@ public class BoardController {
             log.info("댓글 : " + reply);
         });
         mv.addObject("replies", replies);
+
+        int count = communityReplyService.countReplyAll(boardNumber);
+        mv.addObject("replyCount", count);
 
 //      TODO : 세션테스트 - 진짜 서비스
 //        HttpSession session = request.getSession();
@@ -222,12 +236,6 @@ public class BoardController {
 //        boardDTO.setBoardCategory(category);
 //        log.info("result : " + boardDTO);
 //        String url = "/main/index";
-    public RedirectView write(HttpServletRequest request, BoardDTO boardDTO, RedirectAttributes redirectAttributes){
-//        TODO: 세션확인으로 대체
-        HttpSession session = request.getSession();
-        Long userNumber = (Long) session.getAttribute("userNumber");
-        boardDTO.setUserNumber(userNumber);
-        boardService.register(boardDTO);
 //        redirectAttributes.addFlashAttribute("boardNumber", boardDTO.getBoardNumber());
         boardService.register(boardDTO);
         if(category.equals((String) "review")) {
@@ -340,12 +348,6 @@ public class BoardController {
     }
 
 }
-
-
-
-
-
-
 
 
 

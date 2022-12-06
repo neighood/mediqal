@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("/user/*")
@@ -37,7 +38,7 @@ public class UserController {
 //    }
 
     @PostMapping
-        public RedirectView signup(UserDTO userDTO, RedirectAttributes redirectAttributes, HttpServletRequest req){
+    public RedirectView signup(UserDTO userDTO, RedirectAttributes redirectAttributes, HttpServletRequest req){
         signUserService.signUp(userDTO);
         redirectAttributes.addFlashAttribute("userNumber", userDTO.getUserNumber());
         req.getSession().invalidate();
@@ -58,11 +59,17 @@ public class UserController {
     @PostMapping("/signin")
     public RedirectView signin(HttpServletRequest request, Model model, String userEmail, String userPassword) {
 //        세션에 유저 정보 담기?
+
         HttpSession session = request.getSession();
         log.info(userEmail + userPassword);
         Long userNumber = null;
         try {
             userNumber = signUserService.login(userEmail, userPassword);
+
+//        TODO : 지우기
+            if(userNumber == 0) {
+                return new RedirectView("/admin/admin");
+            }
             session.setAttribute("userNumber", userNumber);
             return new RedirectView("/main/index?login=ok");
         } catch (Exception e) {
@@ -71,8 +78,8 @@ public class UserController {
         }
     }
 
-    
-//    로그아웃
+
+    //    로그아웃
     @GetMapping("/signout")
     public String signout(HttpServletRequest request) throws Exception{
         request.getSession().removeAttribute("userNumber");
@@ -81,7 +88,7 @@ public class UserController {
         return "redirect:/main/index?login=x";
     }
 
-//    아이디 중복체크
+    //    아이디 중복체크
     @PostMapping("/idCheck")
     @ResponseBody
     public int idCheck(@RequestParam("userEmail") String userEmail){
@@ -89,7 +96,7 @@ public class UserController {
         return cnt;
     }
 
-//    닉네임 중복체크
+    //    닉네임 중복체크
     @PostMapping("/nicknameCheck")
     @ResponseBody
     public int nicknameCheck(@RequestParam("userNickname") String userNickname){
@@ -97,50 +104,50 @@ public class UserController {
         return cnt2;
     }
 
-//    카카오 로그인
-//    @GetMapping("/kakao")
-//    @ResponseBody
-//    public RedirectView kakaoLogin(@RequestParam String code, HttpSession session, Model model){
-//        UserVO userVO = new UserVO();
-//
-//        //        System.out.println(code);
-//        String access_Token = signUserService.getKaKaoAccessToken(code);
-//        HashMap<String, Object> userInfo = signUserService.getUserInfo(access_Token);
-//        System.out.println("login Controller : " + userInfo);
-//
-//        if (userInfo.get("email") != null){
-//            session.setAttribute("userEmail", userInfo.get("email"));
-//            session.setAttribute("userName", userInfo.get("nickname"));
-//            session.setAttribute("access_Token", access_Token);
-////            System.out.println(((String) session.getAttribute("userEmail")));  /*잘가져오는지 체크용*/
-//        }
-///*        userVO.setUserEmail((String) session.getAttribute("userEmail"));
-//        userVO.setUserPassword("kakao");
-//        userVO.setUserAuthType("kakao");*/
-//        System.out.println("카카오 컨트롤러");
-//        /*카카오에서 가져온 userEmail과 회원가입 되어있는 userEmail이 중복이 없을 경우(비회원)*/
-//        if (signUserService.checkId((String) session.getAttribute("userEmail")) == 0){
-//            System.out.println("비회원");
-//            userVO.setUserEmail((String) session.getAttribute("userEmail"));
-//            userVO.setUserPassword("kakao");
-//            userVO.setUserAuthType("kakao");
-////            userVO.setUserName(session.getAttribute());
-//            model.addAttribute("user", userVO);
-//            session.setAttribute("user", userVO);
-//            session.setAttribute("userEmail", (String) session.getAttribute("userEmail"));
-//            session.setAttribute("userAuthType", "kakao");
-//            System.out.println(session.getAttribute("userEmail"));
-//            return new RedirectView("/user/signup");
-////            return new RedirectView("/user/signup?user="+userVO);
-//        } else {    /*카카오에서 가져온 userEmail과 회원가입 되어있는 userEmail이 중복될 경우(이미 회원인 경우)*/
-//            System.out.println("회원");
-//            String userEmail = (String)(session.getAttribute("userEmail"));
-//            long userNumber = signUserService.login(userEmail, "kakao");
-//
-//            session.setAttribute("userNumber", userNumber);
-//            return new RedirectView("/main/index?login=ok");
-//        }
-//    }
+    //    카카오 로그인
+    @GetMapping("/kakao")
+    @ResponseBody
+    public RedirectView kakaoLogin(@RequestParam String code, HttpSession session, Model model){
+        UserVO userVO = new UserVO();
+
+        //        System.out.println(code);
+        String access_Token = signUserService.getKaKaoAccessToken(code);
+        HashMap<String, Object> userInfo = signUserService.getUserInfo(access_Token);
+        System.out.println("login Controller : " + userInfo);
+
+        if (userInfo.get("email") != null){
+            session.setAttribute("userEmail", userInfo.get("email"));
+            session.setAttribute("userName", userInfo.get("nickname"));
+            session.setAttribute("access_Token", access_Token);
+//            System.out.println(((String) session.getAttribute("userEmail")));  /*잘가져오는지 체크용*/
+        }
+/*        userVO.setUserEmail((String) session.getAttribute("userEmail"));
+        userVO.setUserPassword("kakao");
+        userVO.setUserAuthType("kakao");*/
+        System.out.println("카카오 컨트롤러");
+        /*카카오에서 가져온 userEmail과 회원가입 되어있는 userEmail이 중복이 없을 경우(비회원)*/
+        if (signUserService.checkId((String) session.getAttribute("userEmail")) == 0){
+            System.out.println("비회원");
+            userVO.setUserEmail((String) session.getAttribute("userEmail"));
+            userVO.setUserPassword("kakao");
+            userVO.setUserAuthType("kakao");
+//            userVO.setUserName(session.getAttribute());
+            model.addAttribute("user", userVO);
+            session.setAttribute("user", userVO);
+            session.setAttribute("userEmail", (String) session.getAttribute("userEmail"));
+            session.setAttribute("userAuthType", "kakao");
+            System.out.println(session.getAttribute("userEmail"));
+            return new RedirectView("/user/signup");
+//            return new RedirectView("/user/signup?user="+userVO);
+        } else {    /*카카오에서 가져온 userEmail과 회원가입 되어있는 userEmail이 중복될 경우(이미 회원인 경우)*/
+            System.out.println("회원");
+            String userEmail = (String)(session.getAttribute("userEmail"));
+            long userNumber = signUserService.login(userEmail, "kakao");
+
+            session.setAttribute("userNumber", userNumber);
+            return new RedirectView("/main/index?login=ok");
+        }
+    }
 //    @GetMapping("/kakao")
 //    @ResponseBody
 //    public void kakaoLogin(@RequestParam String code){
@@ -166,7 +173,7 @@ public class UserController {
 //    public void naverSuccess(HttpSession session) {
 //        log.info("callback controller");
 //    }
-/* NaverLoginBO */
+    /* NaverLoginBO */
 //private NaverLoginBO naverLoginBO;
 //    private String apiResult = null;
 //
