@@ -41,7 +41,7 @@
           <p class="oauth-module__title">SNS 로그인</p>
           <ul class="oauth-module-container">
             <li class="oauth-module oauth-module--google">
-              <a href="#none"
+              <a href="" onclick="showAlert(event)"
                 ><svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -70,7 +70,7 @@
             </li>
             <li class="oauth-module oauth-module--naver">
               <div id="naver_id_login" style="display:none;"></div>
-              <a href="" class="btn sns-naver" id ="naver-button"
+              <a href="" onclick="showAlert(event)"
                 ><svg
                   class="h-5 w-5"
                   viewBox="-1 -1 17 16"
@@ -191,38 +191,11 @@
   <!--네이버 로그인-->
   <!--네이버 로그인 ^-->
   <script>
-    // var naverLogin = new naver.LoginWithNaverId({
-    //   clientId: "n_JH1m5FF3XfKJsf0aTy",
-    //   callbackUrl: "http://localhost:11000/naver/naverSuccess",
-    //   isPopup: true,
-    //   loginButton: {color: "green", type: 3, height: 50}
-    //
-    // });
-    //
-    // naverLogin.init(); //initialize Naver Login Button
-    //
-    // $(document).on("click", "#naverLogin", function(){
-    //   var btnNaverLogin = document.getElementById("naverIdLogin").firstChild;
-    //   btnNaverLogin.click();
-    // });
 
-    /*네이버 로그인*/
-    var naver_id_login = new naver_id_login("n_JH1m5FF3XfKJsf0aTy", "http://localhost:11000/user/naverLogin");
-    var state = naver_id_login.getUniqState();
-    naver_id_login.setButton("white", 2,40);
-    naver_id_login.setDomain("http://localhost:11000/user/signin");
-    naver_id_login.setState(state);
-    naver_id_login.setPopup();
-    naver_id_login.init_naver_id_login();
-
-    /*-------------------------------*/
-    // var button = $("#naver-button");
-    $("#naver-button").on("click",function (e) {
-      console.log("눌림");
-      // e.preventDefault();
-      $("#naver_id_login_anchor").click();
-    })
-
+    function showAlert(e) {
+      alert("준비중인 서비스입니다. 카카오 로그인을 이용해주세요.");
+      e.preventDefault();
+    }
     /* 로그인 실패 시*/
     let urlParams = new URL(location.href).searchParams;
     let check = urlParams.get("check");

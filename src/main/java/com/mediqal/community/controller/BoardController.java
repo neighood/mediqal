@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -88,9 +90,11 @@ public class BoardController {
 
     @LogStatus
     @PostMapping("/write")
-    public RedirectView write(BoardDTO boardDTO, RedirectAttributes redirectAttributes){
+    public RedirectView write(HttpServletRequest request, BoardDTO boardDTO, RedirectAttributes redirectAttributes){
 //        TODO: 세션확인으로 대체
-        boardDTO.setUserNumber(10L);
+        HttpSession session = request.getSession();
+        Long userNumber = (Long) session.getAttribute("userNumber");
+        boardDTO.setUserNumber(userNumber);
         boardService.register(boardDTO);
 //        redirectAttributes.addFlashAttribute("boardNumber", boardDTO.getBoardNumber());
         return new RedirectView("/board/list");
