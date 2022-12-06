@@ -14,12 +14,12 @@ $logo.on("click", function(e){
 $community.on("click", function(e){
     e.preventDefault();
     // location.href = "/board/board";
-    location.href = "/board/list";
+    location.href = "/board/community/list";
 });
 
 $review.on("click", function(e){
     e.preventDefault();
-    location.href = "/board/review";
+    location.href = "/board/review/list";
 });
 
 $signin.on("click", function(e){

@@ -1,8 +1,6 @@
 package com.mediqal.community.service;
 
 import com.mediqal.community.domain.dto.BoardDTO;
-import com.mediqal.community.domain.dto.Criteria;
-import com.mediqal.community.repository.BoardDAO;
 import com.mediqal.community.repository.LikeDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;

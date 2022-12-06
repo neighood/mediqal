@@ -16,4 +16,7 @@ public class ReplyDAO {
         return replyMapper.selectAll(boardNumber);
     }
 
+    public void save(ReplyDTO replyDTO){
+        replyMapper.insert(replyDTO);
+    }
 }

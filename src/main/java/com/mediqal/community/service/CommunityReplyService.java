@@ -20,7 +20,7 @@ public class CommunityReplyService implements ReplyService{
 
     @Override
     public void register(ReplyDTO replyDTO) {
-
+        replyDAO.save(replyDTO);
     }
 
     @Override

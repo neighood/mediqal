@@ -1,7 +1,6 @@
 package com.mediqal.community.repository;
 
 import com.mediqal.community.domain.dto.BoardDTO;
-import com.mediqal.community.mapper.BoardMapper;
 import com.mediqal.community.mapper.LikeMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,5 +23,21 @@ public class LikeDAO {
     //    프로필 좋아요 삭제
     public void profileDelete(Long likeNumber){
         likeMapper.profileDelete(likeNumber);
+    }
+    //    보드 좋아요 총 값
+    public int getTotal(BoardDTO boardDTO){
+        return likeMapper.getTotal(boardDTO);
+    }
+    //    보드 좋아요 검사
+    public int check(BoardDTO boardDTO){
+        return likeMapper.check(boardDTO);
+    }
+    //    보드 좋아요 추가
+    public void insert(BoardDTO boardDTO){
+        likeMapper.insert(boardDTO);
+    }
+    //    보드 좋아요 삭제
+    public void delete(BoardDTO boardDTO){
+        likeMapper.delete(boardDTO);
     }
 }

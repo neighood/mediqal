@@ -90,14 +90,18 @@ img {
     padding: 8px 12px;
     color: rgb(60, 65, 68);
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
 }
 
 .update {
+    display: block;
     padding: 6px 4px;
     cursor: pointer;
 }
 
 .delete {
+    display: block;
     padding: 6px 4px;
     border-top: 1px solid;
     border-color: rgb(243 244 245);
@@ -176,7 +180,8 @@ img {
 
 .flex-start {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    margin-bottom: 0.5em;
 }
 
 .menu-icon img {
@@ -184,12 +189,12 @@ img {
 }
 
 .comment-user-profile {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: #B0ABA4;
     color: white;
-    font-size: 14px;
-    margin-right: 5px;
+    font-size: 15px;
+    margin-right: 1em;
     border-radius: 100%;
     text-align: center;
 }
@@ -261,9 +266,28 @@ img {
     cursor: pointer;
 }
 
+/* 수정 */
+.rep-nav {
+    padding: 8px 12px;
+    color: rgb(60, 65, 68);
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
 
+.rep-update {
+    display: block;
+    padding: 6px 4px;
+    cursor: pointer;
+}
 
-
+.rep-delete {
+    display: block;
+    padding: 6px 4px;
+    border-top: 1px solid;
+    border-color: rgb(243 244 245);
+    cursor: pointer;
+}
 
 
 

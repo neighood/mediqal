@@ -31,7 +31,7 @@
           >
         </li>
         <li class="menu-list">
-          <a href="/profile/notification" class="menu-list-link">알림</a>
+          <a href="/profile/upcoming" class="menu-list-link">알림</a>
         </li>
       </ul>
       <p class="menu-list-title">커뮤니티</p>
@@ -40,7 +40,7 @@
           <a href="/profile/article" class="menu-list-link">작성한 글</a>
         </li>
         <li class="menu-list">
-          <a href="/profile/reply" class="menu-list-link">작성한 답변</a>
+          <a href="/profile/upcoming" class="menu-list-link">작성한 답변</a>
         </li>
         <li class="menu-list">
           <a href="/profile/like" class="menu-list-link">도움된 글</a>
@@ -58,7 +58,7 @@
       <p class="menu-list-title">계정설정</p>
       <ul class="menu-list-container menu-list--settings">
         <li class="menu-list">
-          <a href="/profile/email" class="menu-list-link">이메일 인증/변경</a>
+          <a href="/profile/upcoming" class="menu-list-link">이메일 인증/변경</a>
         </li>
         <li class="menu-list">
           <a href="/profile/password" class="menu-list-link">비밀번호 변경</a>
@@ -83,7 +83,7 @@
           <!--<div class="info__img-img"></div>-->
           <input type="file" name="upload" style="display: none" id="upload" accept="image/gif, image/jpeg, image/png, image/svg">
           <img class="info__img-img" th:if="*{userImgVO.userImgImageCheck}" th:src="@{/userImg/display(fileName=*{userImgVO.userImgUploadPath} + '/s_' + *{userImgVO.userImgUuid} + '_' + *{userImgVO.userImgName})}">
-          <img class="info__img-img" th:unless="*{userImgVO.userImgImageCheck}" th:src="@{https://avatars.dicebear.com/api/identicon/medirqlasdf${session.userNumber}.svg}">
+          <img class="info__img-img" th:unless="*{userImgVO.userImgImageCheck}" th:src="|https://avatars.dicebear.com/api/identicon/medirqlasdf*{userImgVO.userNumber}.svg|">
             <input type="hidden" id="userImgName" name="userImgName" th:field="*{userImgVO.userImgName}">
             <input type="hidden" id="userImgUploadPath" name="userImgUploadPath" th:field="*{userImgVO.userImgUploadPath}">
             <input type="hidden" id="userImgUuid" name="userImgUuid" th:field="*{userImgVO.userImgUuid}">

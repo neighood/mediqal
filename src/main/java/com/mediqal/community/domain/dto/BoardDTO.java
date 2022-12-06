@@ -67,6 +67,7 @@ public class BoardDTO {
 
     public void create(BoardDTO boardDTO) {
         this.boardNumber = boardDTO.getBoardNumber();
+        this.userNumber = boardDTO.getUserNumber();
         this.boardTitle = boardDTO.getBoardTitle();
         this.boardContent = boardDTO.getBoardContent();
         this.boardView = boardDTO.getBoardView();
