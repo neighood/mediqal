@@ -75,7 +75,7 @@
   <main class="main">
     <section class="user-info">
       <p class="user-info-title">회원정보</p>
-      <form th:action="@{/profile/info}" class="info-form" th:object="${userDTO}" method="post" enctype="multipart/form-data">
+      <form th:action="@{/profile/info}" name="userForm" class="info-form" th:object="${userDTO}" method="post" enctype="multipart/form-data">
         <div class="hidden" style="display: none"></div>
         <div class="info__img">
           <p class="info__img-title">프로필 이미지</p>
@@ -93,24 +93,43 @@
           <button type="button" class="info__img-btn">이미지 수정</button>
         </div>
         <div class="info__item info__id">
-          <label for="id-input" class="info-label">닉네임</label>
+          <label class="info-label">닉네임</label>
           <input
                   type="text"
                   class="info-input"
-                  id="id-input"
+                  id="userNickname"
                   th:field="*{userNickname}"
                   placeholder="원래 닉네임"
+                  name="userNickname"
+                  oninput="checkNickname()"
           />
+<!--          <input-->
+<!--                  type="text"-->
+<!--                  class="info-input"-->
+<!--                  id="userNickname"-->
+<!--                  th:field="*{userNickname}"-->
+<!--                  placeholder="원래 닉네임"-->
+<!--                  name="userNickname"-->
+<!--                  oninput="checkNickname()"-->
+<!--          />-->
+          <div class="span-wrapper">
+            <span class="under-input" id="result2" style="visibility: hidden">중복된 닉네임이 있습니다.</span>
+          </div>
         </div>
         <div class="info__item info__name">
-          <label for="name-input" class="info-label">이름</label>
+          <label for="userName" class="info-label">이름</label>
           <input
                   type="text"
                   class="info-input"
-                  id="name-input"
+                  id="userName"
+                  name="userName"
                   th:field="*{userName}"
                   placeholder="원래 이름"
+                  oninput="checkName()"
           />
+          <div class="span-wrapper">
+            <span class="under-input" id="under-name" style="visibility: hidden">한글로 입력해주세요.</span>
+          </div>
         </div>
         <div class="info__item info__ill">
           <label for="ill-input" class="info-label">나의 병명</label>
@@ -141,7 +160,8 @@
           </th:block>
         </div>
         <div class="info__item info__btn">
-          <button type="submit" class="info__btn-btn">저장하기</button>
+          <button type="button" class="info__btn-btn" onclick="checkFlag()">저장하기</button>
+<!--          <button type="submit" class="info__btn-btn">저장하기</button>-->
         </div>
       </form>
     </section>

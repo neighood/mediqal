@@ -8,6 +8,7 @@ import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.service.ProfileBoardService;
 import com.mediqal.community.service.ProfileLikeService;
 import com.mediqal.community.service.ProfileUserService;
+import com.mediqal.community.service.SignUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,6 +30,7 @@ public class ProfileController {
     private final ProfileUserService userService;
     private final ProfileBoardService boardService;
     private final ProfileLikeService likeService;
+    private final SignUserService signUserService;
 
 
     @GetMapping("/test")
@@ -189,7 +191,16 @@ public void likeList(HttpServletRequest request, Model model, Criteria criteria)
     @GetMapping("/email")
     public void email(){ log.info("email 실행"); }
 
+
+    //    닉네임 중복체크
+    @PostMapping("/nicknameCheck")
+    @ResponseBody
+    public int nicknameCheck(@RequestParam("userNickname") String userNickname){
+        int cnt2 = signUserService.checkNickname(userNickname);
+        return cnt2;
+    }
 }
+
 
 
 

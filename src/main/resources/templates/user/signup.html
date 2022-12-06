@@ -39,7 +39,7 @@
       <p class="oauth-module__title">SNS 회원가입</p>
       <ul class="oauth-module-container">
         <li class="oauth-module oauth-module--google">
-          <a href="#none"
+          <a href="" onclick="showAlert(event)"
           ><svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -67,7 +67,7 @@
           ></a>
         </li>
         <li class="oauth-module oauth-module--naver">
-          <a href="#none"
+          <a href="" onclick="showAlert(event)"
           ><svg
                   class="h-5 w-5"
                   viewBox="-1 -1 17 16"
@@ -329,20 +329,4 @@
 <script src="/js/user/signUp.js"></script>
 <script src="/js/components/header.js"></script>
 <script src="/js/components/footer.js"></script>
-<script>
-  var naver_id_login = new naver_id_login("n_JH1m5FF3XfKJsf0aTy", "http://localhost:11000/naver/naverSuccess");
-  // 접근 토큰 값 출력
-  // alert(naver_id_login.oauthParams.access_token);
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    // alert(naver_id_login.getProfileData('email'));
-    // alert(naver_id_login.getProfileData('name'));
-    // alert(naver_id_login.getProfileData('age'));
-    $("#naver-id").val(naver_id_login.getProfileData('email'));
-    $("#naver-password").val("naver");
-    $("#naver-name").val(naver_id_login.getProfileData('name'));
-  }
-</script>
 </html>

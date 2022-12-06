@@ -81,7 +81,12 @@ function checkId() {
         type:"post",
         data:{userEmail:userEmail},
         success: function(cnt){
-            if (cnt == 0){
+            if (userEmail == undefined || userEmail == "undefined" || userEmail == null || userEmail == "" ){
+                $("#result").html("아이디를 입력해주세요.");
+                $("#result").css('color','red');
+                $("#result").css('visibility','visible');
+                flag3 = false;
+            }else if (cnt == 0){
                 $("#result").html("사용가능한 아이디 입니다.");
                 $("#result").css('color','blue');
                 $("#result").css('visibility','visible');
@@ -106,13 +111,14 @@ function checkNickname() {
         type:"post",
         data:{userNickname:userNickname},
         success: function(cnt1){
-            if (cnt1 == 0){
+            if (userNickname == undefined || userNickname == "undefined" || userNickname == null || userNickname == ""){
+                $("#result2").css('visibility','hidden');
+                flag5 = false;
+            }else if (cnt1 == 0){
                 $("#result2").html("사용가능한 닉네임 입니다.");
                 $("#result2").css('color','blue');
                 $("#result2").css('visibility','visible');
                 flag5 = true;
-            }else if ($('#userNickname').length == 0){
-                $("#result2").css('visibility','hidden');
             }else{
                 $("#result2").html("이미 사용중인 닉네임 입니다.");
                 $("#result2").css('color','red');
@@ -141,15 +147,6 @@ function checkName(str) {
         $("#under-name").css('visibility', 'visible');
         flag4 = false;
     }
-    // {
-    // var reg_name = /^[가-힣]{2,4}$/;
-    //
-    // if(!reg_name.test(str))
-    // {
-    //   return false;
-    // }
-    //
-    // return
 }
 
 /* checkbox 체크 여부 확인*/
@@ -213,6 +210,9 @@ function checkNull2(event) {
         alert("형식에 맞지 않는 입력이 있는지 확인해주세요.");
         $("#userNickname").focus();
         return false;
+    } else if($("#terms-check").is(':checked') == false || $("#email-check").is(":checked") == false){
+        alert("체크박스를 확인해주세요.");
+        checkbox1.focus();
     } else{
         alert("회원가입 완료");
         document.userForm.submit();
@@ -245,4 +245,9 @@ window.onload = function(){
         flag3 = true;
         flag4 = true;
     }
+}
+
+function showAlert(e) {
+    alert("준비중인 서비스입니다. 카카오 로그인을 이용해주세요.");
+    e.preventDefault();
 }
