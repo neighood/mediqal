@@ -55,11 +55,6 @@
 
 <!-- 프로필 끝 -->
 
-<!--    <select id="select" resultType="boardVO">-->
-<!--        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_REGISTER_DATE, BOARD_VIEW FROM TBL_BOARD-->
-<!--        WHERE BOARD_NUMBER = #{boardNumber}-->
-<!--    </select>-->
-
     <select id="adminSelectTest" resultType="boardDTO">
         SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_VIEW,
         (SELECT USER_NICKNAME FROM TBL_USER U WHERE U.USER_NUMBER = B.USER_NUMBER) AS USER_NICKNAME,

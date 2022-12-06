@@ -14,6 +14,8 @@ public interface UserMapper {
     //    수정
     public void update(UserDTO userDTO);
 
+    public void adminUpdate(UserVO userVO);
+
     //    삭제
     public void delete(Long userNumber);
 

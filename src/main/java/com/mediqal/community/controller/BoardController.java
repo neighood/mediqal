@@ -222,6 +222,12 @@ public class BoardController {
 //        boardDTO.setBoardCategory(category);
 //        log.info("result : " + boardDTO);
 //        String url = "/main/index";
+    public RedirectView write(HttpServletRequest request, BoardDTO boardDTO, RedirectAttributes redirectAttributes){
+//        TODO: 세션확인으로 대체
+        HttpSession session = request.getSession();
+        Long userNumber = (Long) session.getAttribute("userNumber");
+        boardDTO.setUserNumber(userNumber);
+        boardService.register(boardDTO);
 //        redirectAttributes.addFlashAttribute("boardNumber", boardDTO.getBoardNumber());
         boardService.register(boardDTO);
         if(category.equals((String) "review")) {
