@@ -30,7 +30,15 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 1rem;
   row-gap: 1rem;
-  grid-template-areas: "s s b b" "a a b b" "c c d d" "c c d d" "c c d d";
+  grid-template-areas:
+          "b b d d"
+          "c c d d"
+          "c c d d"
+          "c c d d"
+          "c c d d"
+          "c c d d"
+          "c c d d"
+          "e e a a";
 }
 
 .article-module {
@@ -43,6 +51,7 @@
 }
 
 .article-searchbox {
+  display: none;
   grid-area: s;
   position: relative;
   display: flex;
@@ -50,10 +59,11 @@
 }
 
 .article-controller {
+  display: none;
   grid-area: a;
   position: relative;
   width: 100%;
-  display: flex;
+  /*display: flex;*/
   align-items: center;
 }
 
@@ -70,12 +80,15 @@
 
 .article-detail-container {
   grid-area: d;
+  display: flex;
+  flex-flow: column;
 }
 
 /* grid 상세 */
 /* searchbox */
 
 .searchbox-form {
+  display: none;
   width: 100%;
 }
 
@@ -110,7 +123,7 @@
 
 /* controller */
 .search-result-container {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -315,7 +328,7 @@
 .article-detail {
   padding: 1rem;
   background-color: #fff;
-  height: 300px;
+  height: 420px;
 }
 
 .article-detail__title {
@@ -331,6 +344,7 @@
 
 .article-detail__reply-container {
   padding: 1rem;
+  margin-top: auto;
   /* background-color: #f3f3f3; */
 }
 
@@ -381,6 +395,9 @@
   display: none;
 }
 
+.pagination{
+  grid-area: e;
+}
 
 .pagination code{
   font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,

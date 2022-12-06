@@ -7,4 +7,12 @@
         WHERE BOARD_NUMBER = #{boardNumber}
         ORDER BY REPLY_NUMBER DESC
     </select>
+
+    <insert id="insert">
+        <selectKey keyProperty="replyNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_REPLY.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_REPLY(REPLY_NUMBER, BOARD_NUMBER, REPLY_CONTENT, USER_NUMBER)
+        VALUES(#{replyNumber}, #{boardNumber}, #{replyContent}, #{userNumber})
+    </insert>
 </mapper>

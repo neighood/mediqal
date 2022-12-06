@@ -7,12 +7,17 @@ $list.on("click",function () {
     $(this).parent(".article-list-unit").addClass("list-unit--current");
 
     let number = $(this).children(".list-unit__number").text();
-    let title= $(this).children(".list-unit__title").text();
-    let content = $(this).children(".list-unit__content").text();
 
-    $("#boardNumber").val(number);
-    $(".article-detail__title-span").text("Q." + title);
-    $(".article-detail__detail").text(content);
+    $.ajax({
+        url: "/profileAjax/board",
+        type: "post",
+        data: {boardNumber: number},
+        success: function(board){
+            $("#boardNumber").val(board.boardNumber);
+            $(".article-detail__title-span").text("Q." + board.boardTitle);
+            $(".article-detail__detail").text(board.boardContent);
+        }
+    });
 
     $bDelete.css("display","inline-block");
     $bUpdate.css("display","inline-block");
@@ -25,7 +30,7 @@ $bDelete.on("click", function () {
 
 $bUpdate.on("click", function () {
     let boardNumber = $("#boardNumber").val();
-    location.href="/board/edit?boardNumber=" + boardNumber;
+    location.href="/board/review/" + boardNumber;
 });
 
 let urlParams = new URL(location.href).searchParams;

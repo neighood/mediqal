@@ -32,4 +32,26 @@
         WHERE LIKE_NUMBER = #{likeNumber}
     </delete>
 
+
+<!--  보드  -->
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(LIKE_NUMBER) FROM TBL_LIKE WHERE BOARD_NUMBER = #{boardNumber}
+    </select>
+
+    <select id="check" resultType="_int">
+        SELECT COUNT(LIKE_NUMBER)
+        FROM TBL_LIKE
+        WHERE USER_NUMBER = #{userNumber} AND BOARD_NUMBER = #{boardNumber}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_LIKE
+        WHERE USER_NUMBER = #{userNumber}
+    </delete>
+
+    <insert id="insert">
+        INSERT INTO TBL_LIKE (LIKE_NUMBER, USER_NUMBER, BOARD_NUMBER)
+        VALUES (SEQ_LIKE.NEXTVAL, #{userNumber}, #{boardNumber})
+    </insert>
 </mapper>
