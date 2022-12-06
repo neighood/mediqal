@@ -52,4 +52,5 @@ public class CommunityReplyService implements ReplyService{
         return replyDAO.findAll(boardNumber);
     }
 
+    public int countReplyAll(Long boardNumber) { return replyDAO.showCount(boardNumber);}
 }

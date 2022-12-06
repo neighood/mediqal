@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 :: 수정</title>
+    <link rel="stylesheet" href="/css/user/root.css" />
+    <link rel="stylesheet" href="/css/board/write.css">
+    <link rel="stylesheet" href="/css/components/header.css"  />
+    <link rel="stylesheet" href="/css/components/footer.css"  />
+</head>
+<style>
+    .header-container {
+        position: absolute;
+    }
+</style>
+<body>
+<header th:replace="/components/header.html :: .header-container"></header>
+<div class="wrap">
+    <div class="container">
+        <div class="write-content">
+            <h1 class="write-content-title">
+                질문하기
+                <p class="write-content-sub"><strong>전문인</strong>에게 <strong>정확한 정보</strong>를 물어보세요</p>
+            </h1>
+            <div class="write-box">
+                <form method="post" th:object="${board}" th:action="@{/board/edit}">
+
+                    <!-------------------------------------------- 카테고리 --------------------------------------------------->
+
+                    <div class="category-wrap">
+                        <!--                        <select name="which-one" th:name="">-->
+                        <select th:field="*{boardCategory}">
+                            <!--            <select name="boardCategory">-->
+                            <option value="community">Q&A</option>
+                            <option value="review">후기</option>
+                        </select>
+                    </div>
+
+                    <!-------------------------------------------- 작성하기 --------------------------------------------------->
+
+                    <div class="board-title">
+                        <input th:field="*{boardTitle}" type="text" class="title" placeholder="제목을 입력하세요.">
+                    </div>
+                    <div class="board-content-wrap">
+                        <div class="board-content">
+                            <input th:field="*{boardContent}" type="text" class="content" placeholder="궁금한 정보를 함께 공유해 봐요.">
+                        </div>
+                    </div>
+                    <div class="nonvisible" style="display: none">
+                        <input th:field="*{boardNumber}" />
+                        <input th:field="*{userNumber}" />
+                    </div>
+
+                    <!-------------------------------------------- 태그 --------------------------------------------------->
+
+                    <div class="tag-wrap">
+                        <div class="tag-first-line">
+                            <div class="tag-title">태그명 입력 <span>(선택)</span></div>
+                            <div class="tag-sub-title">최대 두개까지 가능</div>
+                        </div>
+                        <div class="tag-second-line">
+                            <div class="tag-input-text">
+                                <input type="text" placeholder="태그명 입력하세요.">
+                            </div>
+                            <div class="tag-input-text">
+                                <input type="text" placeholder="태그명 입력하세요.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-------------------------------------------- 질문하기 버튼 --------------------------------------------------->
+
+                    <div class="request-wrap">
+                        <div class="request">
+                            <input type="submit" value="질문하기">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/components/footer.html :: .footer-container"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/board/write.js"></script>
+<script src="/js/components/header.js"></script>
+<script src="/js/components/footer.js"></script>
+</html>

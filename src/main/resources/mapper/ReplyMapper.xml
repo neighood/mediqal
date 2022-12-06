@@ -15,4 +15,8 @@
         INSERT INTO TBL_REPLY(REPLY_NUMBER, BOARD_NUMBER, REPLY_CONTENT, USER_NUMBER)
         VALUES(#{replyNumber}, #{boardNumber}, #{replyContent}, #{userNumber})
     </insert>
+
+    <select id="countALL" resultType="_int">
+        SELECT COUNT(REPLY_NUMBER) FROM TBL_REPLY WHERE BOARD_NUMBER = #{boardNumber}
+    </select>
 </mapper>

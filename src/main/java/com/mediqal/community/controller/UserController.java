@@ -59,11 +59,17 @@ public class UserController {
     @PostMapping("/signin")
     public RedirectView signin(HttpServletRequest request, Model model, String userEmail, String userPassword) {
 //        세션에 유저 정보 담기?
+
         HttpSession session = request.getSession();
         log.info(userEmail + userPassword);
         Long userNumber = null;
         try {
             userNumber = signUserService.login(userEmail, userPassword);
+
+//        TODO : 지우기
+            if(userNumber == 0) {
+                return new RedirectView("/admin/admin");
+            }
             session.setAttribute("userNumber", userNumber);
             return new RedirectView("/main/index?login=ok");
         } catch (Exception e) {

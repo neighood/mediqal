@@ -10,4 +10,6 @@ public interface ReplyMapper {
     public List<ReplyDTO> selectAll(Long boardNumber);
 
     public void insert(ReplyDTO replyDTO);
+
+    public int countALL(Long boardNumber);
 }

@@ -19,4 +19,8 @@ public class ReplyDAO {
     public void save(ReplyDTO replyDTO){
         replyMapper.insert(replyDTO);
     }
+
+    public int showCount(Long boardNumber) {
+        return replyMapper.countALL(boardNumber);
+    }
 }
