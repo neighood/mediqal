@@ -25,12 +25,13 @@ public class CommunityBoardService implements BoardService{
 
     @Override
     public void modify(BoardDTO boardDTO) {
-
+        boardDAO.setBoardDTO(boardDTO);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void remove(Long boardNumber) {
-
+        boardDAO.remove(boardNumber);
     }
 
     @Override
@@ -46,9 +47,17 @@ public class CommunityBoardService implements BoardService{
         return boardDAO.findAll(criteria);
     }
 
+    public List<BoardDTO> boardShowAll(Criteria criteria) {
+        return boardDAO.boardFindAll(criteria);
+    }
+
     @Override
     public int getTotal() {
         return boardDAO.findCountAll();
+    }
+
+    public int getCategoryTotal(String boardCategory) {
+        return boardDAO.findByBoardCategoryCountAll(boardCategory);
     }
 
 }

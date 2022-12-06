@@ -28,7 +28,7 @@
           <a href="/profile/info" class="menu-list-link">회원정보</a>
         </li>
         <li class="menu-list">
-          <a href="/profile/notification" class="menu-list-link">알림</a>
+          <a href="/profile/upcoming" class="menu-list-link">알림</a>
         </li>
       </ul>
       <p class="menu-list-title">커뮤니티</p>
@@ -39,7 +39,7 @@
           >
         </li>
         <li class="menu-list">
-          <a href="/profile/reply" class="menu-list-link">작성한 답변</a>
+          <a href="/profile/upcoming" class="menu-list-link">작성한 답변</a>
         </li>
         <li class="menu-list">
           <a href="/profile/like" class="menu-list-link">도움된 글</a>
@@ -57,7 +57,7 @@
       <p class="menu-list-title">계정설정</p>
       <ul class="menu-list-container menu-list--settings">
         <li class="menu-list">
-          <a href="/profile/email" class="menu-list-link">이메일 인증/변경</a>
+          <a href="/profile/upcoming" class="menu-list-link">이메일 인증/변경</a>
         </li>
         <li class="menu-list">
           <a href="/profile/password" class="menu-list-link">비밀번호 변경</a>
@@ -107,16 +107,16 @@
             <span class="summary-detail-count" th:text="${total}"></span>개
           </p>
         </div>
-        <div class="summary-module summary__average">
-          <p class="summary-title">일일 평균</p>
-          <p class="summary-detail">
-            <span class="summary-detail-count">4</span>개
-          </p>
-        </div>
         <div class="summary-module summary__useful">
           <p class="summary-title">총 도움 수</p>
           <p class="summary-detail">
             <span class="summary-detail-count" th:text="${likeTotal}"></span>회
+          </p>
+        </div>
+        <div class="summary-module summary__average">
+          <p class="summary-title">일일 평균</p>
+          <p class="summary-detail">
+            <span class="summary-detail-count"></span>준비중
           </p>
         </div>
       </div>
@@ -152,20 +152,20 @@
             </ul>
           </form>
         </th:block>
-        <div th:object="${pagination}" class="pagination">
-          <div style="text-align: center">
-            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
-            <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-              <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
-              <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
-            </th:block>
-            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
-          </div>
-          <form th:action="@{/profile/article}" th:object="${criteria}" name="pageForm">
-            <input type="hidden" th:field="*{page}">
-            <input type="hidden" th:field="*{amount}">
-          </form>
+      </div>
+      <div th:object="${pagination}" class="pagination">
+        <div style="text-align: center">
+          <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+          <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+            <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+            <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+          </th:block>
+          <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
         </div>
+        <form th:action="@{/profile/article}" th:object="${criteria}" name="pageForm">
+          <input type="hidden" th:field="*{page}">
+          <input type="hidden" th:field="*{amount}">
+        </form>
       </div>
       <div class="article-module article-detail-container">
         <div class="article-detail-head">
@@ -189,7 +189,7 @@
         <div class="article-detail__reply-container">
           <div class="article-detail__reply-unit">
             <div class="__reply-unit__profile">
-              <button class="detail-edit-btn">수정하기</button>
+              <button class="detail-edit-btn">상세보기</button>
               <button class="detail-remove-btn">삭제하기</button>
             </div>
           </div>

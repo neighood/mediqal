@@ -47,6 +47,11 @@ public class ProfileBoardService implements BoardService{
         return 0;
     }
 
+
+    public BoardVO ajaxSelect(Long boardNumber) {
+        return boardDAO.profileSelect(boardNumber);
+    }
+
     public List<BoardDTO> showAll(BoardDTO boardDTO) {
         return boardDAO.profileSelectAll(boardDTO);
     }
