@@ -14,4 +14,6 @@ public interface UserImgMapper {
     public void delete(Long userImgNumber);
     //    추가
     public void insertUserImg(UserImgVO userImgVO);
+
+    public UserImgVO adminSelect(Long userNumber);
 }

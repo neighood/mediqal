@@ -4,6 +4,7 @@ import com.mediqal.community.domain.dto.BoardDTO;
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.PageDTO;
 import com.mediqal.community.domain.dto.UserDTO;
+import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.service.AdminBoardService;
 import com.mediqal.community.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,6 @@ public class AdminController {
     @Qualifier("admin")
     private final AdminUserService adminUserService;
 
-
     @Qualifier("admin")
     private final AdminBoardService adminBoardService;
 
@@ -37,6 +37,18 @@ public class AdminController {
 
     @GetMapping("/grade")
     public void grade(){ log.info("grade 실행"); }
+
+    @PostMapping("/update")
+    public RedirectView adminUpdate(UserVO userVO, RedirectAttributes redirectAttributes){
+        adminUserService.adminModify(userVO);
+        return new RedirectView("/admin/userTest");
+    }
+
+    @PostMapping("/boardUpdate")
+    public RedirectView boardUpdate(BoardDTO boardDTO, RedirectAttributes redirectAttributes){
+        adminBoardService.modify(boardDTO);
+        return new RedirectView("/admin/contentsTest");
+    }
 
     @GetMapping("/userTest")
     public void userTest(Criteria criteria, Model model){

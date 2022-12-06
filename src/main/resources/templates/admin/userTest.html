@@ -201,7 +201,7 @@
             </div>
         </article>
         <div class="delete-button" method="deleteGet">삭제하기</div>
-        <div th:object="${pagination}">
+        <div th:object="${pagination}" class="position-ab">
             <div style="text-align: center">
                 <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
                 <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
@@ -227,12 +227,13 @@
         </div>
         <div class="profile-wrapper">
             <div class="profile-image-wrapper">
-                <!--<i class="profile-image"><img src="/img/icon/teacher.png"></i>-->
-                          <i class="profile-image"><img src="/img/icon/profile-default.png"></i>
+<!--                <i class="profile-image"><img src="/img/icon/teacher.png"></i>-->
+                          <i class="profile-image"><img src="/img/icon/profile-default.png" id="user-img"></i>
             </div>
         </div>
         <div id="modal-main">
-            <form id="hds">
+            <form id="hds" name="hds" method="post" th:action="@{/admin/update}">
+                <input type="hidden" name="userNumber" id="user-number">
                 <div class="input-wrapper">
                     <div class="input-text">이름</div>
                     <input type="text" id="user-name" class="user-input" readonly>
@@ -243,11 +244,12 @@
                 </div>
                 <div class="input-wrapper">
                     <div class="input-text">비밀번호</div>
-                    <input type="text" id="user-password" class="user-input user-input2" readonly>
+<!--                    <input type="text" id="userPassword" name="userPassword" class="user-input user-input2" readonly>-->
+                    <input type="text" id="userPassword" name="userPassword" class="user-input user-input2" readonly>
                 </div>
                 <div class="input-wrapper">
                     <div class="input-text">닉네임</div>
-                    <input type="text" id="user-nickname" class="user-input user-input2" readonly>
+                    <input type="text" id="userNickname" name="userNickname" class="user-input user-input2" readonly>
                 </div>
 <!--                <div class="input-wrapper">-->
 <!--                    <div class="input-text">핸드폰번호</div>-->
@@ -261,7 +263,7 @@
         </div>
         <div id="modal-bottom">
             <button id="edit-button1" onclick="changeButton()">수정</button>
-            <button id="edit-button2" onclick="changeButton2()">수정완료</button>
+            <button id="edit-button2" onclick="changeButton2()" type="submit">수정완료</button>
             <!--            <button id="secession-button">탈퇴</button>-->
         </div>
     </div>

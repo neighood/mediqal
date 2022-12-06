@@ -35,17 +35,17 @@ div.arrow {
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
-    top: 47%;
+    top: 83%;
     display: none;
 }
 
 div.next {
-    right: 10%;
+    right: 3%;
 }
 
 div.prev {
     z-index: 1;
-    left: 10%;
+    left: 88%;
 }
 
 .btns{
