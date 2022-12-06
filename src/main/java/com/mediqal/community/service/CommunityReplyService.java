@@ -3,16 +3,20 @@ package com.mediqal.community.service;
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.ReplyDTO;
 import com.mediqal.community.domain.vo.ReplyVO;
+import com.mediqal.community.repository.ReplyDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("community")
+@Qualifier("community") @Primary
 public class CommunityReplyService implements ReplyService{
+
+    private final ReplyDAO replyDAO;
 
     @Override
     public void register(ReplyDTO replyDTO) {
@@ -43,4 +47,9 @@ public class CommunityReplyService implements ReplyService{
     public int getTotal() {
         return 0;
     }
+
+    public List<ReplyDTO> replyShowAll(Long boardNumber) {
+        return replyDAO.findAll(boardNumber);
+    }
+
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mediqal.community.mapper.ReplyMapper">
-    
+    <select id="selectAll" resultType="replyDTO">
+        SELECT REPLY_NUMBER, BOARD_NUMBER, REPLY_CONTENT, USER_NUMBER, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
+        FROM TBL_REPLY
+        WHERE BOARD_NUMBER = #{boardNumber}
+        ORDER BY REPLY_NUMBER DESC
+    </select>
 </mapper>

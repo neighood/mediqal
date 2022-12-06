@@ -1,7 +1,6 @@
 package com.mediqal.community.service;
 
 import com.mediqal.community.domain.dto.BoardDTO;
-import com.mediqal.community.domain.vo.BoardVO;
 import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.repository.BoardDAO;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +35,10 @@ public class CommunityBoardService implements BoardService{
 
     @Override
     public BoardDTO show(Long boardNumber) {
-        return null;
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.create(boardDAO.findById(boardNumber));
+//        boardDTO.setFiles(fileDAO.findAll(boardNumber));
+        return boardDTO;
     }
 
     @Override

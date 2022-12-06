@@ -1,12 +1,9 @@
 package com.mediqal.community.service;
 
-import com.google.gson.JsonObject;
-import com.mediqal.community.domain.dto.Criteria;
 import com.mediqal.community.domain.dto.UserDTO;
 import com.mediqal.community.domain.vo.IllVO;
 import com.mediqal.community.domain.vo.InterestVO;
 import com.mediqal.community.domain.vo.UserImgVO;
-import com.mediqal.community.domain.vo.UserVO;
 import com.mediqal.community.repository.IllDAO;
 import com.mediqal.community.repository.InterestDAO;
 import com.mediqal.community.repository.UserDAO;
@@ -16,18 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonElement;
-import org.springframework.stereotype.Service;
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -108,7 +93,7 @@ public class SignUserService /*implements UserService*/{
     }
 
 //    카카오 로그인
-    public String getKaKaoAccessToken (String code) {
+    /*public String getKaKaoAccessToken (String code) {
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -162,11 +147,11 @@ public class SignUserService /*implements UserService*/{
         }
 
         return access_Token;
-    }
+    }*/
 
 /*------------------------------------------------------------------------------*/
 //    public void createKakaoUser(String token) throws BaseException {
-    public void createKakaoUser(String token) {
+    /*public void createKakaoUser(String token) {
 
         String reqURL = "https://kapi.kakao.com/v2/user/me";
 
@@ -212,11 +197,11 @@ public class SignUserService /*implements UserService*/{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /*------------------------------------------------------------------------------*/
 
-    public HashMap<String, Object> getUserInfo (String access_Token) {
+    /*public HashMap<String, Object> getUserInfo (String access_Token) {
 
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
         HashMap<String, Object> userInfo = new HashMap<>();
@@ -260,7 +245,7 @@ public class SignUserService /*implements UserService*/{
         }
 
         return userInfo;
-    }
+    }*/
 
 //    @Override
 //    public void register(UserDTO userDTO) {
